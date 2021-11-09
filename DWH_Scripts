@@ -989,7 +989,7 @@ TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 DROP TABLE dwh_dev_db.l_card_category;
 CREATE TABLE dwh_dev_db.l_card_category (
     id                  INT,
-    bin                 INT,
+    --bin                 INT,
     card_category       STRING,
     business_dt         INT
 )CLUSTERED BY (bin) INTO 2 BUCKETS
@@ -999,16 +999,16 @@ TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 DROP TABLE dwh_dev_db.l_card_scheme;
 CREATE TABLE dwh_dev_db.l_card_scheme (
     id                                  INT,
-    cs_inst_id                          STRING,
+    --cs_inst_id                          STRING,
     card_scheme                         STRING,
-    desc_ar                             STRING,
-    desc_en                             STRING,
+    --desc_ar                             STRING,
+    --desc_en                             STRING,
     business_dt                         INT
 )CLUSTERED BY (card_scheme) INTO 2 BUCKETS
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.l_cardtype;
+/*DROP TABLE dwh_dev_db.l_cardtype;
 CREATE TABLE dwh_dev_db.l_cardtype (
     id                   INT,
     bin                  STRING,
@@ -1024,6 +1024,20 @@ CREATE TABLE dwh_dev_db.l_cardtype (
     purch_count          INT,
     credit_limit         DOUBLE,
     card_life            STRING,
+    business_dt          INT
+)CLUSTERED BY (cardtype) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");*/
+
+DROP TABLE dwh_dev_db.l_cardtype;
+CREATE TABLE dwh_dev_db.l_cardtype (
+    id                   INT,
+    bin                  STRING,
+    card_type_limit_id   STRING,
+    Card_type		 STRING,
+    card_product	 STRING,
+    card_scheme_id	 INT,
+    card_category_id	 INT,
     business_dt          INT
 )CLUSTERED BY (cardtype) INTO 2 BUCKETS
 STORED AS ORC
@@ -1192,19 +1206,6 @@ CREATE TABLE DWH_DEV_DB.l_country (
     alt_cd          		INT,
     business_dt	    		INT
 )CLUSTERED BY (country_cod) INTO 2 BUCKETS
-STORED AS ORC
-TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
-
-DROP TABLE DWH_DEV_DB.l_governorate;
-CREATE TABLE DWH_DEV_DB.l_governorate (
-    id                        INT,
-    gov_cod                   STRING,
-    region_ar		      STRING,
-    region_en		      STRING,
-    gov_name_ar               STRING,
-    gov_name_en               STRING,
-    business_dt               INT
-)CLUSTERED BY (gov_cod) INTO 2 BUCKETS
 STORED AS ORC
 TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
 
@@ -1567,64 +1568,6 @@ CLUSTERED BY (TERMID) INTO 2 BUCKETS
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-
-DROP TABLE dwh_dev_db.L_CARD_TYPE ;
-CREATE TABLE dwh_dev_db.L_CARD_TYPE(
-	ID	INT,
-	BIN	STRING,
-	CARD_TYPE	STRING,
-	Card_Product	STRING,
-	CARD_SCHEME_ID	INT,
-	CARD_CATEGORY_ID INT,
-	TXNCODE	STRING,
-	CASH_WD_LIM	INT,
-	TC_LIM	INT,
-	CASH_TC_LIM	INT,
-	PURCH_LIMIT	INT,
-	CASH_WD_COUNT	INT,
-	CREDIT_LIM	INT,
-	TC_COUNT	INT,
-	PURCH_COUNT	INT,
-	CARD_LIFE	STRING,
-	Business_DT	INT
-)
-CLUSTERED BY (BIN) INTO 2 BUCKETS
-STORED AS ORC
-TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
-
-
-/*DROP TABLE dwh_dev_db.L_CARD_BIN ;
-CREATE TABLE dwh_dev_db.L_CARD_BIN(
-	ID	INT,
-	BIN	INT ,
-	Card_Category_ID	INT,
-	Business_DT	INT
-)
-CLUSTERED BY (BIN) INTO 2 BUCKETS
-STORED AS ORC
-TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");*/
-
-
-DROP TABLE dwh_dev_db.L_CARD_CATEGORY ;
-CREATE TABLE dwh_dev_db.L_CARD_CATEGORY(
-	ID	INT,
-	Card_Category	STRING,
-	Business_DT	INT
-)
-CLUSTERED BY (Card_Category) INTO 2 BUCKETS
-STORED AS ORC
-TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
-
-
-DROP TABLE dwh_dev_db.L_CARD_SCHEME ;
-CREATE TABLE dwh_dev_db.L_CARD_SCHEME(
-	ID	INT,
-	CARD_SCHEME	STRING,
-	BUSINESS_DT	INT
-)
-CLUSTERED BY (CARD_SCHEME) INTO 2 BUCKETS
-STORED AS ORC
-TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
 DROP TABLE dwh_dev_db.L_PCODE;
 CREATE TABLE dwh_dev_db.L_PCODES(
