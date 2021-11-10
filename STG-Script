@@ -4776,3 +4776,310 @@ rowhash string
 )CLUSTERED BY (TYPE) INTO 1 BUCKETS
 STORED AS ORC
 TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
+
+CREATE TABLE STG_DEV_DB.CASE_DETAILS
+(
+id int, 
+casetype string, 
+customersegment string, 
+serial string, 
+lastupdatetimestamp date, 
+rowhash string, 
+ld_date int, 
+last_upd_date int
+)CLUSTERED BY (id) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
+
+
+CREATE TABLE STG_DEV_DB.COMMENTS
+(
+	  id int, 
+	  user_name string, 
+	  role string, 
+	  step_name string, 
+	  save_time date, 
+	  reason string, 
+	  type string, 
+	  comments string, 
+	  serial string, 
+	  task_id string, 
+	  lastupdatetimestamp date, 
+	  rowhash string, 
+	  ld_date int, 
+	  last_upd_date int
+)CLUSTERED BY (id) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
+
+CREATE TABLE STG_DEV_DB.DEVIATIONS
+(
+	  deviations string, 
+	  codedeviation string, 
+	  processtype string, 
+	  rowhash string, 
+	  ld_date int, 
+	  last_upd_date int
+)CLUSTERED BY (codedeviation) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
+
+CREATE TABLE STG_DEV_DB.ISCORE_DETAILS
+(
+	  id int, 
+	  facility string, 
+	  bankcode string, 
+	  bankname string, 
+	  amount int, 
+	  installment int, 
+	  iscoredate date, 
+	  evaluation string, 
+	  scoring string, 
+	  balance int, 
+	  buy_or_not string, 
+	  serial string, 
+	  lastupdatetimestamp int, 
+	  giscoredate date, 
+	  rowhash string, 
+	  ld_date int, 
+   last_upd_date int
+)CLUSTERED BY (id) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
+
+
+CREATE TABLE STG_DEV_DB.LOS_COMPANIES
+(
+  companyname string, 
+  codingstatus string, 
+  businessaddress string, 
+  title string, 
+  hiringdate date, 
+  sectorname string, 
+  sectorcode string, 
+  businessphonenumber string, 
+  companycomments string, 
+  companytype string, 
+  commericalregister string, 
+  serial string, 
+  comid int, 
+  companyid string, 
+  lastupdatetimestamp date, 
+  area string, 
+  governorate string, 
+  buildingnumber string, 
+  codingcategory string, 
+  occupation string, 
+  taxcard string, 
+  rowhash string, 
+  ld_date int, 
+  last_upd_date int
+)CLUSTERED BY (serial) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
+
+
+CREATE TABLE STG_DEV_DB.LOS_CUSTOMERS
+(
+	  customer_id int, 
+	  pid int, 
+	  cif string, 
+	  taskid string, 
+	  customertype string, 
+	  customerid string, 
+	  customername_en string, 
+	  customername_ar string, 
+	  dateofbirth string, 
+	  nationalid string, 
+	  nationalidissuancedate string, 
+	  passportid string, 
+	  mobilenumber string, 
+	  telephone string, 
+	  countryid string, 
+	  governorateid string, 
+	  address string, 
+	  maritalstatus string, 
+	  numberofdependants string, 
+	  eductionallevel string, 
+	  productid string, 
+	  lastupdatetimestamp date, 
+	  governorate string, 
+	  buildingnumber string, 
+	  appartment string, 
+	  area string, 
+	  floor string, 
+	  email string, 
+	  passportno string, 
+	  nationality string, 
+	  residencyindication string, 
+	  zipcodeofresidence string, 
+	  countryofresidence string, 
+	  regionofresidence string, 
+	  cityofresidence string, 
+	  countryofcontact string, 
+	  regionofcontact string, 
+	  cityofcontact string, 
+	  customercontactaddress string, 
+	  homephone string, 
+	  customerresidenceaddress string, 
+	  title string, 
+	  bankdate date, 
+	  bankaccountnumber string, 
+	  iswealth string, 
+	  passportexpirydate string, 
+	  exstaff string, 
+	  refname string, 
+	  refnumber string, 
+	  refrelation string, 
+	  rowhash string, 
+	  ld_date int, 
+	  last_upd_date int 
+)CLUSTERED BY (customer_id) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
+
+
+CREATE TABLE STG_DEV_DB.LOS_DEVIATION
+(
+  deviation1 string, 
+  deviation2 string, 
+  deviation3 string, 
+  authorizedname1 string, 
+  authorizedname2 string, 
+  authorizedname3 string, 
+  authorizedname1postion string, 
+  serial string, 
+  deviationid int, 
+  lastupdatetimestamp date, 
+  authorizedname2postion string, 
+  authorizedname3postion string, 
+  authoritylevel1 string, 
+  authoritylevel2 string, 
+  authoritylevel3 string, 
+  rowhash string, 
+  ld_date int, 
+  last_upd_date int
+)CLUSTERED BY (serial) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
+
+
+CREATE TABLE STG_DEV_DB.LOS_INCOME
+(
+	  incomeid int, 
+	  incometype string, 
+	  basicincome string, 
+	  additionalincome string, 
+	  incomethroughiscore string, 
+	  monthlynetincome string, 
+	  customershare string, 
+	  totalcredits string, 
+	  incmomepercentage string, 
+	  foreignrate string, 
+	  totalincome string, 
+	  monthlyincome string, 
+	  monthsnumber string, 
+	  maximuminstallment string, 
+	  minimumfinancialamount string, 
+	  serial string, 
+	  lastupdatetimestamp date, 
+	  rowhash string, 
+	  ld_date int, 
+	  last_upd_date int
+)CLUSTERED BY (incomeid) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
+
+
+CREATE TABLE STG_DEV_DB.LOS_LOANDETAILS
+(
+	  loandetailsid int, 
+	  financeamount string, 
+	  profitrate string, 
+	  tenor string, 
+	  installment string, 
+	  internaldbr string, 
+	  externaldbr string, 
+	  totaldbr string, 
+	  customerageatmaturity string, 
+	  requestedfinanceamount string, 
+	  requestedtenor string, 
+	  searial string, 
+	  cpv string, 
+	  externalverification string, 
+	  verificationtype string, 
+	  homeverification string, 
+	  businessverification string, 
+	  homeinvestigationdate date, 
+	  guarantorname string, 
+	  guarantornationalid string, 
+	  nidissuancedate date, 
+	  guarantordateofbirth date, 
+	  guarantorid string, 
+	  applicationdate date, 
+	  dateoflastcreditanalyst date, 
+	  analystdesicion string, 
+	  analystname string, 
+	  analystrejectionreasons string, 
+	  notes string, 
+	  reviewername string, 
+	  reviewerdesicion string, 
+	  analystreturnedreasons string, 
+	  reviewerrejectionreasons string, 
+	  reviewerreturnedreasons string, 
+	  supervisorname string, 
+	  lastupdatetimestamp date, 
+	  pid string, 
+	  taskid string, 
+	  businessinvestigationdate date, 
+	  home string, 
+	  business string, 
+	  mobilenumber string, 
+	  rowhash string, 
+	  ld_date int, 
+	  last_upd_date int
+)CLUSTERED BY (loandetailsid) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
+
+CREATE TABLE STG_DEV_DB.LOS_PRODUCT
+(
+	  productid int, 
+	  serial string, 
+	  productcode string, 
+	  productname string, 
+	  source string, 
+	  salesagentcode string, 
+	  salesagentname string, 
+	  branchcode string, 
+	  branchname string, 
+	  dataentryname string, 
+	  lastupdatetimestamp date, 
+	  rowhash string, 
+	  ld_date int, 
+	  last_upd_date int
+)CLUSTERED BY (productid) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
+
+
+CREATE TABLE STG_DEV_DB.TASK
+(
+	  id int, 
+	  process_inst_number string, 
+	  task_id string, 
+	  time_stamp date, 
+	  status string, 
+	  user string, 
+	  user_group string, 
+	  sla_status string, 
+	  due_time date, 
+	  actual_duration string, 
+	  user_manager string, 
+	  step_name string, 
+	  rowhash string, 
+	  ld_date int, 
+	  last_upd_date int
+)CLUSTERED BY (id) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
