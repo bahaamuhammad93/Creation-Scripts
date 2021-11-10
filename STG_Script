@@ -3461,11 +3461,11 @@ TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY")
  CREATE TABLE STG_DEV_DB.CSTM_PRODUCT_UDF_FIELDS_MAP 
  ( PRODUCT_CODE STRING, 
  FIELD_NAME STRING, 
- FIELD_NUM DOUBLE, 
+ FIELD_NUM INT, 
  AUTH_STAT STRING, 
  ROWHASH STRING, 
- LAST_UPD_DATE DOUBLE, 
- LD_DATE DOUBLE
+ LAST_UPD_DATE INT, 
+ LD_DATE INT
  )
 CLUSTERED BY (PRODUCT_CODE) INTO 2 BUCKETS
 STORED AS ORC
@@ -3485,97 +3485,6 @@ TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY")
  LD_DATE INT
  )
 CLUSTERED BY (CURR_CODE) INTO 2 BUCKETS
-STORED AS ORC
-TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY")
-;
-
-
--- DDL for Table FCT_LOAN_CONTRACTS
-
- CREATE TABLE STG_DEV_DB.FCT_LOAN_CONTRACTS 
- ( D_AOD_DATE DATE, 
- D_FILING_SUIT_DATE DATE, 
- D_LAST_CREDIT_DATE DATE, 
- D_LN_BOOKED_DATE DATE, 
- D_LN_CLOSED_DATE DATE, 
- D_LN_DISBURSED_DATE DATE, 
- D_LN_EXPIRY_DATE DATE, 
- D_LN_LAST_PAYMENT_DATE DATE, 
- D_LN_PREPAYMENT_DATE DATE, 
- D_LN_REPAY_SCHD_NEXT_DATE DATE, 
- D_LN_VALUE_DATE DATE, 
- D_NPA_DATE DATE, 
- D_SANCTIONED_DATE DATE, 
- F_LN_INTEREST_TYPE STRING, 
- F_NPAS STRING, 
- F_OVERDUE STRING, 
- F_REFINANCE_AVAILED STRING, 
- F_VIABLE STRING, 
- FIC_MIS_DATE DATE, 
- N_AMOUNT_EXCEEDING DOUBLE, 
- N_APPLICATION_NUMBER STRING, 
- N_DEMAND_ITD DOUBLE, 
- N_DICGC_ECGC_AMOUNT DOUBLE, 
- N_DISBURSED_AMOUNT DOUBLE, 
- N_EXISTING_PROVISION DOUBLE, 
- N_LN_COLLECTION_AMT_RECVD DOUBLE, 
- N_LN_EOP_BAL_DR DOUBLE, 
- N_LN_EOP_BAL_INT DOUBLE, 
- N_LN_INT_WRITEOFF_AMT_YTD DOUBLE, 
- N_LN_OVERDUE_INT_NORMAL DOUBLE, 
- N_LN_OVERDUE_INT_SUSPENDED DOUBLE, 
- N_LN_OVERDUE_PRIN DOUBLE, 
- N_LN_PRIN_WRITEOFF_AMT_YTD DOUBLE, 
- N_LN_SANCTIONED_LIMIT DOUBLE, 
- N_LN_TENOR_MONTHS DOUBLE, 
- N_NO_OF_INSTALLMENT DOUBLE, 
- N_LN_PREV_YR_PROVISON_AMT DOUBLE, 
- N_REFINANCE_ELIGIBLE_LIMIT DOUBLE, 
- V_CATEGORY_CODE DOUBLE, 
- V_CGC_CODE DOUBLE, 
- V_GUAR_PARTY STRING, 
- V_LN_ACCT_NO STRING, 
- V_LN_ACCT_STATUS DOUBLE, 
- V_LN_BRANCH_CODE DOUBLE, 
- V_LN_CARD_CODE DOUBLE, 
- V_LN_CURR_CODE STRING, 
- V_LN_CUST_REF_CODE DOUBLE, 
- V_LN_PROD_CODE DOUBLE, 
- V_LN_STATUS DOUBLE, 
- V_SANCTIONAUTHORITY_CODE STRING, 
- V_SANCTIONAUTHORITY_DESC STRING, 
- V_STOCK_STATEMENT_MONTH DOUBLE, 
- V_TERM_CODE DOUBLE, 
- V_SOURCE STRING, 
- V_CRR_CODE DOUBLE, 
- N_INTEREST_ACCRUED DOUBLE, 
- V_BENCH_RATE_CODE DOUBLE, 
- N_INT_CURR_RATE DOUBLE, 
- N_DEMAND_AMT_PRIN DOUBLE, 
- N_DEMAND_AMT_INT DOUBLE, 
- N_DEMAND_AMT_PREM DOUBLE, 
- N_DEMAND_AMT_PMI DOUBLE, 
- N_DEMAND_AMT_PMI_NONACC DOUBLE, 
- N_DEMAND_AMT_LEGAL DOUBLE, 
- N_DEMAND_AMT_SUSP_FEE DOUBLE, 
- N_DEMAND_AMT_SUSP_LEGAL DOUBLE, 
- N_DEMAND_AMT_SUSP_OUT DOUBLE, 
- N_DEMAND_AMT_SUSP_PREM DOUBLE, 
- N_OVERDUE_AMT_PRIN DOUBLE, 
- N_OVERDUE_AMT_INT DOUBLE, 
- N_OVERDUE_AMT_PREM DOUBLE, 
- N_OVERDUE_AMT_PMI DOUBLE, 
- N_OVERDUE_AMT_PMI_NONACC DOUBLE, 
- N_OVERDUE_AMT_LEGAL DOUBLE, 
- N_OVERDUE_AMT_SUSP_FEE DOUBLE, 
- N_OVERDUE_AMT_SUSP_LEGAL DOUBLE, 
- N_OVERDUE_AMT_SUSP_OUT DOUBLE, 
- N_OVERDUE_AMT_SUSP_PREM DOUBLE, 
- ROWHASH STRING, 
- LAST_UPD_DATE DOUBLE, 
- LD_DATE DOUBLE
- )
-CLUSTERED BY (N_APPLICATION_NUMBER, V_CRR_CODE) INTO 2 BUCKETS
 STORED AS ORC
 TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY")
 ;
@@ -3618,8 +3527,8 @@ TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY")
  ACY_TODAY_TOVER_CR DOUBLE, 
  LCY_TODAY_TOVER_CR DOUBLE, 
  ROWHASH STRING, 
- LD_DATE DOUBLE, 
- LAST_UPD_DATE DOUBLE
+ LD_DATE INT, 
+ LAST_UPD_DATE INT
  )
 CLUSTERED BY (BRANCH_CODE, GL_CODE, CCY_CODE, FIN_YEAR, PERIOD_CODE) INTO 2 BUCKETS
 STORED AS ORC
@@ -3820,24 +3729,24 @@ TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY")
  ( BIN STRING, 
  PAN STRING, 
  CASH_WD_LIMIT DOUBLE, 
- CASH_WD_COUNT DOUBLE, 
+ CASH_WD_COUNT INT, 
  TC_LIMIT DOUBLE, 
- TC_COUNT DOUBLE, 
+ TC_COUNT INT, 
  CASH_TC_LIMIT DOUBLE, 
  PURCH_LIMIT DOUBLE, 
- PURCH_COUNT DOUBLE, 
+ PURCH_COUNT INT, 
  TSF_BASE_CURR_LIMIT DOUBLE, 
- TSF_BASE_CURR_COUNT DOUBLE, 
+ TSF_BASE_CURR_COUNT INT, 
  TSF_MULTI_LIMIT DOUBLE, 
- TSF_MULTI_COUNT DOUBLE, 
+ TSF_MULTI_COUNT INT, 
  TSF_BASE_TXN_LIM DOUBLE, 
  TSF_MULTI_TXN_LIM DOUBLE, 
  USD_TSF_TXN_LIM DOUBLE, 
  CASH_DEP_LIMIT DOUBLE, 
  CREDIT_LIMIT DOUBLE, 
  ROWHASH STRING, 
- LD_DATE DOUBLE, 
- LAST_UPD_DATE DOUBLE
+ LD_DATE INT, 
+ LAST_UPD_DATE INT
  )
 CLUSTERED BY (PAN) INTO 2 BUCKETS
 STORED AS ORC
@@ -3857,8 +3766,8 @@ TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY")
  PRIMARY_INDICATOR STRING, 
  ADDRESS_LINK STRING, 
  ROWHASH STRING, 
- LD_DATE DOUBLE, 
- LAST_UPD_DATE DOUBLE
+ LD_DATE INT, 
+ LAST_UPD_DATE INT
  )
 CLUSTERED BY (ACCOUNT, PRODUCTCODE, BASE) INTO 2 BUCKETS
 STORED AS ORC
@@ -3870,8 +3779,8 @@ TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY")
 
  CREATE TABLE STG_DEV_DB.LCTB_AVAILMENTS 
  ( CONTRACT_REF_NO STRING, 
- VERSION_NO DOUBLE, 
- EVENT_SEQ_NO DOUBLE, 
+ VERSION_NO INT, 
+ EVENT_SEQ_NO INT, 
  EVENT_CODE STRING, 
  AVAILMENT_AMT DOUBLE , 
  AVAILMENT_TYPE STRING, 
@@ -3879,12 +3788,12 @@ TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY")
  OS_LIABILITY DOUBLE , 
  RELATED_REF_NO STRING, 
  REMARKS STRING, 
- REVERSAL_EVENT_SEQ_NO DOUBLE, 
+ REVERSAL_EVENT_SEQ_NO INT, 
  VALUE_DATE DATE, 
  LIABILITY_AMT DOUBLE , 
  ROWHASH STRING, 
- LD_DATE DOUBLE, 
- LAST_UPD_DATE DOUBLE
+ LD_DATE INT, 
+ LAST_UPD_DATE INT
  )
 CLUSTERED BY (CONTRACT_REF_NO, EVENT_SEQ_NO) INTO 2 BUCKETS
 STORED AS ORC
@@ -3897,8 +3806,8 @@ TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY")
 
  CREATE TABLE STG_DEV_DB.LCTB_COLLATERAL 
  ( CONTRACT_REF_NO STRING, 
- VERSION_NO DOUBLE, 
- EVENT_SEQ_NO DOUBLE, 
+ VERSION_NO INT, 
+ EVENT_SEQ_NO INT, 
  EVENT_CODE STRING, 
  COLLATERAL_CCY STRING, 
  COLLATERAL_PCT DOUBLE, 
@@ -3906,10 +3815,10 @@ TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY")
  COLLATERAL_DESCR STRING, 
  EXCH_RATE DOUBLE, 
  ADJUSTMENT_AMT DOUBLE , 
- ADJUSTMENT_SIGN DOUBLE, 
+ ADJUSTMENT_SIGN INT, 
  ROWHASH STRING, 
- LAST_UPD_DATE DOUBLE, 
- LD_DATE DOUBLE
+ LAST_UPD_DATE INT, 
+ LD_DATE INT
  )
 CLUSTERED BY (CONTRACT_REF_NO, EVENT_SEQ_NO) INTO 2 BUCKETS
 STORED AS ORC
@@ -4043,8 +3952,8 @@ RegistrationDate 		STRING,
 IsDocumented 			STRING,
 DocumentSerial			STRING,
 ROWHASH 				STRING, 
-LD_DATE 				DOUBLE, 
-LAST_UPD_DATE 			DOUBLE
+LD_DATE 				INT, 
+LAST_UPD_DATE 			INT
 )CLUSTERED BY (NationalId , Mobile) INTO 2 BUCKETS
 STORED AS ORC
 TBLPROPERTIES    ('transactional'='true', "orc.compress"="SNAPPY");
@@ -4102,8 +4011,8 @@ RegistrationDate            STRING,
 IsDocumented                STRING,               
 DocumentSerial                STRING,
 ROWHASH 					STRING, 
-LD_DATE 					DOUBLE, 
-LAST_UPD_DATE 				DOUBLE
+LD_DATE 					INT, 
+LAST_UPD_DATE 				INT
 )CLUSTERED BY (NationalId , Mobile) INTO 2 BUCKETS
 STORED AS ORC
 TBLPROPERTIES    ('transactional'='true', "orc.compress"="SNAPPY");
@@ -4127,8 +4036,8 @@ Name                            STRING,
 Address                            STRING,
 SnapshotDate                    STRING,
 ROWHASH 						STRING, 
-LD_DATE 						DOUBLE, 
-LAST_UPD_DATE 					DOUBLE
+LD_DATE 						INT, 
+LAST_UPD_DATE 					INT
 )CLUSTERED BY (MobileNumber , NationalId) INTO 16 BUCKETS
 STORED AS ORC
 TBLPROPERTIES    ('transactional'='true', "orc.compress"="SNAPPY");
@@ -4153,8 +4062,8 @@ CREATE TABLE STG_DEV_DB.QaheraCash
  ADDRESS STRING,
  SNAPSHOTDATE STRING,
  ROWHASH STRING,
- LD_DATE DOUBLE,
- LAST_UPD_DATE DOUBLE
+ LD_DATE INT,
+ LAST_UPD_DATE INT
 )
 CLUSTERED BY (MOBILENUMBER,NATIONALID) INTO 16 BUCKETS
 STORED AS ORC
@@ -4990,102 +4899,5 @@ CREATE TABLE STG_DEV_DB.TASK
 	  ld_date int, 
 	  last_upd_date int
 )CLUSTERED BY (id) INTO 2 BUCKETS
-STORED AS ORC
-TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
-
-CREATE TABLE STG_DEV_DB.ISTCMSACT
-(
-	  pan string, 
-	  pan_repl string, 
-	  region string, 
-	  branch string, 
-	  cardtype string, 
-	  cms_func string, 
-	  status int, 
-	  cms_mode int, 
-	  user_id string, 
-	  super_id string, 
-	  tx_date date, 
-	  tx_time int, 
-	  recno int, 
-	  act_count int, 
-	  act_date date, 
-	  act_time int, 
-	  pm_status int, 
-	  pm_user_id string, 
-	  pm_super_id string, 
-	  pm_date date, 
-	  pm_time int, 
-	  spare_string string, 
-	  spare_int int, 
-	  o_rowid int, 
-	  seq_no int, 
-	  repl_reason string, 
-	  details string, 
-	  extract_flag string,
-	  rowhash string
-	  ld_date int,
-	  last_upd_date int, 
-
-)CLUSTERED BY (pan) INTO 32 BUCKETS
-STORED AS ORC
-TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
-
-
-
-CREATE TABLE STG_DEV_DB.ISTDBACCT
-(
-	  bin string, 
-	  account string, 
-	  shortname string, 
-	  languagecode string, 
-	  productcode string, 
-	  status string, 
-	  groupcode string, 
-	  region string, 
-	  customer_type string, 
-	  branch string, 
-	  misid string, 
-	  currency int, 
-	  ledger_balance double, 
-	  available_balance double, 
-	  advance_line double, 
-	  advance_line_used double, 
-	  txncode string, 
-	  last_activity_date date, 
-	  last_activity_time int, 
-	  cash_wd_amt_used double, 
-	  cash_wd_count int, 
-	  cash_wd_date date, 
-	  cash_wd_time int, 
-	  tc_wd_amt_used double, 
-	  tc_wd_count int, 
-	  tc_wd_date date, 
-	  tc_wd_time int, 
-	  cash_tc_amt_used double, 
-	  cash_tc_date date, 
-	  cash_tc_time int, 
-	  purch_amt_used double, 
-	  purch_count int, 
-	  purch_date date, 
-	  purch_time int, 
-	  tsf_base_cur_used double, 
-	  tsf_base_cur_date date, 
-	  tsf_base_cur_time int, 
-	  tsf_multi_cur_used double, 
-	  tsf_multi_cur_date date, 
-	  tsf_multi_cur_time int, 
-	  aggregate_indicator string, 
-	  last_update_date date, 
-	  last_update_time int, 
-	  net_activity double, 
-	  cash_dep_used double, 
-	  cash_dep_date date, 
-	  rowhash string, 
-	   ld_date int
-	  last_upd_date int, 
-
-
-)CLUSTERED BY (account) INTO 16 BUCKETS
 STORED AS ORC
 TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
