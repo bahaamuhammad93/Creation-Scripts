@@ -971,7 +971,7 @@ CREATE TABLE dwh_dev_db.l_card_category (
     --bin                 INT,
     card_category       STRING,
     business_dt         INT
-)CLUSTERED BY (bin) INTO 2 BUCKETS
+)CLUSTERED BY (card_category) INTO 2 BUCKETS
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
@@ -1008,8 +1008,8 @@ CREATE TABLE dwh_dev_db.l_cardtype (
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");*/
 
-DROP TABLE dwh_dev_db.l_cardtype;
-CREATE TABLE dwh_dev_db.l_cardtype (
+DROP TABLE dwh_dev_db.l_card_type;
+CREATE TABLE dwh_dev_db.l_card_type (
     id                   INT,
     bin                  STRING,
     card_type_limit_id   STRING,
@@ -1018,7 +1018,7 @@ CREATE TABLE dwh_dev_db.l_cardtype (
     card_scheme_id	 INT,
     card_category_id	 INT,
     business_dt          INT
-)CLUSTERED BY (cardtype) INTO 2 BUCKETS
+)CLUSTERED BY (Card_type) INTO 2 BUCKETS
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
@@ -1548,7 +1548,7 @@ STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
 
-DROP TABLE dwh_dev_db.L_PCODE;
+DROP TABLE dwh_dev_db.L_PCODES;
 CREATE TABLE dwh_dev_db.L_PCODES(
 	ID	INT,
 	Pcode	INT,
