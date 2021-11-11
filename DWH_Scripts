@@ -1,5 +1,5 @@
-DROP TABLE dwh_dev_db.b_customer_classification;
-CREATE TABLE dwh_dev_db.b_customer_classification (
+DROP TABLE dwh_tst_db.b_customer_classification;
+CREATE TABLE dwh_tst_db.b_customer_classification (
     id                             INT,
     cust_id                  	   INT,
     dwh_id              	   INT,
@@ -15,8 +15,8 @@ STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY")
 ;
 
-DROP TABLE dwh_dev_db.d_corporate_detail;
-CREATE TABLE dwh_dev_db.d_corporate_detail (
+DROP TABLE dwh_tst_db.d_corporate_detail;
+CREATE TABLE dwh_tst_db.d_corporate_detail (
     id                        INT,
     cust_id                   INT,
     dwh_id         	      INT,
@@ -67,8 +67,8 @@ CREATE TABLE dwh_dev_db.d_corporate_detail (
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.h_corporate_detail;
-CREATE TABLE dwh_dev_db.h_corporate_detail (
+DROP TABLE dwh_tst_db.h_corporate_detail;
+CREATE TABLE dwh_tst_db.h_corporate_detail (
     id                        INT,
     cust_id                   INT,
     dwh_id		      INT,
@@ -118,8 +118,8 @@ CREATE TABLE dwh_dev_db.h_corporate_detail (
 STORED AS PARQUET
 TBLPROPERTIES	("parquet.compression"="SNAPPY");
 
-DROP TABLE dwh_dev_db.d_customer;
-CREATE TABLE dwh_dev_db.d_customer (
+DROP TABLE dwh_tst_db.d_customer;
+CREATE TABLE dwh_tst_db.d_customer (
     id                             INT,
     dwh_id                         INT,
     cif                            STRING,
@@ -222,8 +222,8 @@ CREATE TABLE dwh_dev_db.d_customer (
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.hlp_customer;
-CREATE TABLE dwh_dev_db.hlp_customer (
+DROP TABLE dwh_tst_db.hlp_customer;
+CREATE TABLE dwh_tst_db.hlp_customer (
     id                             INT,
     dwh_id                         INT,
     cif                            STRING,
@@ -327,8 +327,8 @@ CREATE TABLE dwh_dev_db.hlp_customer (
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.h_customer;
-CREATE TABLE dwh_dev_db.h_customer (
+DROP TABLE dwh_tst_db.h_customer;
+CREATE TABLE dwh_tst_db.h_customer (
     id                             INT,
     dwh_id                         INT,
     cif                            STRING,
@@ -430,8 +430,8 @@ CREATE TABLE dwh_dev_db.h_customer (
 STORED AS PARQUET
 TBLPROPERTIES	("parquet.compression"="SNAPPY");
 
-DROP TABLE dwh_dev_db.f_cust_memo;
-CREATE TABLE dwh_dev_db.f_cust_memo (
+DROP TABLE dwh_tst_db.f_cust_memo;
+CREATE TABLE dwh_tst_db.f_cust_memo (
     id                    INT,
     cust_id         	  INT,
     dwh_id     		  INT,
@@ -447,8 +447,8 @@ CREATE TABLE dwh_dev_db.f_cust_memo (
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.l_business_types;
-CREATE TABLE dwh_dev_db.l_business_types (
+DROP TABLE dwh_tst_db.l_business_types;
+CREATE TABLE dwh_tst_db.l_business_types (
     id                	  INT,
     business_cat_cod  	  INT,
     desc_ar           	  STRING,
@@ -461,8 +461,8 @@ CREATE TABLE dwh_dev_db.l_business_types (
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.l_customer_class;
-CREATE TABLE dwh_dev_db.l_customer_class (
+DROP TABLE dwh_tst_db.l_customer_class;
+CREATE TABLE dwh_tst_db.l_customer_class (
     id             	  INT,
     class_cod      	  STRING,
     class_desc_ar  	  STRING,
@@ -472,8 +472,8 @@ CREATE TABLE dwh_dev_db.l_customer_class (
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.l_customer_type;
-CREATE TABLE dwh_dev_db.l_customer_type (
+DROP TABLE dwh_tst_db.l_customer_type;
+CREATE TABLE dwh_tst_db.l_customer_type (
     id                   INT,
     type_cod             STRING,
     type_desc_ar         STRING,
@@ -487,8 +487,8 @@ CREATE TABLE dwh_dev_db.l_customer_type (
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.l_identity_type;
-CREATE TABLE dwh_dev_db.l_identity_type (
+DROP TABLE dwh_tst_db.l_identity_type;
+CREATE TABLE dwh_tst_db.l_identity_type (
     id                	 INT,
     identity_type     	 STRING,
     identity_desc_ar  	 STRING,
@@ -501,8 +501,8 @@ CREATE TABLE dwh_dev_db.l_identity_type (
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.l_income_slabs;
-CREATE TABLE dwh_dev_db.l_income_slabs (
+DROP TABLE dwh_tst_db.l_income_slabs;
+CREATE TABLE dwh_tst_db.l_income_slabs (
     id               	 INT,
     income_cat_cod   	 STRING,
     amt_upper_limit  	 DOUBLE,
@@ -512,8 +512,8 @@ CREATE TABLE dwh_dev_db.l_income_slabs (
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.l_language;
-CREATE TABLE dwh_dev_db.l_language (
+DROP TABLE dwh_tst_db.l_language;
+CREATE TABLE dwh_tst_db.l_language (
     id           	 INT,
     lang_cod     	 STRING,
     desc_ar      	 STRING,
@@ -526,8 +526,8 @@ CREATE TABLE dwh_dev_db.l_language (
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.l_main_classification;
-CREATE TABLE dwh_dev_db.l_main_classification (
+DROP TABLE dwh_tst_db.l_main_classification;
+CREATE TABLE dwh_tst_db.l_main_classification (
     id                   INT,
     mis_type             STRING,
     mis_class	         STRING,
@@ -544,8 +544,8 @@ STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
 
-DROP TABLE dwh_dev_db.l_profession;
-CREATE TABLE dwh_dev_db.l_profession (
+DROP TABLE dwh_tst_db.l_profession;
+CREATE TABLE dwh_tst_db.l_profession (
     id              INT,
     profession_cod  INT,
     desc_ar         STRING,
@@ -558,8 +558,8 @@ CREATE TABLE dwh_dev_db.l_profession (
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.l_signature;
-CREATE TABLE dwh_dev_db.l_signature (
+DROP TABLE dwh_tst_db.l_signature;
+CREATE TABLE dwh_tst_db.l_signature (
     id            INT,
     sign_typ_cod  STRING,
     desc_ar       STRING,
@@ -572,8 +572,8 @@ CREATE TABLE dwh_dev_db.l_signature (
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.l_sub_classification;
-CREATE TABLE dwh_dev_db.l_sub_classification (
+DROP TABLE dwh_tst_db.l_sub_classification;
+CREATE TABLE dwh_tst_db.l_sub_classification (
     id                               INT,
     mis_cod                          STRING,
     class_num  			     INT,
@@ -589,8 +589,8 @@ CREATE TABLE dwh_dev_db.l_sub_classification (
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.d_wallets;
-CREATE TABLE dwh_dev_db.d_wallets (
+DROP TABLE dwh_tst_db.d_wallets;
+CREATE TABLE dwh_tst_db.d_wallets (
     id                               INT,
     wallet_cust_id                   STRING,
     cust_id                          INT,
@@ -632,8 +632,8 @@ CREATE TABLE dwh_dev_db.d_wallets (
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.hlp_wallets;
-CREATE TABLE dwh_dev_db.hlp_wallets (
+DROP TABLE dwh_tst_db.hlp_wallets;
+CREATE TABLE dwh_tst_db.hlp_wallets (
     id                               INT,
     wallet_cust_id                   STRING,
     cust_id                          INT,
@@ -675,8 +675,8 @@ CREATE TABLE dwh_dev_db.hlp_wallets (
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.h_wallets;
-CREATE TABLE dwh_dev_db.h_wallets (
+DROP TABLE dwh_tst_db.h_wallets;
+CREATE TABLE dwh_tst_db.h_wallets (
     id                               INT,
     wallet_cust_id                   STRING,
     cust_id                          INT,
@@ -717,8 +717,8 @@ CREATE TABLE dwh_dev_db.h_wallets (
 STORED AS PARQUET
 TBLPROPERTIES	("parquet.compression"="SNAPPY");
 
-DROP TABLE dwh_dev_db.d_branch;
-CREATE TABLE dwh_dev_db.d_branch (
+DROP TABLE dwh_tst_db.d_branch;
+CREATE TABLE dwh_tst_db.d_branch (
     id        		     	     INT,
     brn_cod            		     INT,
     cbe_brn_cod        		     INT,
@@ -749,8 +749,8 @@ CREATE TABLE dwh_dev_db.d_branch (
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.h_branch;
-CREATE TABLE dwh_dev_db.h_branch (
+DROP TABLE dwh_tst_db.h_branch;
+CREATE TABLE dwh_tst_db.h_branch (
     id        		     	     INT,
     brn_cod            		     INT,
     cbe_brn_cod        		     INT,
@@ -780,8 +780,8 @@ CREATE TABLE dwh_dev_db.h_branch (
 STORED AS PARQUET
 TBLPROPERTIES	("parquet.compression"="SNAPPY");
 
-DROP TABLE dwh_dev_db.d_cards;
-CREATE TABLE dwh_dev_db.d_cards (
+DROP TABLE dwh_tst_db.d_cards;
+CREATE TABLE dwh_tst_db.d_cards (
 ID				     INT,
 PAN				     STRING,
 MASK_PAN			     STRING,
@@ -867,8 +867,8 @@ BASE	STRING
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.h_cards;
-CREATE TABLE dwh_dev_db.h_cards (
+DROP TABLE dwh_tst_db.h_cards;
+CREATE TABLE dwh_tst_db.h_cards (
 ID				     INT,
 PAN				     STRING,
 MASK_PAN			     STRING,
@@ -954,8 +954,8 @@ BASE	STRING
 STORED AS PARQUET
 TBLPROPERTIES	("parquet.compression"="SNAPPY");
 
-DROP TABLE dwh_dev_db.l_branch_type;
-CREATE TABLE dwh_dev_db.l_branch_type (
+DROP TABLE dwh_tst_db.l_branch_type;
+CREATE TABLE dwh_tst_db.l_branch_type (
     id           			INT,
     cod_brn_type 			INT,
     desc_ar      			STRING,
@@ -965,8 +965,8 @@ CREATE TABLE dwh_dev_db.l_branch_type (
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.l_card_category;
-CREATE TABLE dwh_dev_db.l_card_category (
+DROP TABLE dwh_tst_db.l_card_category;
+CREATE TABLE dwh_tst_db.l_card_category (
     id                  INT,
     --bin                 INT,
     card_category       STRING,
@@ -975,8 +975,8 @@ CREATE TABLE dwh_dev_db.l_card_category (
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.l_card_scheme;
-CREATE TABLE dwh_dev_db.l_card_scheme (
+DROP TABLE dwh_tst_db.l_card_scheme;
+CREATE TABLE dwh_tst_db.l_card_scheme (
     id                                  INT,
     --cs_inst_id                          STRING,
     card_scheme                         STRING,
@@ -987,29 +987,8 @@ CREATE TABLE dwh_dev_db.l_card_scheme (
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-/*DROP TABLE dwh_dev_db.l_cardtype;
-CREATE TABLE dwh_dev_db.l_cardtype (
-    id                   INT,
-    bin                  STRING,
-    cardtype             STRING,
-    card_scheme		 STRING,
-    txncode              STRING,
-    cash_wd_limit        DOUBLE,
-    cash_wd_count        INT,
-    tc_limit             DOUBLE,
-    tc_count             INT,
-    cash_tc_limit        DOUBLE,
-    purch_limit          DOUBLE,
-    purch_count          INT,
-    credit_limit         DOUBLE,
-    card_life            STRING,
-    business_dt          INT
-)CLUSTERED BY (cardtype) INTO 2 BUCKETS
-STORED AS ORC
-TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");*/
-
-DROP TABLE dwh_dev_db.l_card_type;
-CREATE TABLE dwh_dev_db.l_card_type (
+DROP TABLE dwh_tst_db.l_card_type;
+CREATE TABLE dwh_tst_db.l_card_type (
     id                   INT,
     bin                  STRING,
     card_type_limit_id   STRING,
@@ -1022,8 +1001,8 @@ CREATE TABLE dwh_dev_db.l_card_type (
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.b_customer_relations;
-CREATE TABLE dwh_dev_db.b_customer_relations (
+DROP TABLE dwh_tst_db.b_customer_relations;
+CREATE TABLE dwh_tst_db.b_customer_relations (
     id                   INT,
     p_cust_id        	 INT,
     p_dwh_id    	 INT,
@@ -1041,8 +1020,8 @@ CREATE TABLE dwh_dev_db.b_customer_relations (
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.l_relation_type;
-CREATE TABLE dwh_dev_db.l_relation_type (
+DROP TABLE dwh_tst_db.l_relation_type;
+CREATE TABLE dwh_tst_db.l_relation_type (
     id           	INT,
     rel_cod		INT,
     desc_ar      	STRING,
@@ -1052,8 +1031,8 @@ CREATE TABLE dwh_dev_db.l_relation_type (
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.l_business_types;
-CREATE TABLE dwh_dev_db.l_business_types (
+DROP TABLE dwh_tst_db.l_business_types;
+CREATE TABLE dwh_tst_db.l_business_types (
     id                INT,
     business_cat_cod  INT,
     desc_ar           STRING,
@@ -1066,8 +1045,8 @@ CREATE TABLE dwh_dev_db.l_business_types (
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE DWH_DEV_DB.L_STATUS;
-CREATE TABLE DWH_DEV_DB.L_STATUS(
+DROP TABLE dwh_tst_db.L_STATUS;
+CREATE TABLE dwh_tst_db.L_STATUS(
 ID    					INT,
 MODULE    				STRING,
 STATUS_COD    				STRING,
@@ -1079,8 +1058,8 @@ CLUSTERED BY (MODULE) INTO 2 BUCKETS
 STORED AS ORC
 TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE DWH_DEV_DB.d_bdc_users;
-CREATE TABLE DWH_DEV_DB.d_bdc_users (
+DROP TABLE dwh_tst_db.d_bdc_users;
+CREATE TABLE dwh_tst_db.d_bdc_users (
     id                  		INT,
     user_id             		STRING,
     user_no             		INT,
@@ -1097,8 +1076,8 @@ CREATE TABLE DWH_DEV_DB.d_bdc_users (
 STORED AS ORC
 TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE DWH_DEV_DB.h_bdc_users;
-CREATE TABLE DWH_DEV_DB.h_bdc_users (
+DROP TABLE dwh_tst_db.h_bdc_users;
+CREATE TABLE dwh_tst_db.h_bdc_users (
     id                  		INT,
     user_id             		STRING,
     user_no             		INT,
@@ -1114,8 +1093,8 @@ CREATE TABLE DWH_DEV_DB.h_bdc_users (
 STORED AS PARQUET
 TBLPROPERTIES	("parquet.compression"="SNAPPY");
 
-DROP TABLE DWH_DEV_DB.d_currency;
-CREATE TABLE DWH_DEV_DB.d_currency (
+DROP TABLE dwh_tst_db.d_currency;
+CREATE TABLE dwh_tst_db.d_currency (
     id               			INT,
     ccy_cod          			INT,
     ccy_iso_cod      			STRING,
@@ -1138,8 +1117,8 @@ CREATE TABLE DWH_DEV_DB.d_currency (
 STORED AS ORC
 TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE DWH_DEV_DB.h_currency;
-CREATE TABLE DWH_DEV_DB.h_currency (
+DROP TABLE dwh_tst_db.h_currency;
+CREATE TABLE dwh_tst_db.h_currency (
     id               			INT,
     ccy_cod          			INT,
     ccy_iso_cod      			STRING,
@@ -1161,8 +1140,8 @@ CREATE TABLE DWH_DEV_DB.h_currency (
 STORED AS PARQUET
 TBLPROPERTIES	("parquet.compression"="SNAPPY");
 
-drop table dwh_dev_db.L_Governorate;
-create table dwh_dev_db.L_Governorate(
+drop table dwh_tst_db.L_Governorate;
+create table dwh_tst_db.L_Governorate(
 	ID				INT,
 	GOV_COD				string,
 	REGION				string,
@@ -1175,8 +1154,8 @@ create table dwh_dev_db.L_Governorate(
 STORED AS ORC
 TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE DWH_DEV_DB.l_country;
-CREATE TABLE DWH_DEV_DB.l_country (
+DROP TABLE dwh_tst_db.l_country;
+CREATE TABLE dwh_tst_db.l_country (
     id              		INT,
     country_cod     		STRING,
     ISO2			STRING,
@@ -1189,8 +1168,8 @@ CREATE TABLE DWH_DEV_DB.l_country (
 STORED AS ORC
 TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE DWH_DEV_DB.l_system;
-CREATE TABLE DWH_DEV_DB.l_system (
+DROP TABLE dwh_tst_db.l_system;
+CREATE TABLE dwh_tst_db.l_system (
     id              		INT,
     system_cod       		STRING,
     system_desc_ar  		STRING,
@@ -1200,8 +1179,8 @@ CREATE TABLE DWH_DEV_DB.l_system (
 STORED AS ORC
 TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE DWH_DEV_DB.l_wallet_provider;
-CREATE TABLE DWH_DEV_DB.l_wallet_provider (
+DROP TABLE dwh_tst_db.l_wallet_provider;
+CREATE TABLE dwh_tst_db.l_wallet_provider (
     id                      		INT,
     provider_cod			STRING,
     description_ar          		STRING,
@@ -1211,8 +1190,8 @@ CREATE TABLE DWH_DEV_DB.l_wallet_provider (
 STORED AS ORC
 TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.l_module;
-CREATE TABLE dwh_dev_db.l_module (
+DROP TABLE dwh_tst_db.l_module;
+CREATE TABLE dwh_tst_db.l_module (
 ID				INT,
 Module_COD			STRING,
 Module_Desc_AR			STRING,
@@ -1222,8 +1201,8 @@ Business_DT			INT
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.l_prod_type;
-CREATE TABLE dwh_dev_db.l_prod_type (
+DROP TABLE dwh_tst_db.l_prod_type;
+CREATE TABLE dwh_tst_db.l_prod_type (
 ID				INT,
 Type_COD			STRING,
 Type_Desc_AR			STRING,
@@ -1233,8 +1212,8 @@ Business_DT			INT
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.d_product;
-CREATE TABLE dwh_dev_db.d_product (
+DROP TABLE dwh_tst_db.d_product;
+CREATE TABLE dwh_tst_db.d_product (
 ID				INT,
 Prod_COD			STRING,
 Prod_Desc_AR			STRING,
@@ -1257,8 +1236,8 @@ Business_DT			INT
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.h_product;
-CREATE TABLE dwh_dev_db.h_product (
+DROP TABLE dwh_tst_db.h_product;
+CREATE TABLE dwh_tst_db.h_product (
 ID				INT,
 Prod_COD			STRING,
 Prod_Desc_AR			STRING,
@@ -1280,8 +1259,8 @@ Business_DT			INT
 STORED AS PARQUET
 TBLPROPERTIES	("parquet.compression"="SNAPPY");
 
-DROP TABLE dwh_dev_db.d_accounts;
-CREATE TABLE dwh_dev_db.d_accounts (
+DROP TABLE dwh_tst_db.d_accounts;
+CREATE TABLE dwh_tst_db.d_accounts (
 ID				INT,
 CIF				STRING,
 DWH_ID				INT,
@@ -1306,8 +1285,8 @@ partitioned by (MODULE_ID	INT
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.h_accounts;
-CREATE TABLE dwh_dev_db.h_accounts (
+DROP TABLE dwh_tst_db.h_accounts;
+CREATE TABLE dwh_tst_db.h_accounts (
 ID				INT,
 CIF				INT,
 DWH_ID				INT,
@@ -1331,8 +1310,8 @@ partitioned by (MODULE_ID	INT
 STORED AS PARQUET
 TBLPROPERTIES	("parquet.compression"="SNAPPY");
 
-DROP TABLE dwh_dev_db.f_accounts;
-CREATE TABLE dwh_dev_db.f_accounts (
+DROP TABLE dwh_tst_db.f_accounts;
+CREATE TABLE dwh_tst_db.f_accounts (
 ID						INT,
 ACCT_NO						STRING,
 MODULE_ID					INT,
@@ -1393,8 +1372,8 @@ partitioned by (BUSINESS_DT	INT
 STORED AS PARQUET
 TBLPROPERTIES	("parquet.compression"="SNAPPY");
 
-DROP TABLE dwh_dev_db.f_exchange_rate;
-CREATE TABLE dwh_dev_db.f_exchange_rate (
+DROP TABLE dwh_tst_db.f_exchange_rate;
+CREATE TABLE dwh_tst_db.f_exchange_rate (
 ID					INT,
 RAT_CCY_BOOK				DOUBLE,
 RAT_CCY_MID				DOUBLE,
@@ -1417,8 +1396,8 @@ partitioned by (BUSINESS_DT	INT
 STORED AS PARQUET
 TBLPROPERTIES	("parquet.compression"="SNAPPY");
 
-DROP TABLE dwh_dev_db.L_SUB_PRODUCT;
-CREATE TABLE dwh_dev_db.L_SUB_PRODUCT (
+DROP TABLE dwh_tst_db.L_SUB_PRODUCT;
+CREATE TABLE dwh_tst_db.L_SUB_PRODUCT (
 ID				INT,
 SUB_PROD_COD	STRING,
 PROD_ID			INT,
@@ -1430,8 +1409,8 @@ Business_DT		INT
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.D_BANK_ASSURANCE;
-CREATE TABLE dwh_dev_db.D_BANK_ASSURANCE (
+DROP TABLE dwh_tst_db.D_BANK_ASSURANCE;
+CREATE TABLE dwh_tst_db.D_BANK_ASSURANCE (
 ID				INT,
 Cust_ID			INT,
 DWH_ID			INT,
@@ -1446,8 +1425,8 @@ Business_DT		INT
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
-DROP TABLE dwh_dev_db.h_BANK_ASSURANCE;
-CREATE TABLE dwh_dev_db.h_BANK_ASSURANCE (
+DROP TABLE dwh_tst_db.h_BANK_ASSURANCE;
+CREATE TABLE dwh_tst_db.h_BANK_ASSURANCE (
 ID				INT,
 Cust_ID			INT,
 DWH_ID			INT,
@@ -1461,8 +1440,8 @@ Business_DT		INT
 STORED AS PARQUET
 TBLPROPERTIES	("parquet.compression"="SNAPPY");
 
-DROP TABLE dwh_dev_db.D_INTERNET_BANKING;
-CREATE TABLE dwh_dev_db.D_INTERNET_BANKING(
+DROP TABLE dwh_tst_db.D_INTERNET_BANKING;
+CREATE TABLE dwh_tst_db.D_INTERNET_BANKING(
 ID	INT,
 CIF	INT,
 DWH_ID	INT,
@@ -1498,8 +1477,8 @@ STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
 
-DROP TABLE dwh_dev_db.D_ATM;
-CREATE TABLE dwh_dev_db.D_ATM(
+DROP TABLE dwh_tst_db.D_ATM;
+CREATE TABLE dwh_tst_db.D_ATM(
 	ID	INT,
 	TERMID	STRING,
 	UNIT	INT,
@@ -1549,8 +1528,8 @@ STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
 
-DROP TABLE dwh_dev_db.L_PCODES;
-CREATE TABLE dwh_dev_db.L_PCODES(
+DROP TABLE dwh_tst_db.L_PCODES;
+CREATE TABLE dwh_tst_db.L_PCODES(
 	ID	INT,
 	Pcode	INT,
 	Description_AR	STRING,
@@ -1562,8 +1541,8 @@ STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
 
-DROP TABLE dwh_dev_db.F_ATM_TRX;
-CREATE TABLE dwh_dev_db.F_ATM_TRX(
+DROP TABLE dwh_tst_db.F_ATM_TRX;
+CREATE TABLE dwh_tst_db.F_ATM_TRX(
 ID	INT,
 MSGTYPE	INT,
 FLIPPED_MSGTYPE	INT,
@@ -1701,14 +1680,14 @@ SRC_NODE	INT,
 DEST_NODE	INT,
 SHC_DATA_BUFFER	STRING
 )
-PARTITION BY (BUSINESS_DT	INT)
+PARTITIONed BY (BUSINESS_DT	INT)
 CLUSTERED BY (PCODE,TERMID) INTO 32 BUCKETS
 STORED AS PARQUET
 TBLPROPERTIES    ("parquet.compression"="SNAPPY");
 
 
-DROP TABLE dwh_dev_db.F_CARDS;
-CREATE TABLE dwh_dev_db.F_CARDS(
+DROP TABLE dwh_tst_db.F_CARDS;
+CREATE TABLE dwh_tst_db.F_CARDS(
 	ID	INT,
 	CARD_ID	INT,
 	DWH_ID	INT,
