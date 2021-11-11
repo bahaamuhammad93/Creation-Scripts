@@ -1035,6 +1035,7 @@ CREATE TABLE dwh_dev_db.b_customer_relations (
     inverse_rel_id   	 INT,
     MAKER_ID		 STRING,
     CHECKER_ID		 STRING,
+    ROWHASH		STRING,
     business_dt          INT
 )CLUSTERED BY (p_cif , s_cif) INTO 2 BUCKETS
 STORED AS ORC
