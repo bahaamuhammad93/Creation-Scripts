@@ -4900,3 +4900,64 @@ CREATE TABLE STG_DEV_DB.TASK
 )CLUSTERED BY (id) INTO 2 BUCKETS
 STORED AS ORC
 TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
+
+
+
+CREATE TABLE STG_DEV_DB.STTM_CUSTOMER
+(
+	  customer_no string, 
+	  customer_type string, 
+	  customer_name1 string, 
+	  address_line1 string, 
+	  address_line3 string, 
+	  address_line2 string, 
+	  address_line4 string, 
+	  country string, 
+	  short_name string, 
+	  nationality string, 
+	  language string, 
+	  exposure_country string, 
+	  local_branch string, 
+	  liability_no string, 
+	  unique_id_name string, 
+	  unique_id_value string, 
+	  frozen string, 
+	  deceased string, 
+	  whereabouts_unknown string, 
+	  customer_category string, 
+	  ho_ac_no string, 
+	  record_stat string, 
+	  auth_stat string, 
+	  mod_no int, 
+	  maker_id string, 
+	  maker_dt_stamp date, 
+	  checker_id string, 
+	  checker_dt_stamp date, 
+	  once_auth string, 
+	  fx_cust_clean_risk_limit double, 
+	  overall_limit double, 
+	  fx_clean_risk_limit double, 
+	  credit_rating string, 
+	  revision_date date, 
+	  limit_ccy string, 
+	  cas_cust string, 
+	  liab_node string, 
+	  sec_cust_clean_risk_limit double, 
+	  sec_clean_risk_limit double, 
+	  sec_cust_pstl_risk_limit double, 
+	  sec_pstl_risk_limit double, 
+	  liab_br string, 
+	  past_due_flag string, 
+	  default_media string, 
+	  ssn string, 
+	  swift_code string, 
+	  loc_code string, 
+	  short_name2 string, 
+	  utility_provider string, 
+	  utility_provider_id string, 
+	  rowhash string, 
+	  ld_date int, 
+	  last_upd_date int
+)CLUSTERED BY (customer_no) INTO 16 BUCKETS
+STORED AS ORC
+TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
