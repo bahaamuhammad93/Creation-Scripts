@@ -4053,8 +4053,8 @@ CREATE TABLE STG_DEV_DB.QaheraCash
 	  isdocumented string, 
 	  documentserial string, 
 	  rowhash string, 
-	  ld_date double, 
-	  last_upd_date double
+	  ld_date int, 
+	  last_upd_date int
 )
 CLUSTERED BY (nationalid,mobile) INTO 2 BUCKETS
 STORED AS ORC
