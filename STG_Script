@@ -4362,7 +4362,7 @@ CREATE TABLE STG_DEV_DB.PROVIDER
    ld_date int,
    last_upd_date int,
    rowhash string
-   )CLUSTERED BY (DistributorCode) INTO 1 BUCKETS
+   )CLUSTERED BY (DistributorCode) INTO 2 BUCKETS
 STORED AS ORC
 TBLPROPERTIES    ('transactional'='true', "orc.compress"="SNAPPY");
 
@@ -4374,23 +4374,11 @@ CREATE TABLE STG_DEV_DB.PRODUCT_TYPE
    ld_date int,vi
    last_upd_date int,
    rowhash string
-   )CLUSTERED BY (Type_COD) INTO 1 BUCKETS
+   )CLUSTERED BY (Type_COD) INTO 2 BUCKETS
 STORED AS ORC
 TBLPROPERTIES    ('transactional'='true', "orc.compress"="SNAPPY");
 
 
-/*CREATE TABLE STG_DEV_DB.status
-   (ID int,
-   module string,
-   statusCod int,
-   descEn string,
-   descAR string,
-   ld_date int,
-   last_upd_date int,
-   rowhash string
-   )CLUSTERED BY (statusCod) INTO 1 BUCKETS
-STORED AS ORC
-TBLPROPERTIES    ('transactional'='true', "orc.compress"="SNAPPY");*/
 
 CREATE TABLE STG_DEV_DB.system 
    (ID int,
@@ -4400,7 +4388,7 @@ CREATE TABLE STG_DEV_DB.system
    ld_date int,
    last_upd_date int,
    rowhash string
-   )CLUSTERED BY (cod) INTO 1 BUCKETS
+   )CLUSTERED BY (cod) INTO 2 BUCKETS
 STORED AS ORC
 TBLPROPERTIES    ('transactional'='true', "orc.compress"="SNAPPY");
 
@@ -4411,7 +4399,7 @@ CREATE TABLE STG_DEV_DB.pcodes
    ld_date int,
    last_upd_date int,
    rowhash string
-   )CLUSTERED BY (Pcode) INTO 1 BUCKETS
+   )CLUSTERED BY (Pcode) INTO 2 BUCKETS
 STORED AS ORC
 TBLPROPERTIES    ('transactional'='true', "orc.compress"="SNAPPY");
 
@@ -4423,7 +4411,7 @@ CREATE TABLE STG_DEV_DB.module
    ld_date int,
    last_upd_date int,
    rowhash string
-   )CLUSTERED BY (Module_COD) INTO 1 BUCKETS
+   )CLUSTERED BY (Module_COD) INTO 2 BUCKETS
 STORED AS ORC
 TBLPROPERTIES    ('transactional'='true', "orc.compress"="SNAPPY");
 
@@ -4443,7 +4431,7 @@ CREATE TABLE STG_DEV_DB.card_category
    ld_date int,
    last_upd_date int,
    rowhash string
-   )CLUSTERED BY (CARD_CATEGORY) INTO 1 BUCKETS
+   )CLUSTERED BY (CARD_CATEGORY) INTO 2 BUCKETS
 STORED AS ORC
 TBLPROPERTIES    ('transactional'='true', "orc.compress"="SNAPPY");
 
@@ -4454,21 +4442,10 @@ CREATE TABLE STG_DEV_DB.card_bin
    ld_date int,
    last_upd_date int,
    rowhash string
-   )CLUSTERED BY (CARD_CATEGORY) INTO 1 BUCKETS
+   )CLUSTERED BY (CARD_CATEGORY) INTO 2 BUCKETS
 STORED AS ORC
 TBLPROPERTIES    ('transactional'='true', "orc.compress"="SNAPPY");
 
-/* CREATE TABLE STG_DEV_DB.country 
-   (ID int,
-   Country string,
-   ISO-2 string,
-   ISO-3 string,
-   ld_date int,
-   last_upd_date int,
-   rowhash string
-   )CLUSTERED BY (Country) INTO 1 BUCKETS
-STORED AS ORC
-TBLPROPERTIES    ('transactional'='true', "orc.compress"="SNAPPY");*/
 
 CREATE TABLE STG_DEV_DB.GOVERNORATE 
    (
@@ -4482,7 +4459,7 @@ CREATE TABLE STG_DEV_DB.GOVERNORATE
    ld_date int,
    last_upd_date int,
    rowhash string
-   )CLUSTERED BY (GOV_COD) INTO 1 BUCKETS
+   )CLUSTERED BY (GOV_COD) INTO 2 BUCKETS
 STORED AS ORC
 TBLPROPERTIES    ('transactional'='true', "orc.compress"="SNAPPY");
 
@@ -4494,7 +4471,7 @@ CREATE TABLE STG_DEV_DB.RETAIL_LOAN
    ld_date int,
    last_upd_date int,
    rowhash string
-   )CLUSTERED BY (PROD_CD) INTO 1 BUCKETS
+   )CLUSTERED BY (PROD_CD) INTO 2 BUCKETS
 STORED AS ORC
 TBLPROPERTIES    ('transactional'='true', "orc.compress"="SNAPPY");
 
@@ -4506,7 +4483,7 @@ CREATE TABLE STG_DEV_DB.ISOFILE
    ld_date int,
    last_upd_date int,
    rowhash string
-   )CLUSTERED BY (COUNTRY) INTO 1 BUCKETS
+   )CLUSTERED BY (COUNTRY) INTO 2 BUCKETS
 STORED AS ORC
 TBLPROPERTIES    ('transactional'='true', "orc.compress"="SNAPPY");
 
@@ -4519,7 +4496,7 @@ CREATE TABLE STG_DEV_DB.CUSTOMER_CLASS
    ld_date int,
    last_upd_date int,
    rowhash string
-   )CLUSTERED BY (CLASS_COD) INTO 1 BUCKETS
+   )CLUSTERED BY (CLASS_COD) INTO 2 BUCKETS
 STORED AS ORC
 TBLPROPERTIES    ('transactional'='true', "orc.compress"="SNAPPY");
 
@@ -4531,7 +4508,7 @@ CREATE TABLE STG_DEV_DB.CC_CARD_TYPE
    ld_date int,
    last_upd_date int,
    rowhash string
-   )CLUSTERED BY (CARD_TYPE) INTO 1 BUCKETS
+   )CLUSTERED BY (CARD_TYPE) INTO 2 BUCKETS
 STORED AS ORC
 TBLPROPERTIES    ('transactional'='true', "orc.compress"="SNAPPY");
 
@@ -4543,7 +4520,7 @@ CREATE TABLE STG_DEV_DB.BRANCH_TYPE
    ld_date int,
    last_upd_date int,
    rowhash string
-   )CLUSTERED BY (BRN_COD) INTO 1 BUCKETS
+   )CLUSTERED BY (BRN_COD) INTO 2 BUCKETS
 STORED AS ORC
 TBLPROPERTIES    ('transactional'='true', "orc.compress"="SNAPPY");
 
@@ -4557,7 +4534,7 @@ CREATE TABLE STG_DEV_DB.MANUAL_LKPS
    ld_date int,
    last_upd_date int,
    rowhash string
-   )CLUSTERED BY (module) INTO 1 BUCKETS
+   )CLUSTERED BY (module) INTO 2 BUCKETS
 STORED AS ORC
 TBLPROPERTIES    ('transactional'='true', "orc.compress"="SNAPPY");
 
@@ -4570,7 +4547,7 @@ CREATE TABLE STG_DEV_DB.marital_status
    ld_date int,
    last_upd_date int,
    rowhash string
-   )CLUSTERED BY (status_EN) INTO 1 BUCKETS
+   )CLUSTERED BY (status_EN) INTO 2 BUCKETS
 STORED AS ORC
 TBLPROPERTIES    ('transactional'='true', "orc.compress"="SNAPPY");
 
@@ -4582,7 +4559,7 @@ CARD_CATEGORY string,
 ld_date int,
 last_upd_date int,
 rowhash string
-)CLUSTERED BY (TYPE) INTO 1 BUCKETS
+)CLUSTERED BY (TYPE) INTO 2 BUCKETS
 STORED AS ORC
 TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
 
