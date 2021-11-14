@@ -321,6 +321,7 @@ CREATE TABLE dwh_tst_db.hlp_customer (
     checker_id                     STRING,
     last_mnt_dt                    INT,
     FLG_UPDATE 			   STRING,
+    CUSTKEY			   STRING,
     rowhash			   STRING,
     business_dt                    INT 
 )CLUSTERED BY (dwh_id,cif,national_id) INTO 16 BUCKETS
