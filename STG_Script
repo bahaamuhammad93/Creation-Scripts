@@ -2192,20 +2192,6 @@ STORED AS ORC
 TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY")
 ;
 
--- DDL for Table CARD_SCHEME
-
- CREATE TABLE STG_DEV_DB.CARD_SCHEME 
- ( ID INT, 
- PROVIDER STRING, 
- ROWHASH STRING, 
- LD_DATE INT, 
- LAST_UPD_DATE INT
- )
-CLUSTERED BY (PROVIDER) INTO 2 BUCKETS
-STORED AS ORC
-TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY")
-;
-
 
 -- DDL for Table CBR_PICKLISTS_VALUES
 
@@ -4447,7 +4433,7 @@ CREATE TABLE STG_DEV_DB.card_scheme
    ld_date int,
    last_upd_date int,
    rowhash string
-   )CLUSTERED BY (provider) INTO 1 BUCKETS
+   )CLUSTERED BY (provider) INTO 2 BUCKETS
 STORED AS ORC
 TBLPROPERTIES    ('transactional'='true', "orc.compress"="SNAPPY");
 
