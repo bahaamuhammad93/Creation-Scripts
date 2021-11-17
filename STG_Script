@@ -4930,3 +4930,42 @@ CREATE TABLE STG_DEV_DB.STTM_CUSTOMER
 )CLUSTERED BY (customer_no) INTO 16 BUCKETS
 STORED AS ORC
 TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
+
+
+CREATE TABLE STG_DEV_DB.ISTCMSACT
+(
+	  pan string, 
+	  pan_repl string, 
+	  region string, 
+	  branch string, 
+	  cardtype string, 
+	  cms_func string, 
+	  status int, 
+	  cms_mode int, 
+	  user_id string, 
+	  super_id string, 
+	  tx_date date, 
+	  tx_time int, 
+	  recno int, 
+	  act_count int, 
+	  act_date date, 
+	  act_time int, 
+	  pm_status int, 
+	  pm_user_id string, 
+	  pm_super_id string, 
+	  pm_date date, 
+	  pm_time int, 
+	  spare_string string, 
+	  spare_int int, 
+	  o_rowid int, 
+	  seq_no int, 
+	  repl_reason string, 
+	  details string, 
+	  extract_flag string, 
+	  rowhash string,
+	  ld_date int, 
+	  last_upd_date int
+	  
+)CLUSTERED BY (pan) INTO 32 BUCKETS
+STORED AS ORC
+TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
