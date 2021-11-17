@@ -4525,7 +4525,7 @@ STORED AS ORC
 TBLPROPERTIES    ('transactional'='true', "orc.compress"="SNAPPY");
 
 
-CREATE TABLE STG_DEV_DB.MANUAL_LKPS 
+CREATE TABLE STG_DEV_DB.STATUS_MANUAL 
    (
    module string,
    status_cod string,
