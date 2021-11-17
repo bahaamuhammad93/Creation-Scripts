@@ -2108,7 +2108,6 @@ TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY")
 
 -- DDL for Table CARDFILE
 
-DROP TABLE STG_DEV_DB.CARDFILE 
  CREATE TABLE STG_DEV_DB.CARDFILE 
  ( 
 BankAccount string,
