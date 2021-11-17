@@ -4969,3 +4969,60 @@ CREATE TABLE STG_DEV_DB.ISTCMSACT
 )CLUSTERED BY (pan) INTO 32 BUCKETS
 STORED AS ORC
 TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
+
+
+CREATE TABLE STG_DEV_DB.ISTDBACCT
+(
+	  bin string, 
+	  account string, 
+	  shortname string, 
+	  languagecode string, 
+	  productcode string, 
+	  status string, 
+	  groupcode string, 
+	  region string, 
+	  customer_type string, 
+	  branch string, 
+	  misid string, 
+	  currency int, 
+	  ledger_balance double, 
+	  available_balance double, 
+	  advance_line double, 
+	  advance_line_used double, 
+	  txncode string, 
+	  last_activity_date date, 
+	  last_activity_time int, 
+	  cash_wd_amt_used double, 
+	  cash_wd_count int, 
+	  cash_wd_date date, 
+	  cash_wd_time int, 
+	  tc_wd_amt_used double, 
+	  tc_wd_count int, 
+	  tc_wd_date date, 
+	  tc_wd_time int, 
+	  cash_tc_amt_used double, 
+	  cash_tc_date date, 
+	  cash_tc_time int, 
+	  purch_amt_used double, 
+	  purch_count int, 
+	  purch_date date, 
+	  purch_time int, 
+	  tsf_base_cur_used double, 
+	  tsf_base_cur_date date, 
+	  tsf_base_cur_time int, 
+	  tsf_multi_cur_used double, 
+	  tsf_multi_cur_date date, 
+	  tsf_multi_cur_time int, 
+	  aggregate_indicator string, 
+	  last_update_date date, 
+	  last_update_time int, 
+	  net_activity double, 
+	  cash_dep_used double, 
+	  cash_dep_date date, 
+	  rowhash string, 
+	  last_upd_date int, 
+	  ld_date int
+	  
+)CLUSTERED BY (account) INTO 16 BUCKETS
+STORED AS ORC
+TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
