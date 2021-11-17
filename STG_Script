@@ -4266,9 +4266,9 @@ version INT,
 src_node INT,
 dest_node INT,
 shc_data_buffer STRING,
+ld_date INT
 ) 
-PARTITION BY (ld_date INT)
-CLUSTERED BY (termid,pcode,PAN) INTO 128 BUCKETS
+CLUSTERED BY (termid) INTO 32 BUCKETS
 STORED AS ORC
 TBLPROPERTIES    ('transactional'='true', "orc.compress"="SNAPPY");
 
@@ -4370,7 +4370,7 @@ CREATE TABLE STG_DEV_DB.PRODUCT_TYPE
    Type_COD string,
    Type_Desc_AR string,
    Type_Desc_EN string,
-   ld_date int,vi
+   ld_date int,
    last_upd_date int,
    rowhash string
    )CLUSTERED BY (Type_COD) INTO 2 BUCKETS
