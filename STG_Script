@@ -5017,10 +5017,11 @@ CREATE TABLE STG_DEV_DB.ISTDBACCT
 	  last_update_time int, 
 	  net_activity double, 
 	  cash_dep_used double, 
-	  cash_dep_date date, 
+	  cash_dep_date date,
+	  rowhash string,
 	  last_upd_date int, 
-	  ld_date int,
-	  rowhash string
+	  ld_date int
+	  
 	  
 )CLUSTERED BY (account) INTO 16 BUCKETS
 STORED AS ORC
