@@ -4961,9 +4961,9 @@ CREATE TABLE STG_DEV_DB.ISTCMSACT
 	  repl_reason string, 
 	  details string, 
 	  extract_flag string, 
-	  rowhash string,
 	  ld_date int, 
-	  last_upd_date int
+	  last_upd_date int,
+	  rowhash string
 	  
 )CLUSTERED BY (pan) INTO 32 BUCKETS
 STORED AS ORC
@@ -5018,9 +5018,9 @@ CREATE TABLE STG_DEV_DB.ISTDBACCT
 	  net_activity double, 
 	  cash_dep_used double, 
 	  cash_dep_date date, 
-	  rowhash string, 
 	  last_upd_date int, 
-	  ld_date int
+	  ld_date int,
+	  rowhash string
 	  
 )CLUSTERED BY (account) INTO 16 BUCKETS
 STORED AS ORC
