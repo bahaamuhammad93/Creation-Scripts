@@ -1829,6 +1829,7 @@ CREATE TABLE dwh_dev_db.B_CBR_DETAILS (
 	CBR_DETAIL_VALUES_ID	Int,
 	ACCT_ID			Int,
 	DWH_ID			Int,
+	CBR_KEY			String,
 	MODULE			String,
 	CLASS_COD		String,
 	CLASS_VALUE		String,
