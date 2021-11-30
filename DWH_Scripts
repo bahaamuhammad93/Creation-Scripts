@@ -218,7 +218,7 @@ CREATE TABLE dwh_tst_db.d_customer (
     last_mnt_dt                    INT,
     rowhash 			   STRING,
     business_dt                    INT 
-)CLUSTERED BY (dwh_id,cif,national_id) INTO 16 BUCKETS
+)CLUSTERED BY (dwh_id) INTO 16 BUCKETS
 STORED AS ORC
 TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
