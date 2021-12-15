@@ -1,0 +1,1823 @@
+DROP TABLE DWH_PRD_DB.b_customer_classification;
+CREATE TABLE DWH_PRD_DB.b_customer_classification (
+    id                             INT,
+    cust_id                  	   INT,
+    dwh_id              	   INT,
+    cif                 	   INT,
+    sub_classification_id          INT,
+    mis_code  			   INT,
+    class_num                      INT,
+    maker_id                       STRING,
+    checker_id                     STRING,
+    business_dt                    INT 
+)CLUSTERED BY (cif , sub_classification_id) INTO 16 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY")
+;
+
+DROP TABLE DWH_PRD_DB.d_corporate_detail;
+CREATE TABLE DWH_PRD_DB.d_corporate_detail (
+    id                        INT,
+    cust_id                   INT,
+    dwh_id         	      INT,
+    cif            	      INT,
+    amt_net_worth_comp        DOUBLE,
+    amt_auth_capital          DOUBLE,
+    amt_paidup_capital        DOUBLE,
+    amt_reserv_lst_yr         DOUBLE,
+    amt_net_prof_loss_lst_yr  DOUBLE,
+    nam_place_incorp          STRING,
+    typ_company               STRING,
+    last_fin_info_updat_dt    INT,
+    ctr_partners_directors    INT,
+    name_maj_sharehldr1       STRING,
+    name_maj_sharehldr2       STRING,
+    name_maj_sharehldr3       STRING,
+    name_maj_sharehldr4       STRING,
+    name_maj_sharehldr5       STRING,
+    name_maj_sharehldr6       STRING,
+    name_maj_sharehldr7       STRING,
+    name_maj_sharehldr8       STRING,
+    name_maj_sharehldr9       STRING,
+    name_maj_sharehldr10      STRING,
+    cod_maj_sharehldr_rel1    STRING,
+    cod_maj_sharehldr_rel2    STRING,
+    cod_maj_sharehldr_rel3    STRING,
+    cod_maj_sharehldr_rel4    STRING,
+    cod_maj_sharehldr_rel5    STRING,
+    cod_maj_sharehldr_rel6    STRING,
+    cod_maj_sharehldr_rel7    STRING,
+    cod_maj_sharehldr_rel8    STRING,
+    cod_maj_sharehldr_rel9    STRING,
+    cod_maj_sharehldr_rel10   STRING,
+    cod_business_license      STRING,
+    dt_bus_start              INT,
+    dt_bus_license_exp        INT,
+    nam_contact_person        STRING,
+    txt_desgn_contact_persn   STRING,
+    nam_parent_company        STRING,
+    txt_int_cr_rating         STRING,
+    txt_business_typ          STRING,
+    maker_id                  STRING,
+    checker_id                STRING,
+    last_mnt_dt               INT,
+    rowhash		      STRING,
+    business_dt               INT 
+)CLUSTERED BY (cif,dwh_id) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.h_corporate_detail;
+CREATE TABLE DWH_PRD_DB.h_corporate_detail (
+    id                        INT,
+    cust_id                   INT,
+    dwh_id		      INT,
+    cif			      INT,
+    amt_net_worth_comp        DOUBLE,
+    amt_auth_capital          DOUBLE,
+    amt_paidup_capital        DOUBLE,
+    amt_reserv_lst_yr         DOUBLE,
+    amt_net_prof_loss_lst_yr  DOUBLE,
+    nam_place_incorp          STRING,
+    typ_company               STRING,
+    last_fin_info_updat_dt    INT,
+    ctr_partners_directors    INT,
+    name_maj_sharehldr1       STRING,
+    name_maj_sharehldr2       STRING,
+    name_maj_sharehldr3       STRING,
+    name_maj_sharehldr4       STRING,
+    name_maj_sharehldr5       STRING,
+    name_maj_sharehldr6       STRING,
+    name_maj_sharehldr7       STRING,
+    name_maj_sharehldr8       STRING,
+    name_maj_sharehldr9       STRING,
+    name_maj_sharehldr10      STRING,
+    cod_maj_sharehldr_rel1    STRING,
+    cod_maj_sharehldr_rel2    STRING,
+    cod_maj_sharehldr_rel3    STRING,
+    cod_maj_sharehldr_rel4    STRING,
+    cod_maj_sharehldr_rel5    STRING,
+    cod_maj_sharehldr_rel6    STRING,
+    cod_maj_sharehldr_rel7    STRING,
+    cod_maj_sharehldr_rel8    STRING,
+    cod_maj_sharehldr_rel9    STRING,
+    cod_maj_sharehldr_rel10   STRING,
+    cod_business_license      STRING,
+    dt_bus_start              INT,
+    dt_bus_license_exp        INT,
+    nam_contact_person        STRING,
+    txt_desgn_contact_persn   STRING,
+    nam_parent_company        STRING,
+    txt_int_cr_rating         STRING,
+    txt_business_typ          STRING,
+    maker_id                  STRING,
+    checker_id                STRING,
+    last_mnt_dt               INT,
+    business_dt               INT 
+)CLUSTERED BY (cif,dwh_id) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("parquet.compression"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.d_customer;
+CREATE TABLE DWH_PRD_DB.d_customer (
+    id                             INT,
+    dwh_id                         INT,
+    cif                            STRING,
+    t24_id			   STRING,
+    cbe_ref_cod                    STRING,
+    cust_brn_id			   INT,
+    liab_no                        INT,
+    open_dt                        INT,
+    birth_dt                       INT,
+    customer_type_id               INT,
+    cust_status_id                 INT,
+    national_id			   STRING,
+    secondary_identity_id          INT,
+    secondary_identity_value       STRING,
+    CUST_TIN			   STRING,
+    full_name_ar                   STRING,
+    first_name_ar                  STRING,
+    mid_name_ar                    STRING,
+    last_name_ar                   STRING,
+    full_name_en                   STRING,
+    first_name_en                  STRING,
+    mid_name_en                    STRING,
+    last_name_en                   STRING,
+    nationality               	   STRING,
+    email                          STRING,
+    gender                         STRING,
+    cust_prefix                    STRING,
+    language_id                    INT,
+    guardian_type                  INT,
+    signature_id                   INT,
+    business_type_id               INT,
+    profession_id                  INT,
+    marital_status_id              INT,
+    credit_rating                  STRING,
+    revision_date                  INT,
+    addr1                          STRING,
+    addr2                          STRING,
+    addr3                          STRING,
+    zip_cod                        STRING,
+    city                           STRING,
+    fax                            STRING,
+    permn_addr1                    STRING,
+    permn_addr2                    STRING,
+    permn_addr3                    STRING,
+    permn_city                     STRING,
+    permn_zip_cod                  STRING,
+    permn_gov_id                   INT,
+    permn_country_id               INT,
+    phone_num_1                    STRING,
+    phone_num_2                    STRING,
+    phone_num_3 /*telex*/	   STRING,
+    cc_mob_num                     STRING,
+    wallet_mob_num                 STRING,
+    ib_mob_num                     STRING,
+    ppc_mob_num                    STRING,
+    dc_mob_num                     STRING,
+    ib_email                       STRING,
+    cust_occupation                STRING,
+    cust_designation               STRING,
+    cust_salary                    DOUBLE,
+    spouse_name_ar                 STRING,
+    spouse_name_en                 STRING,
+    marriage_dt                    INT,
+    spouse_birth_dt                INT,
+    spouse_employer                STRING,
+    spouse_identity_value          STRING,
+    incorporated_dt                INT,
+    tot_lim_amt                    DOUBLE,
+    lim_ccy                        INT,
+    income_cat_id    		   INT,
+    income_amt                     DOUBLE,
+    flg_global                     STRING,
+    flg_minor                      INT,
+    flg_staff                      INT,
+    flg_wallet                     INT,
+    flg_internetbanking            INT,
+    flg_safebox                    INT,
+    flg_replicate                  INT,
+    flg_casa                       INT,
+    flg_cd                         INT,
+    flg_td                         INT,
+    flg_dc                         INT,
+    flg_ppc                        INT,
+    flg_cc                         INT,
+    flg_loan                       INT,
+    flg_ovd                        INT,
+    flg_bank_assurance             INT,
+    flg_memo                       INT,
+    flg_watch_list                 INT,
+    watch_list_dt                  INT,
+    flg_bdc_cust                   INT,
+    system_id                      STRING,
+    officer_id                     INT,
+    maker_id                       STRING,
+    checker_id                     STRING,
+    last_mnt_dt                    INT,
+    rowhash 			   STRING,
+    business_dt                    INT 
+)CLUSTERED BY (dwh_id) INTO 16 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.hlp_customer;
+CREATE TABLE DWH_PRD_DB.hlp_customer (
+    id                             INT,
+    dwh_id                         INT,
+    cif                            STRING,
+    t24_id			   STRING,
+    cbe_ref_cod                    STRING,
+    cust_brn_id			   INT,
+    liab_no                        INT,
+    open_dt                        INT,
+    birth_dt                       INT,
+    customer_type_id               INT,
+    cust_status_id                 INT,
+    national_id			   STRING,
+    secondary_identity_id          INT,
+    secondary_identity_value       STRING,
+    CUST_TIN			   STRING,
+    full_name_ar                   STRING,
+    first_name_ar                  STRING,
+    mid_name_ar                    STRING,
+    last_name_ar                   STRING,
+    full_name_en                   STRING,
+    first_name_en                  STRING,
+    mid_name_en                    STRING,
+    last_name_en                   STRING,
+    nationality               	   STRING,
+    email                          STRING,
+    gender                         STRING,
+    cust_prefix                    STRING,
+    language_id                    INT,
+    guardian_type                  INT,
+    signature_id                   INT,
+    business_type_id               INT,
+    profession_id                  INT,
+    marital_status_id              INT,
+    credit_rating                  STRING,
+    revision_date                  INT,
+    addr1                          STRING,
+    addr2                          STRING,
+    addr3                          STRING,
+    zip_cod                        STRING,
+    city                           STRING,
+    fax                            STRING,
+    permn_addr1                    STRING,
+    permn_addr2                    STRING,
+    permn_addr3                    STRING,
+    permn_city                     STRING,
+    permn_zip_cod                  STRING,
+    permn_gov_id                   INT,
+    permn_country_id               INT,
+    phone_num_1                    STRING,
+    phone_num_2                    STRING,
+    phone_num_3 /*telex*/	   STRING,
+    cc_mob_num                     STRING,
+    wallet_mob_num                 STRING,
+    ib_mob_num                     STRING,
+    ppc_mob_num                    STRING,
+    dc_mob_num                     STRING,
+    ib_email                       STRING,
+    cust_occupation                STRING,
+    cust_designation               STRING,
+    cust_salary                    DOUBLE,
+    spouse_name_ar                 STRING,
+    spouse_name_en                 STRING,
+    marriage_dt                    INT,
+    spouse_birth_dt                INT,
+    spouse_employer                STRING,
+    spouse_identity_value          STRING,
+    incorporated_dt                INT,
+    tot_lim_amt                    DOUBLE,
+    lim_ccy                        INT,
+    income_cat_id    		   INT,
+    income_amt                     DOUBLE,
+    flg_global                     STRING,
+    flg_minor                      INT,
+    flg_staff                      INT,
+    flg_wallet                     INT,
+    flg_internetbanking            INT,
+    flg_safebox                    INT,
+    flg_replicate                  INT,
+    flg_casa                       INT,
+    flg_cd                         INT,
+    flg_td                         INT,
+    flg_dc                         INT,
+    flg_ppc                        INT,
+    flg_cc                         INT,
+    flg_loan                       INT,
+    flg_ovd                        INT,
+    flg_bank_assurance             INT,
+    flg_memo                       INT,
+    flg_watch_list                 INT,
+    watch_list_dt                  INT,
+    flg_bdc_cust                   INT,
+    system_id                      STRING,
+    officer_id                     INT,
+    maker_id                       STRING,
+    checker_id                     STRING,
+    last_mnt_dt                    INT,
+    FLG_UPDATE 			   STRING,
+    CUSTKEY			   STRING,
+    rowhash			   STRING,
+    business_dt                    INT 
+)
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.h_customer;
+CREATE TABLE DWH_PRD_DB.h_customer (
+    id                             INT,
+    dwh_id                         INT,
+    cif                            STRING,
+    t24_id			   STRING,
+    cbe_ref_cod                    STRING,
+    cust_brn_id			   INT,
+    liab_no                        INT,
+    open_dt                        INT,
+    birth_dt                       INT,
+    customer_type_id               INT,
+    cust_status_id                 INT,
+    national_id			   STRING,
+    secondary_identity_id          INT,
+    secondary_identity_value       STRING,
+    CUST_TIN			   STRING,
+    full_name_ar                   STRING,
+    first_name_ar                  STRING,
+    mid_name_ar                    STRING,
+    last_name_ar                   STRING,
+    full_name_en                   STRING,
+    first_name_en                  STRING,
+    mid_name_en                    STRING,
+    last_name_en                   STRING,
+    nationality                    STRING,
+    email                          STRING,
+    gender                         STRING,
+    cust_prefix                    STRING,
+    language_id                    INT,
+    guardian_type                  INT,
+    signature_id                   INT,
+    business_type_id               INT,
+    profession_id                  INT,
+    marital_status_id              INT,
+    credit_rating                  STRING,
+    revision_date                  INT,
+    addr1                          STRING,
+    addr2                          STRING,
+    addr3                          STRING,
+    zip_cod                        STRING,
+    city                           STRING,
+    fax                            STRING,
+    permn_addr1                    STRING,
+    permn_addr2                    STRING,
+    permn_addr3                    STRING,
+    permn_city                     STRING,
+    permn_zip_cod                  STRING,
+    permn_gov_id                   INT,
+    permn_country_id               INT,
+    phone_num_1                    STRING,
+    phone_num_2                    STRING,
+    phone_num_3 /*telex*/	   STRING,
+    cc_mob_num                     STRING,
+    wallet_mob_num                 STRING,
+    ib_mob_num                     STRING,
+    ppc_mob_num                    STRING,
+    dc_mob_num                     STRING,
+    ib_email                       STRING,
+    cust_occupation                STRING,
+    cust_designation               STRING,
+    cust_salary                    DOUBLE,
+    spouse_name_ar                 STRING,
+    spouse_name_en                 STRING,
+    marriage_dt                    INT,
+    spouse_birth_dt                INT,
+    spouse_employer                STRING,
+    spouse_identity_value          STRING,
+    incorporated_dt                INT,
+    tot_lim_amt                    DOUBLE,
+    lim_ccy                        INT,
+    income_cat_id    		   INT,
+    income_amt                     DOUBLE,
+    flg_global                     STRING,
+    flg_minor                      INT,
+    flg_staff                      INT,
+    flg_wallet                     INT,
+    flg_internetbanking            INT,
+    flg_safebox                    INT,
+    flg_replicate                  INT,
+    flg_casa                       INT,
+    flg_cd                         INT,
+    flg_td                         INT,
+    flg_dc                         INT,
+    flg_ppc                        INT,
+    flg_cc                         INT,
+    flg_loan                       INT,
+    flg_ovd                        INT,
+    flg_bank_assurance             INT,
+    flg_memo                       INT,
+    flg_watch_list                 INT,
+    watch_list_dt                  INT,
+    flg_bdc_cust                   INT,
+    system_id                      STRING,
+    officer_id                     INT,
+    maker_id                       STRING,
+    checker_id                     STRING,
+    last_mnt_dt                    INT,
+    business_dt                    INT 
+)CLUSTERED BY (dwh_id,cif,national_id) INTO 16 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("parquet.compression"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.f_cust_memo;
+CREATE TABLE DWH_PRD_DB.f_cust_memo (
+    id                    INT,
+    cust_id         	  INT,
+    dwh_id     		  INT,
+    cif        		  INT,
+    cust_memo_dt          INT,
+    txt_cust_memo         STRING,
+    flg_severity          STRING,
+    maker_id              STRING,
+    checker_id            STRING,
+    last_mnt_dt           INT,
+    business_dt           INT 
+)CLUSTERED BY (cif) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.l_business_types;
+CREATE TABLE DWH_PRD_DB.l_business_types (
+    id                	  INT,
+    business_cat_cod  	  INT,
+    desc_ar           	  STRING,
+    desc_en           	  STRING,
+    maker_id          	  STRING,
+    checker_id        	  STRING,
+    last_mnt_dt       	  INT,
+    business_dt       	  INT 
+)CLUSTERED BY (business_cat_cod) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.l_customer_class;
+CREATE TABLE DWH_PRD_DB.l_customer_class (
+    id             	  INT,
+    class_cod      	  STRING,
+    class_desc_ar  	  STRING,
+    class_desc_en  	  STRING,
+    business_dt    	  INT 
+)CLUSTERED BY (class_cod) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.l_customer_type;
+CREATE TABLE DWH_PRD_DB.l_customer_type (
+    id                   INT,
+    type_cod             STRING,
+    type_desc_ar         STRING,
+    type_desc_en         STRING,
+    class_id  		 INT,
+    maker_id             STRING,
+    checker_id           STRING,
+    last_mnt_dt          INT,
+    business_dt          INT 
+)CLUSTERED BY (type_cod) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.l_identity_type;
+CREATE TABLE DWH_PRD_DB.l_identity_type (
+    id                	 INT,
+    identity_type     	 STRING,
+    identity_desc_ar  	 STRING,
+    identity_desc_en  	 STRING,
+    maker_id          	 STRING,
+    checker_id        	 STRING,
+    last_mnt_dt       	 INT,
+    business_dt       	 INT
+)CLUSTERED BY (identity_type) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.l_income_slabs;
+CREATE TABLE DWH_PRD_DB.l_income_slabs (
+    id               	 INT,
+    income_cat_cod   	 STRING,
+    amt_upper_limit  	 DOUBLE,
+    amt_lower_limit  	 DOUBLE,
+    business_dt      	 INT 
+)CLUSTERED BY (income_cat_cod) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.l_language;
+CREATE TABLE DWH_PRD_DB.l_language (
+    id           	 INT,
+    lang_cod     	 STRING,
+    desc_ar      	 STRING,
+    desc_en      	 STRING,
+    maker_id     	 STRING,
+    checker_id   	 STRING,
+    last_mnt_dt  	 INT,
+    business_dt  	 INT 
+)CLUSTERED BY (lang_cod) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.l_main_classification;
+CREATE TABLE DWH_PRD_DB.l_main_classification (
+    id                   INT,
+    mis_type             STRING,
+    mis_class	         STRING,
+    class_num        	 INT,
+    description_ar       STRING,
+    description_en       STRING,
+    budget               STRING,
+    mod_no               INT,
+    maker_id             STRING,
+    checker_id           STRING,
+    business_dt          INT 
+)CLUSTERED BY (mis_type , mis_class) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+
+DROP TABLE DWH_PRD_DB.l_profession;
+CREATE TABLE DWH_PRD_DB.l_profession (
+    id              INT,
+    profession_cod  INT,
+    desc_ar         STRING,
+    desc_en         STRING,
+    maker_id        STRING,
+    checker_id      STRING,
+    last_mnt_dt     INT,
+    business_dt     INT 
+)CLUSTERED BY (profession_cod) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.l_signature;
+CREATE TABLE DWH_PRD_DB.l_signature (
+    id            INT,
+    sign_typ_cod  STRING,
+    desc_ar       STRING,
+    desc_en       STRING,
+    maker_id      STRING,
+    checker_id    STRING,
+    last_mnt_dt   INT,
+    business_dt   INT 
+)CLUSTERED BY (sign_typ_cod) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.l_sub_classification;
+CREATE TABLE DWH_PRD_DB.l_sub_classification (
+    id                               INT,
+    mis_cod                          STRING,
+    class_num  			     INT,
+    mis_class_id         	     INT,
+    mis_type   			     STRING, 
+    description_ar                   STRING,
+    description_en                   STRING,
+    active                           STRING,
+    maker_id                         STRING,
+    checker_id                       STRING,
+    business_dt                      INT 
+)CLUSTERED BY (mis_cod) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.d_wallets;
+CREATE TABLE DWH_PRD_DB.d_wallets (
+    id                               INT,
+    wallet_cust_id                   STRING,
+    cust_id                          INT,
+    dwh_id                           INT,
+    national_id                      STRING,
+    customer_type                    STRING,
+    first_name_ar                    STRING,
+    mid_name_ar                      STRING,
+    last_name_ar                     STRING,
+    full_name_ar                     STRING,
+    first_name_en                    STRING,
+    mid_name_en                      STRING,
+    last_name_en                     STRING,
+    full_name_en                     STRING,
+    provider_id                      INT,
+    city                             STRING,
+    title                            STRING,
+    birth_dt                         INT,
+    gender                           STRING,
+    marital_status_id                INT,
+    mobile_num                       STRING,
+    wallet_status_id                 INT,
+    wallet_bal                       DOUBLE,
+    distributor_cod                  INT,
+    distributor_name                 STRING,
+    distributor_branch_id            INT,
+    kycstatus                        STRING,
+    pan                              INT,
+    wallet_limit_profile             STRING,
+    registration_channel             STRING,
+    self_registration_flg            STRING,
+    self_reg_kyc_status              STRING, 
+    registration_verification_method STRING,
+    registration_dt                  INT,
+    unregistration_dt                INT,
+    rowhash			     STRING,
+    business_dt                      INT
+)CLUSTERED BY (mobile_num,national_id) INTO 4 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.hlp_wallets;
+CREATE TABLE DWH_PRD_DB.hlp_wallets (
+    id                               INT,
+    wallet_cust_id                   STRING,
+    cust_id                          INT,
+    dwh_id                           INT,
+    national_id                      STRING,
+    customer_type                    STRING,
+    first_name_ar                    STRING,
+    mid_name_ar                      STRING,
+    last_name_ar                     STRING,
+    full_name_ar                     STRING,
+    first_name_en                    STRING,
+    mid_name_en                      STRING,
+    last_name_en                     STRING,
+    full_name_en                     STRING,
+    provider_id                      INT,
+    city                             STRING,
+    title                            STRING,
+    birth_dt                         INT,
+    gender                           STRING,
+    marital_status_id                INT,
+    mobile_num                       STRING,
+    wallet_status_id                 INT,
+    wallet_bal                       DOUBLE,
+    distributor_cod                  INT,
+    distributor_name                 STRING,
+    distributor_branch_id            INT,
+    kycstatus                        STRING,
+    pan                              INT,
+    wallet_limit_profile             STRING,
+    registration_channel             STRING,
+    self_registration_flg            STRING,
+    self_reg_kyc_status              STRING, 
+    registration_verification_method STRING,
+    registration_dt                  INT,
+    unregistration_dt                INT,
+    FLG_UPDATE			     STRING,
+    rowhash			     STRING,
+    business_dt                      INT
+)CLUSTERED BY (mobile_num,national_id) INTO 4 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.h_wallets;
+CREATE TABLE DWH_PRD_DB.h_wallets (
+    id                               INT,
+    wallet_cust_id                   STRING,
+    cust_id                          INT,
+    dwh_id                           INT,
+    national_id                      STRING,
+    customer_type                    STRING,
+    first_name_ar                    STRING,
+    mid_name_ar                      STRING,
+    last_name_ar                     STRING,
+    full_name_ar                     STRING,
+    first_name_en                    STRING,
+    mid_name_en                      STRING,
+    last_name_en                     STRING,
+    full_name_en                     STRING,
+    provider_id                      INT,
+    city                             STRING,
+    title                            STRING,
+    birth_dt                         INT,
+    gender                           STRING,
+    marital_status_id                INT,
+    mobile_num                       STRING,
+    wallet_status_id                 INT,
+    wallet_bal                       DOUBLE,
+    distributor_cod                  INT,
+    distributor_name                 STRING,
+    distributor_branch_id            INT,
+    kycstatus                        STRING,
+    pan                              INT,
+    wallet_limit_profile             STRING,
+    registration_channel             STRING,
+    self_registration_flg            STRING,
+    self_reg_kyc_status              STRING, 
+    registration_verification_method STRING,
+    registration_dt                  INT,
+    unregistration_dt                INT,
+    business_dt                      INT
+)CLUSTERED BY (mobile_num,national_id) INTO 4 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("parquet.compression"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.d_branch;
+CREATE TABLE DWH_PRD_DB.d_branch (
+    id        		     	     INT,
+    brn_cod            		     INT,
+    cbe_brn_cod        		     INT,
+    brn_city	       		     STRING,
+    brn_type_id        		     INT,
+    brn_gov_id	       	     	     INT,
+    brn_name_ar        		     STRING,
+    brn_name_ar_short  		     STRING,
+    brn_name_en        		     STRING,
+    brn_name_en_short  		     STRING,
+    open_dt            		     INT,
+    close_dt           		     INT,
+    addr1              		     STRING,
+    addr2              		     STRING,
+    addr3              		     STRING,
+    zipcode            		     STRING,
+    cd_cc_brn_xref     		     INT,
+    flg_closed         		     STRING,
+    migrated_to        		     INT,
+    longitude          		     DOUBLE,
+    latitude           		     DOUBLE,
+    maker_id           		     STRING,
+    checker_id         		     STRING,
+    last_mnt_dt        		     INT,
+    ROWHASH			     STRING,
+    business_dt        		     INT
+)CLUSTERED BY (brn_cod) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.h_branch;
+CREATE TABLE DWH_PRD_DB.h_branch (
+    id        		     	     INT,
+    brn_cod            		     INT,
+    cbe_brn_cod        		     INT,
+    brn_city	       		     STRING,
+    brn_type_id        		     INT,
+    brn_gov_id	       		     INT,
+    brn_name_ar        		     STRING,
+    brn_name_ar_short  		     STRING,
+    brn_name_en        		     STRING,
+    brn_name_en_short  		     STRING,
+    open_dt            		     INT,
+    close_dt           		     INT,
+    addr1              		     STRING,
+    addr2              		     STRING,
+    addr3              		     STRING,
+    zipcode            		     STRING,
+    cd_cc_brn_xref     		     INT,
+    flg_closed         		     STRING,
+    migrated_to        		     INT,
+    longitude          		     DOUBLE,
+    latitude           		     DOUBLE,
+    maker_id           		     STRING,
+    checker_id         		     STRING,
+    last_mnt_dt        		     INT,
+    business_dt        		     INT
+)CLUSTERED BY (brn_cod) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("parquet.compression"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.d_cards;
+CREATE TABLE DWH_PRD_DB.d_cards (
+ID				     INT,
+PAN				     STRING,
+MASK_PAN			     STRING,
+BIN			             STRING,
+MBR				     INT,
+DWH_ID				     INT,
+CATEGORY_ID			     INT,
+CARD_SCHEME_ID			     INT,
+CARD_TYPE_ID			     INT,
+BRN_ID				     INT,
+BASE	STRING	
+,MISID	STRING	
+,ISSUEDATE	INT	
+,EXPIRYDATE	INT	
+,CARD_STATUS_ID	INT	
+,MOB	STRING	
+,PRIMARY_ACCT_ID	INT	
+,PRIMARY_ACCT_TYPE	STRING	
+,SECONDARY_ACCT_ID	INT	
+,SECONDARY_ACCT_TYPE	STRING	
+,TXNCODE	STRING	
+,PKVI	STRING	
+,PVV	STRING	
+,ACCT_CURRENCY_ID	STRING	
+,CARD_NUM	STRING	
+,CARD_PRODUCT_ID	INT	
+,CARD_LIM	STRING	
+,LAST_STATEMENT_DT	STRING	
+,NAME_ON_CARD	STRING	
+,CARD_ONLINE_STATUS	STRING	
+,CASH_LIM	STRING	
+,SALE_LIM	STRING	
+,PRIMARY_SUPPLEMENTARY_FLAG	STRING	
+,COMPASS_ACCT_NUM	STRING	
+,CUSTOMER_ADDR	STRING	
+,MAIL_ADDR2	STRING	
+,MAIL_ADDR3	STRING	
+,PASSPORT_NUM	STRING	
+,NAME_TRANSLITERATION	STRING	
+,HOME_PHONE	STRING	
+,WORK_PHONE	STRING	
+,FAX	STRING	
+,ACTIVATION_DT	INT	
+,SELLER_NAME	STRING	
+,GUARANTEE_ACC1	STRING	
+,GUARANTEE_COD	STRING	
+,GUARANTEE_ACC2	STRING	
+,GUARANTEE_ACC3	STRING	
+,GUARANTEE_ACC4	STRING	
+,CONTRACT_NUM	STRING	
+,CONTRACT_TYPE	STRING	
+,CONTRACT_STAT	STRING	
+,CONTRACT_STATUS	STRING	
+,PARENT_PAN	STRING	
+,FINANCIAL_PROFILE_NAME	STRING	
+,DAF_PROFILE_NAME	STRING	
+,INTEREST_PROFILE_NAME	STRING	
+,MIN_PAYMENT_PROFILE_NAME	STRING	
+,GENDER	STRING	
+,AGE	INT	
+,EDUCATION	STRING	
+,MARITAL_STATUS_ID	INT	
+,OCCUPATION	STRING	
+,ISSUANCE_REASON	STRING	
+,BLOCK_FOR_REISSUE	STRING	
+,COMPANY	STRING	
+,ORGANIZATION	STRING	
+,EXTERNAL_ACCT	INT	
+,LINKED_CONTRACT	STRING	
+,ACCT_CLIENT_NAME	STRING	
+,ACCT_STATE	STRING	
+,DOMESTIC_MP_PROFILE	STRING	
+,INTERNATIONAL_MP_PROFILE	STRING	
+,LINKED_CARDS	STRING	
+,LINKED_VALID_CARDS	STRING	
+,ACCT_DAF_PROFILE_NAME_DOM	STRING	
+,ACCT_DAF_PROFILE_NAME_INT	STRING
+,TABLENAME	STRING
+,CARDKEY	STRING
+,ROWHASH	STRING
+,BUSINESS_DT	INT
+)CLUSTERED BY (dwh_id, card_num, pan, category_id) INTO 16 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.h_cards;
+CREATE TABLE DWH_PRD_DB.h_cards (
+ID				     INT,
+PAN				     STRING,
+MASK_PAN			     STRING,
+BIN			             STRING,
+MBR				     INT,
+DWH_ID				     INT,
+CATEGORY_ID			     INT,
+CARD_SCHEME_ID			     INT,
+CARD_TYPE_ID			     INT,
+BRN_ID				     INT,
+BASE	STRING	
+,MISID	STRING	
+,ISSUEDATE	INT	
+,EXPIRYDATE	INT	
+,CARD_STATUS_ID	INT	
+,MOB	STRING	
+,PRIMARY_ACCT_ID	INT	
+,PRIMARY_ACCT_TYPE	STRING	
+,SECONDARY_ACCT_ID	INT	
+,SECONDARY_ACCT_TYPE	STRING	
+,TXNCODE	STRING	
+,PKVI	STRING	
+,PVV	STRING	
+,ACCT_CURRENCY_ID	STRING	
+,CARD_NUM	STRING	
+,CARD_PRODUCT_ID	INT	
+,CARD_LIM	STRING	
+,LAST_STATEMENT_DT	STRING	
+,NAME_ON_CARD	STRING	
+,CARD_ONLINE_STATUS	STRING	
+,CASH_LIM	STRING	
+,SALE_LIM	STRING	
+,PRIMARY_SUPPLEMENTARY_FLAG	STRING	
+,COMPASS_ACCT_NUM	STRING	
+,CUSTOMER_ADDR	STRING	
+,MAIL_ADDR2	STRING	
+,MAIL_ADDR3	STRING	
+,PASSPORT_NUM	STRING	
+,NAME_TRANSLITERATION	STRING	
+,HOME_PHONE	STRING	
+,WORK_PHONE	STRING	
+,FAX	STRING	
+,ACTIVATION_DT	INT	
+,SELLER_NAME	STRING	
+,GUARANTEE_ACC1	STRING	
+,GUARANTEE_COD	STRING	
+,GUARANTEE_ACC2	STRING	
+,GUARANTEE_ACC3	STRING	
+,GUARANTEE_ACC4	STRING	
+,CONTRACT_NUM	STRING	
+,CONTRACT_TYPE	STRING	
+,CONTRACT_STAT	STRING	
+,CONTRACT_STATUS	STRING	
+,PARENT_PAN	STRING	
+,FINANCIAL_PROFILE_NAME	STRING	
+,DAF_PROFILE_NAME	STRING	
+,INTEREST_PROFILE_NAME	STRING	
+,MIN_PAYMENT_PROFILE_NAME	STRING	
+,GENDER	STRING	
+,AGE	INT	
+,EDUCATION	STRING	
+,MARITAL_STATUS_ID	INT	
+,OCCUPATION	STRING	
+,ISSUANCE_REASON	STRING	
+,BLOCK_FOR_REISSUE	STRING	
+,COMPANY	STRING	
+,ORGANIZATION	STRING	
+,EXTERNAL_ACCT	INT	
+,LINKED_CONTRACT	STRING	
+,ACCT_CLIENT_NAME	STRING	
+,ACCT_STATE	STRING	
+,DOMESTIC_MP_PROFILE	STRING	
+,INTERNATIONAL_MP_PROFILE	STRING	
+,LINKED_CARDS	STRING	
+,LINKED_VALID_CARDS	STRING	
+,ACCT_DAF_PROFILE_NAME_DOM	STRING	
+,ACCT_DAF_PROFILE_NAME_INT	STRING
+,TABLENAME	STRING
+,CARDKEY	STRING
+,ROWHASH	STRING
+,BUSINESS_DT	INT
+)CLUSTERED BY (dwh_id, card_num, pan, category_id) INTO 16 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("parquet.compression"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.l_branch_type;
+CREATE TABLE DWH_PRD_DB.l_branch_type (
+    id           			INT,
+    cod_brn_type 			INT,
+    desc_ar      			STRING,
+    desc_en      			STRING,
+    business_dt  			INT
+)CLUSTERED BY (cod_brn_type) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.l_card_category;
+CREATE TABLE DWH_PRD_DB.l_card_category (
+    id                  INT,
+    --bin                 INT,
+    card_category       STRING,
+    business_dt         INT
+)CLUSTERED BY (card_category) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.l_card_scheme;
+CREATE TABLE DWH_PRD_DB.l_card_scheme (
+    id                                  INT,
+    --cs_inst_id                          STRING,
+    card_scheme                         STRING,
+    --desc_ar                             STRING,
+    --desc_en                             STRING,
+    business_dt                         INT
+)CLUSTERED BY (card_scheme) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.l_card_type;
+CREATE TABLE DWH_PRD_DB.l_card_type (
+    id                   INT,
+    bin                  STRING,
+    card_type_limit_id   STRING,
+    Card_type		 STRING,
+    card_product	 STRING,
+    card_scheme_id	 INT,
+    card_category_id	 INT,
+    business_dt          INT
+)CLUSTERED BY (Card_type) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.b_customer_relations;
+CREATE TABLE DWH_PRD_DB.b_customer_relations (
+    id                   INT,
+    p_cust_id        	 INT,
+    p_dwh_id    	 INT,
+    p_cif       	 INT,
+    s_cust_id       	 INT,
+    s_dwh_id   		 INT,
+    s_cif      		 INT,
+    rel_id  		 INT,
+    inverse_rel_id   	 INT,
+    MAKER_ID		 STRING,
+    CHECKER_ID		 STRING,
+    ROWHASH		STRING,
+    business_dt          INT
+)CLUSTERED BY (p_cif , s_cif) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.l_relation_type;
+CREATE TABLE DWH_PRD_DB.l_relation_type (
+    id           	INT,
+    rel_cod		INT,
+    desc_ar      	STRING,
+    desc_en      	STRING,
+    business_dt  	INT
+)CLUSTERED BY (rel_cod) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.l_business_types;
+CREATE TABLE DWH_PRD_DB.l_business_types (
+    id                INT,
+    business_cat_cod  INT,
+    desc_ar           STRING,
+    desc_en           STRING,
+    maker_id          STRING,
+    checker_id        STRING,
+    last_mnt_dt       INT,
+    business_dt       INT
+)CLUSTERED BY (business_cat_cod) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.L_STATUS;
+CREATE TABLE DWH_PRD_DB.L_STATUS(
+ID    					INT,
+MODULE    				STRING,
+STATUS_COD    				STRING,
+DESC_EN    				STRING,
+DESC_AR 				STRING,
+Business_DT    				INT
+)
+CLUSTERED BY (MODULE) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.d_bdc_users;
+CREATE TABLE DWH_PRD_DB.d_bdc_users (
+    id                  		INT,
+    user_id             		STRING,
+    user_no             		INT,
+    user_name           		STRING,
+    brn_id				INT,    
+    system_cod		    		STRING,
+    flg_status          		STRING,
+    flg_mnt_status      		STRING,
+    cod_mnt_action      		STRING,
+    last_mnt_dt         		INT,
+    rowhash				STRING,
+    business_dt     			INT
+)CLUSTERED BY (user_id) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.h_bdc_users;
+CREATE TABLE DWH_PRD_DB.h_bdc_users (
+    id                  		INT,
+    user_id             		STRING,
+    user_no             		INT,
+    user_name           		STRING,
+    brn_id				INT,    
+    system_cod		    		STRING,
+    flg_status          		STRING,
+    flg_mnt_status      		STRING,
+    cod_mnt_action      		STRING,
+    last_mnt_dt         		INT,
+    business_dt     			INT
+)CLUSTERED BY (user_id) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("parquet.compression"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.d_currency;
+CREATE TABLE DWH_PRD_DB.d_currency (
+    id               			INT,
+    ccy_cod          			INT,
+    ccy_iso_cod      			STRING,
+    cbe_ccy_cod      			STRING,
+    ist_ccy_cod      			INT,
+    short_name       			STRING,
+    ccy_name_ar      			STRING,
+    ccy_name_en      			STRING,
+    ccy_symbol       			STRING,
+    swift_cod        			INT,
+    ccy_decimal_NAME 			STRING,
+    decimal_cod      			STRING,
+    country_id       			INT,
+    maker_id		 		STRING,
+    checker_id		 		STRING,
+    last_mnt_dt	     			INT,
+    rowhash				STRING,
+    business_dt	     			INT
+)CLUSTERED BY (ccy_cod) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.h_currency;
+CREATE TABLE DWH_PRD_DB.h_currency (
+    id               			INT,
+    ccy_cod          			INT,
+    ccy_iso_cod      			STRING,
+    cbe_ccy_cod      			STRING,
+    ist_ccy_cod      			INT,
+    short_name       			STRING,
+    ccy_name_ar      			STRING,
+    ccy_name_en      			STRING,
+    ccy_symbol       			STRING,
+    swift_cod        			INT,
+    ccy_decimal_NAME 			STRING,
+    decimal_cod      			STRING,
+    country_id       			INT,
+    maker_id		 		STRING,
+    checker_id		 		STRING,
+    last_mnt_dt	     			INT,
+    business_dt	     			INT
+)CLUSTERED BY (ccy_cod) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("parquet.compression"="SNAPPY");
+
+drop table DWH_PRD_DB.L_Governorate;
+create table DWH_PRD_DB.L_Governorate(
+	ID				INT,
+	GOV_COD				string,
+	REGION				string,
+	Gov_Name_AR			string,
+	Gov_Name_EN			string,
+	longitude 			string,
+	latitude 			string,
+	Business_DT			INT
+)CLUSTERED BY (GOV_COD) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.l_country;
+CREATE TABLE DWH_PRD_DB.l_country (
+    id              		INT,
+    country_cod     		STRING,
+    ISO2			STRING,
+    ISO3			STRING,
+    name_ar         		STRING,
+    name_en         		STRING,
+    alt_cd          		INT,
+    business_dt	    		INT
+)CLUSTERED BY (country_cod) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.l_system;
+CREATE TABLE DWH_PRD_DB.l_system (
+    id              		INT,
+    system_cod       		STRING,
+    system_desc_ar  		STRING,
+    system_desc_en  		STRING,
+    business_dt		  	INT
+)CLUSTERED BY (system_cod) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.l_wallet_provider;
+CREATE TABLE DWH_PRD_DB.l_wallet_provider (
+    id                      		INT,
+    provider_cod			STRING,
+    description_ar          		STRING,
+    description_en          		STRING,
+    business_dt  			INT
+)CLUSTERED BY (provider_cod) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.l_module;
+CREATE TABLE DWH_PRD_DB.l_module (
+ID				INT,
+Module_COD			STRING,
+Module_Desc_AR			STRING,
+Module_Desc_EN			STRING,
+Business_DT			INT
+)CLUSTERED BY (Module_COD) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.l_prod_type;
+CREATE TABLE DWH_PRD_DB.l_prod_type (
+ID				INT,
+Type_COD			STRING,
+Type_Desc_AR			STRING,
+Type_Desc_EN			STRING,
+Business_DT			INT
+)CLUSTERED BY (Type_COD) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.d_product;
+CREATE TABLE DWH_PRD_DB.d_product (
+ID				INT,
+Prod_COD			STRING,
+Prod_Desc_AR			STRING,
+Prod_Desc_EN			STRING,
+Is_Islamic			INT,
+START_DT			INT,
+Expiry_DT			INT,
+FLG_BOOK_COLL_BAL		STRING,
+Is_IBAN				STRING,
+Module_ID			INT,
+Prod_Type_ID			INT,
+CCY_ID				INT,
+INT_IDX_ID			INT,
+MAKER_ID			STRING,
+CHECKER_ID			STRING,
+Last_MNT_DT			INT,
+ROWHASH				STRING,
+Business_DT			INT
+)CLUSTERED BY (Prod_COD,Module_ID) INTO 4 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.h_product;
+CREATE TABLE DWH_PRD_DB.h_product (
+ID				INT,
+Prod_COD			STRING,
+Prod_Desc_AR			STRING,
+Prod_Desc_EN			STRING,
+Is_Islamic			INT,
+START_DT			INT,
+Expiry_DT			INT,
+FLG_BOOK_COLL_BAL		STRING,
+Is_IBAN				STRING,
+Module_ID			INT,
+Prod_Type_ID			INT,
+CCY_ID				INT,
+INT_IDX_ID			INT,
+MAKER_ID			STRING,
+CHECKER_ID			STRING,
+Last_MNT_DT			INT,
+Business_DT			INT
+)CLUSTERED BY (Prod_COD,Module_ID) INTO 4 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("parquet.compression"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.d_accounts;
+CREATE TABLE DWH_PRD_DB.d_accounts (
+ID				INT,
+CIF				STRING,
+DWH_ID				INT,
+ACCT_NO				STRING,
+IBAN				STRING,
+PROD_ID				INT,
+CCY_ID				INT,
+BRN_ID				INT,
+REMITTER_ACCT_COD		STRING,
+DEP_NO_COD			INT,
+ACCT_CLOSE_DT			INT,
+MATURITY_DT			INT,
+VALUE_DT			INT,
+BOOK_DT				INT,
+LIQUIDATION_DT		INT,
+EVENT_COD			STRING,
+OPERATION			STRING,
+ACCT_LIMIT_COD			STRING,
+STATUS_ID			INT,
+LANGUAGE_ID			INT,
+ROWHASH				STRING,
+BUSINESS_DT			INT)
+partitioned by (MODULE_ID	INT
+)CLUSTERED BY (ACCT_NO,DWH_ID,PROD_ID,BRN_ID) INTO 16 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+
+DROP TABLE DWH_PRD_DB.h_accounts;
+CREATE TABLE DWH_PRD_DB.h_accounts (
+ID				INT,
+CIF				INT,
+DWH_ID				INT,
+ACCT_NO				STRING,
+IBAN				STRING,
+PROD_ID				INT,
+CCY_ID				INT,
+BRN_ID				INT,
+REMITTER_ACCT_COD		STRING,
+DEP_NO_COD			INT,
+ACCT_CLOSE_DT			INT,
+MATURITY_DT			INT,
+VALUE_DT			INT,
+BOOK_DT				INT,
+ACCT_LIMIT_COD			STRING,
+STATUS_ID			INT,
+LANGUAGE_ID			INT,
+BUSINESS_DT			INT)
+partitioned by (MODULE_ID	INT
+)CLUSTERED BY (ACCT_NO,DWH_ID,PROD_ID) INTO 16 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("parquet.compression"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.f_accounts;
+CREATE TABLE DWH_PRD_DB.f_accounts (
+ID						INT,
+ACCT_NO						STRING,
+MODULE_ID					INT,
+DWH_ID						INT,
+PROD_ID						INT,
+CCY_ID						INT,
+DEP_NO_COD					INT,
+OUTSTANDING_BAL					DOUBLE,
+PRINCIPAL_OVERDUE_AMT				DOUBLE,
+AMT_ARREARS_NONACC				DOUBLE,
+INT_OVERDUE_AMT					DOUBLE,
+AMT_ARREARS_PMI_NACC				DOUBLE,
+BAL_BOOK					DOUBLE,
+DISBURSED_AMT					DOUBLE,
+AMT_ARREARS_CHARGES				DOUBLE,
+AMT_ARREARS_SUSP_FEES				DOUBLE,
+AMT_INTONARR					DOUBLE,
+AMT_IOAC					DOUBLE,
+AMT_ARREARS_PREMIUM				DOUBLE,
+AMT_ARREARS_SUSP_PREMIUM			DOUBLE,
+AMT_ARREARS_LEGAL				DOUBLE,
+AMT_ARREARS_LEGAL_SUSP				DOUBLE,
+AMT_ARREARS_OUTGOING				DOUBLE,
+AMT_ARREARS_OUTGOING_SUSP			DOUBLE,
+PRINC_UNEARNED_AMT				DOUBLE,
+INT_UNEARNED_AMT				DOUBLE,
+BAL_FOR_RATE_UNEARNED				DOUBLE,
+RAT_EFFECTIVE_DT				DOUBLE,
+BAL_FOR_RATE_EARNED				DOUBLE,
+RAT_DEP_INT					DOUBLE,
+RAT_DEP_INT_VAR					DOUBLE,
+BAL_PENALTY_PAID			DOUBLE,
+BAL_SERVICE_CHARGE			DOUBLE,
+BAL_INT_ACCR				DOUBLE,
+BAL_LAST_INT_ACCR			DOUBLE,
+BAL_INT_COMP				DOUBLE,
+BAL_LAST_INT_COMP			DOUBLE,
+BAL_INT_PAID				DOUBLE,
+BAL_LAST_INT_PAID			DOUBLE,
+BAL_INT_PAID_CURR			DOUBLE,
+BAL_LAST_INT_CAP			DOUBLE,
+BAL_INT_CAP				DOUBLE,
+BAL_UNCOLLEC_INT			DOUBLE,
+BAL_UNCOLLEC_PRINC			DOUBLE,
+BAL_UNCLAIM_PRINC			DOUBLE,
+BAL_UNCLAIM_INT				DOUBLE,
+AMT_TAX_ACCR				DOUBLE,
+AMT_DISCOUNTED_INT			DOUBLE,
+BAL_TAX_ON_DISC_INT			DOUBLE,
+BAL_INT_DUE				DOUBLE,
+BAL_PRINC_DUE				DOUBLE,
+BAL_INT_WITHELD				DOUBLE,
+BAL_INT_WITHELD_TOT			DOUBLE,
+BAL_INT_COMP_PRETAX			DOUBLE,
+BAL_TAX_WITHELD_TOT			DOUBLE)
+partitioned by (BUSINESS_DT	INT
+)CLUSTERED BY (ACCT_NO) INTO 32 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("parquet.compression"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.f_exchange_rate;
+CREATE TABLE DWH_PRD_DB.f_exchange_rate (
+ID					INT,
+RAT_CCY_BOOK				DOUBLE,
+RAT_CCY_MID				DOUBLE,
+RAT_NOTE_BUY_SPRD			DOUBLE,
+RAT_CHQ_BUY_SPRD			DOUBLE,
+RAT_NOTE_SELL_SPRD			DOUBLE,
+RAT_CHQ_SELL_SPRD			DOUBLE,
+RAT_XFER_BUY_SPRD			DOUBLE,
+RAT_XFER_SELL_SPRD			DOUBLE,
+RAT_CCY_CB				DOUBLE,
+RAT_CCY_SPECIAL_1			DOUBLE,
+RAT_CCY_SPECIAL_2			DOUBLE,
+CCY_ID					INT,
+MAKER_ID				STRING,
+CHECKER_ID				STRING,
+Effective_DT				INT,
+LAST_MNT_DT				INT)
+partitioned by (BUSINESS_DT	INT
+)CLUSTERED BY (CCY_ID) INTO 16 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("parquet.compression"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.L_SUB_PRODUCT;
+CREATE TABLE DWH_PRD_DB.L_SUB_PRODUCT (
+ID				INT,
+SUB_PROD_COD	STRING,
+PROD_ID			INT,
+PROD_COD		STRING,
+Desc_AR			STRING,
+Desc_EN			STRING,
+Business_DT		INT
+)CLUSTERED BY (SUB_PROD_COD,PROD_ID) INTO 4 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.D_BANK_ASSURANCE;
+CREATE TABLE DWH_PRD_DB.D_BANK_ASSURANCE (
+ID				INT,
+Cust_ID			INT,
+DWH_ID			INT,
+National_ID		STRING,
+ACCT_NO			STRING,
+Cust_Name_EN	STRING,
+CUST_NAME_AR	STRING,
+BRN_COD			STRING,
+ROWHASH			STRING,
+Business_DT		INT
+)CLUSTERED BY (National_ID,ACCT_NO) INTO 4 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.h_BANK_ASSURANCE;
+CREATE TABLE DWH_PRD_DB.h_BANK_ASSURANCE (
+ID				INT,
+Cust_ID			INT,
+DWH_ID			INT,
+National_ID		STRING,
+ACCT_NO			STRING,
+Cust_Name_EN	STRING,
+CUST_NAME_AR	STRING,
+BRN_COD			STRING,
+Business_DT		INT
+)CLUSTERED BY (National_ID,ACCT_NO) INTO 4 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("parquet.compression"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.D_INTERNET_BANKING;
+CREATE TABLE DWH_PRD_DB.D_INTERNET_BANKING(
+ID	INT,
+CIF	INT,
+DWH_ID	INT,
+CUST_NAME_EN	STRING,
+CUST_NAME_AR	STRING ,
+USER_ID	  STRING,
+USER_STATUS_ID	INT ,
+MOB_NO	  STRING,
+CREATED_BY	INT,
+CREATED_DT	INT,
+UPDATED_BY	INT,
+UPDATED_DT	INT,
+COMMERCIAL_REGISTER	STRING ,
+EMAIL_ID	STRING ,
+CUST_BRN	STRING,
+BASE_ROLE_ID	INT,
+USER_LEVEL_ID	INT,
+PRODUCT_ROLE_ID	INT,
+TOKEN_TYPE	STRING ,
+SERIAL_NUM	STRING ,
+IS_FIRST_TIME_USER	STRING ,
+IS_ACTIVE_PASSWORD	STRING ,
+IS_ACTIVE_TOKEN	STRING ,
+Cust_SEGMENT	STRING,
+RISK_RATING	STRING,
+ONLINE_REGISTRATION	STRING,
+DOC_SUBMITTED	STRING,
+ROWHASH			STRING,
+Business_DT	INT
+)
+CLUSTERED BY (CIF,DWH_ID) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+
+DROP TABLE DWH_PRD_DB.D_ATM;
+CREATE TABLE DWH_PRD_DB.D_ATM(
+	ID	INT,
+	TERMID	STRING,
+	UNIT	INT,
+	INSTITUTIONID	STRING,
+	GROUP_NAME	STRING,
+	GOSERVICE	STRING,
+	MODEL	INT,
+	MAKE	STRING,
+	LOCAL_PIN	STRING,
+	ADD_TOTAL	STRING,
+	TXN_ALLOW	STRING,
+	CURRENCY	INT,
+	LOCATION	STRING,
+	LOGGING	STRING,
+	GEO_LOC	STRING,
+	ACCEPTORNAME	STRING,
+	O_ROWID	INT,
+	H_LOCATION	STRING,
+	WD_NO_RPT	INT,
+	TIME_OFFSET	INT,
+	MAC_REQUIRED	STRING,
+	MAC_NCR_TXNREQ	STRING,
+	MAC_NCR_TXNREPLY	STRING,
+	MAC_NCR_SOLITSTAT	STRING,
+	MAC_NCR_OTHER	STRING,
+	MAC_NCR_TRACK1	STRING,
+	MAC_NCR_TRACK2	STRING,
+	MAC_NCR_TRACK3	STRING,
+	FUNC_FLAGS	STRING,
+	MAXDISPENSE	INT,
+	TERM_COMP	STRING,
+	HDL_ACK	STRING,
+	MAC_NCR_EMV	STRING,
+	PRIORITY_ROUTING	STRING,
+	INTERNAL_UNIT	INT,
+	FIT_LIST_ID	INT,
+	CASSETTE_CFG_ID	INT,
+	DISPENSE_TABLE_ID	INT,
+	MANUFACTURER	STRING,
+	EMULATION	STRING,
+	MAX_COIN_DISPENSE	INT,
+	ROWHASH			STRING,
+	Business_DT	INT
+)
+CLUSTERED BY (TERMID) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+
+DROP TABLE DWH_PRD_DB.L_PCODES;
+CREATE TABLE DWH_PRD_DB.L_PCODES(
+	ID	INT,
+	Pcode	INT,
+	Description_AR	STRING,
+	Description_EN	STRING,
+	Business_DT	INT
+)
+CLUSTERED BY (PCODE) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+
+DROP TABLE DWH_PRD_DB.F_ATM_TRX;
+CREATE TABLE DWH_PRD_DB.F_ATM_TRX(
+ID	INT,
+MSGTYPE	INT,
+FLIPPED_MSGTYPE	INT,
+PAN	STRING,
+PAN_ID	INT,
+MASK_PAN	STRING,
+PCODE	INT,
+PCODE_ID	INT,
+TXNTYPE	INT,
+AMOUNT	DOUBLE,
+AVAL_BALANCE	DOUBLE,
+AMOUNT_EQUIV	DOUBLE,
+CASH_BACK	DOUBLE,
+ISS_CONV_RATE	DOUBLE,
+ISS_CURRENCY_CODE	INT,
+ISS_CONV_DATE	INT,
+ACQ_CONV_RATE	DOUBLE,
+ACQ_CURRENCY_CODE	INT,
+ACQ_CONV_DATE	INT,
+TRA_AMOUNT	DOUBLE,
+TRA_CONV_RATE	DOUBLE,
+TRA_CURRENCY_CODE	INT,
+TRA_CONV_DATE	INT,
+FEE	DOUBLE,
+NEW_FEE	DOUBLE,
+NEW_AMOUNT	DOUBLE,
+NEW_SETL_AMOUNT	DOUBLE,
+SETTLEMENT_FEE	DOUBLE,
+SETTLEMENT_RATE	DOUBLE,
+SETTLEMENT_CODE	INT,
+SETTLEMENT_AMOUNT	DOUBLE,
+TRANDATE	INT,
+TRANTIME	INT,
+TRACE	INT,
+LOCAL_TIME	INT,
+LOCAL_DATE	INT,
+SETTLEMENT_DATE	INT,
+CAP_DATE	INT,
+POS_ENTRY_CODE	INT,
+POS_CONDITION_CODE	INT,
+POS_PIN_CAP_CODE	STRING,
+POS_CAP_CODE	INT,
+LIFE_CYCLE	INT,
+ACQUIRER	STRING,
+ISSUER	STRING,
+TRANSFEREE	STRING,
+ORIGINATOR	STRING,
+MEMBER_ID	STRING,
+F_ID	STRING,
+TXNSRC	STRING,
+TXNDEST	STRING,
+ALTERNATEACQUIRER	STRING,
+ENTITYID	STRING,
+ISS_ENTITYID	STRING,
+CARDPRODUCT	STRING,
+MVV	STRING,
+INVOICE_NUMBER	STRING,
+TRANS_ID	STRING,
+FPI	STRING,
+TXN_START_TIME INT,
+TXN_END_TIME INT,
+DEVICE_CAP	INT,
+RESPCODE	INT,
+REASON_CODE	INT,
+REVCODE	INT,
+SHCERROR	INT,
+SAF	INT,
+ORIGMSG	INT,
+ORIGFLIPPEDMSG	INT,
+ORIGTRACE	INT,
+ORIGDATE	INT,
+ORIGTIME	INT,
+MERCHANT_TYPE	INT,
+ACQ_COUNTRY	INT,
+REFNUM	STRING,
+AUTHNUM	STRING,
+TERMID_ID	INT,
+TERMID	STRING,
+ACCEPTORNAME	STRING,
+TERMLOC	STRING,
+ADDRESPONSE	STRING,
+ACCTNUM	STRING,
+BRANCH	INT,
+SERIAL_1	INT,
+SERIAL_2	INT,
+STOREID	INT,
+LANE	INT,
+TERMINAL_TRACE	INT,
+CHECKER_ID	INT,
+SUPERVISOR	INT,
+SHIFT_NUMBER	INT,
+BATCH_ID	INT,
+DEVICE_DEVCAP	INT,
+SHC_DEVCAP	INT,
+FORMATTER_DEVCAP	INT,
+AUTH_DEVCAP	INT,
+FILLER1	STRING,
+FILLER2	STRING,
+FILLER3	STRING,
+FILLER4	STRING,
+ISSUER_DATA	STRING,
+ACQUIRER_DATA	STRING,
+NEW_AMOUNT_EQUIV	DOUBLE,
+ACQ_AVAL_BALANCE	DOUBLE,
+ACQ_LEDGER_BALANCE	DOUBLE,
+SETL_AVAL_BALANCE	DOUBLE,
+SETL_LEDGER_BALANCE	DOUBLE,
+AVAL_BALANCE_TYPE	INT,
+LEDGER_BALANCE_TYPE	INT,
+NEW_SETL_FEE	DOUBLE,
+TXN_AMOUNT	DOUBLE,
+TXN_NEW_AMOUNT	DOUBLE,
+TXN_CURRENCY_CODE	INT,
+TXN_CONV_RATE	DOUBLE,
+TXN_CONV_DATE	INT,
+CH_AMOUNT	DOUBLE,
+CH_NEW_AMOUNT	DOUBLE,
+CH_CURRENCY_CODE	INT,
+CH_CONV_RATE	DOUBLE,
+CH_CONV_DATE	INT,
+LEDGER_BALANCE	DOUBLE,
+SLOT_NUM	INT ,
+DEVICE_FEE	DOUBLE ,
+CARD_SEQNO	INT ,
+ALPHARESPONSECODE	STRING,
+CHIP_TYPE	STRING,
+CHIP_INDEX	STRING,
+PROCESSOR_BUSDAY	INT,
+SEQ_TRACE_NO	INT ,
+SEG_REQ	STRING,
+SEG_RESP	STRING,
+SITE_ID	INT,
+VERSION	INT,
+SRC_NODE	INT,
+DEST_NODE	INT,
+SHC_DATA_BUFFER	STRING
+)
+PARTITIONed BY (BUSINESS_DT	INT)
+CLUSTERED BY (PCODE,TERMID) INTO 32 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES    ("parquet.compression"="SNAPPY");
+
+
+DROP TABLE DWH_PRD_DB.F_CARDS;
+CREATE TABLE DWH_PRD_DB.F_CARDS(
+	ID	INT,
+	CARD_ID	INT,
+	DWH_ID	INT,
+	Bal	DOUBLE,
+	Due_Amt	DOUBLE,
+	Over_Due_Amt	DOUBLE,
+	Over_Due_Days	DOUBLE,
+	Over_Lim_Amt	DOUBLE,
+	Amt_On_Hold	DOUBLE,
+	Arrested_Amt	DOUBLE,
+	Retail_Bal	DOUBLE,
+	Cash_Bal	DOUBLE,
+	Fees_Bal	DOUBLE,
+	Interest_Bal	DOUBLE,
+	Payments_Bal	DOUBLE,
+	Others_Bal	DOUBLE,
+	Minimum_Payment	DOUBLE,
+	Payment_Due_DT	DOUBLE,
+	Suspended_Acct_Bal	DOUBLE,
+	Remaining_Cash_Lim	DOUBLE,
+	Remaining_Sale_Lim	DOUBLE,
+	Installment_Bal	DOUBLE,
+	Fees_Bal_Margin	DOUBLE,
+	Interest_Bal_Margin	DOUBLE,
+	Cash_WD_Amt_Used	DOUBLE,
+	Cash_WD_Count	INT,
+	Cash_WD_DT	INT,
+	Cash_WD_Time	INT,
+	TC_WD_Amt_Used	DOUBLE,
+	TC_WD_Count	INT,
+	TC_WD_DT	INT,
+	TC_WD_Time	INT,
+	Purch_Amt_Used	DOUBLE,
+	Purch_Count	INT,
+	Purch_DT	INT,
+	TABLENAME	STRING)
+	partitioned by (BUSINESS_DT	INT
+)
+CLUSTERED BY (CARD_ID,DWH_ID) INTO 32 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES    ("parquet.compression"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.H_ATM;
+CREATE TABLE DWH_PRD_DB.H_ATM(
+	ID	INT,
+	TERMID	STRING,
+	UNIT	INT,
+	INSTITUTIONID	STRING,
+	GROUP_NAME	STRING,
+	GOSERVICE	STRING,
+	MODEL	INT,
+	MAKE	STRING,
+	LOCAL_PIN	STRING,
+	ADD_TOTAL	STRING,
+	TXN_ALLOW	STRING,
+	CURRENCY	INT,
+	LOCATION	STRING,
+	LOGGING	STRING,
+	GEO_LOC	STRING,
+	ACCEPTORNAME	STRING,
+	O_ROWID	INT,
+	H_LOCATION	STRING,
+	WD_NO_RPT	INT,
+	TIME_OFFSET	INT,
+	MAC_REQUIRED	STRING,
+	MAC_NCR_TXNREQ	STRING,
+	MAC_NCR_TXNREPLY	STRING,
+	MAC_NCR_SOLITSTAT	STRING,
+	MAC_NCR_OTHER	STRING,
+	MAC_NCR_TRACK1	STRING,
+	MAC_NCR_TRACK2	STRING,
+	MAC_NCR_TRACK3	STRING,
+	FUNC_FLAGS	STRING,
+	MAXDISPENSE	INT,
+	TERM_COMP	STRING,
+	HDL_ACK	STRING,
+	MAC_NCR_EMV	STRING,
+	PRIORITY_ROUTING	STRING,
+	INTERNAL_UNIT	INT,
+	FIT_LIST_ID	INT,
+	CASSETTE_CFG_ID	INT,
+	DISPENSE_TABLE_ID	INT,
+	MANUFACTURER	STRING,
+	EMULATION	STRING,
+	MAX_COIN_DISPENSE	INT,
+	Business_DT	INT
+)
+CLUSTERED BY (TERMID) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("parquet.compression"="SNAPPY");
+
+DROP TABLE DWH_PRD_DB.h_INTERNET_BANKING;
+CREATE TABLE DWH_PRD_DB.h_INTERNET_BANKING(
+ID	INT,
+CIF	INT,
+DWH_ID	INT,
+CUST_NAME_EN	STRING,
+CUST_NAME_AR	STRING ,
+USER_ID	  STRING,
+USER_STATUS_ID	INT ,
+MOB_NO	  STRING,
+CREATED_BY	INT,
+CREATED_DT	INT,
+UPDATED_BY	INT,
+UPDATED_DT	INT,
+COMMERCIAL_REGISTER	STRING ,
+EMAIL_ID	STRING ,
+CUST_BRN	STRING,
+BASE_ROLE_ID	INT,
+USER_LEVEL_ID	INT,
+PRODUCT_ROLE_ID	INT,
+TOKEN_TYPE	STRING ,
+SERIAL_NUM	STRING ,
+IS_FIRST_TIME_USER	STRING ,
+IS_ACTIVE_PASSWORD	STRING ,
+IS_ACTIVE_TOKEN	STRING ,
+Cust_SEGMENT	STRING,
+RISK_RATING	STRING,
+ONLINE_REGISTRATION	STRING,
+DOC_SUBMITTED	STRING,
+ROWHASH			STRING,
+Business_DT	INT
+)
+CLUSTERED BY (CIF,DWH_ID) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("parquet.compression"="SNAPPY");
+
