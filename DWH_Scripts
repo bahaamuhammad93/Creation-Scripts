@@ -48,6 +48,7 @@ CREATE TABLE dwh_tst_db.d_date(
 	flg_fiscallastdayofquarter		string, 
 	flg_fiscalfirstdayofyear		string, 
 	flg_fiscallastdayofyear			string, 
+	is_working_day					string,
 	is_week_end						string, 
 	is_holiday						string, 
 	holiday_name_ar					string, 
