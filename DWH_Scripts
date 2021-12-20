@@ -173,6 +173,7 @@ CREATE TABLE dwh_tst_db.h_corporate_detail (
     maker_id                  STRING,
     checker_id                STRING,
     last_mnt_dt               INT,
+    rowhash			     STRING,
     business_dt               INT 
 )CLUSTERED BY (cif,dwh_id) INTO 2 BUCKETS
 STORED AS PARQUET
@@ -486,6 +487,7 @@ CREATE TABLE dwh_tst_db.h_customer (
     maker_id                       STRING,
     checker_id                     STRING,
     last_mnt_dt                    INT,
+    rowhash			     STRING,
     business_dt                    INT 
 )CLUSTERED BY (dwh_id,cif,national_id) INTO 16 BUCKETS
 STORED AS PARQUET
@@ -774,6 +776,7 @@ CREATE TABLE dwh_tst_db.h_wallets (
     registration_verification_method STRING,
     registration_dt                  INT,
     unregistration_dt                INT,
+    rowhash			     STRING,
     business_dt                      INT
 )CLUSTERED BY (mobile_num,national_id) INTO 4 BUCKETS
 STORED AS PARQUET
@@ -837,6 +840,7 @@ CREATE TABLE dwh_tst_db.h_branch (
     maker_id           		     STRING,
     checker_id         		     STRING,
     last_mnt_dt        		     INT,
+    rowhash			     STRING,
     business_dt        		     INT
 )CLUSTERED BY (brn_cod) INTO 2 BUCKETS
 STORED AS PARQUET
@@ -1150,6 +1154,7 @@ CREATE TABLE dwh_tst_db.h_bdc_users (
     flg_mnt_status      		STRING,
     cod_mnt_action      		STRING,
     last_mnt_dt         		INT,
+    rowhash			     STRING,
     business_dt     			INT
 )CLUSTERED BY (user_id) INTO 2 BUCKETS
 STORED AS PARQUET
@@ -1197,6 +1202,7 @@ CREATE TABLE dwh_tst_db.h_currency (
     maker_id		 		STRING,
     checker_id		 		STRING,
     last_mnt_dt	     			INT,
+    rowhash			     STRING,
     business_dt	     			INT
 )CLUSTERED BY (ccy_cod) INTO 2 BUCKETS
 STORED AS PARQUET
@@ -1316,6 +1322,7 @@ INT_IDX_ID			INT,
 MAKER_ID			STRING,
 CHECKER_ID			STRING,
 Last_MNT_DT			INT,
+rowhash			     STRING,
 Business_DT			INT
 )CLUSTERED BY (Prod_COD,Module_ID) INTO 4 BUCKETS
 STORED AS PARQUET
@@ -1373,6 +1380,7 @@ OPERATION			STRING,
 ACCT_LIMIT_COD			STRING,
 STATUS_ID			INT,
 LANGUAGE_ID			INT,
+rowhash			     STRING,
 BUSINESS_DT			INT)
 partitioned by (MODULE_ID	INT
 )CLUSTERED BY (ACCT_NO,DWH_ID,PROD_ID) INTO 16 BUCKETS
@@ -1504,6 +1512,7 @@ ACCT_NO			STRING,
 Cust_Name_EN	STRING,
 CUST_NAME_AR	STRING,
 BRN_COD			STRING,
+rowhash			     STRING,
 Business_DT		INT
 )CLUSTERED BY (National_ID,ACCT_NO) INTO 4 BUCKETS
 STORED AS PARQUET
@@ -1842,6 +1851,7 @@ CREATE TABLE dwh_tst_db.H_ATM(
 	MANUFACTURER	STRING,
 	EMULATION	STRING,
 	MAX_COIN_DISPENSE	INT,
+	rowhash			     STRING,
 	Business_DT	INT
 )
 CLUSTERED BY (TERMID) INTO 2 BUCKETS
@@ -1877,6 +1887,7 @@ Cust_SEGMENT	STRING,
 RISK_RATING	STRING,
 ONLINE_REGISTRATION	STRING,
 DOC_SUBMITTED	STRING,
+rowhash			     STRING,
 Business_DT	INT
 )
 CLUSTERED BY (CIF,DWH_ID) INTO 2 BUCKETS
