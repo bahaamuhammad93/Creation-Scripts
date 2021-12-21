@@ -61,15 +61,15 @@ TBLPROPERTIES	('TRANSACTIONAL'='TRUE', "ORC.COMPRESS"="SNAPPY")
 DROP TABLE DWH_PRD_DB.B_CUSTOMER_CLASSIFICATION;
 CREATE TABLE DWH_PRD_DB.B_CUSTOMER_CLASSIFICATION (
     CUSTOMER_CLASSIFICATION_ID                             INT,
-    CUST_ID                  	  						   INT,
-    DWH_ID              	 							   INT,
-    CIF                 								   INT,
-    SUB_CLASSIFICATION_ID          						   INT,
-    MIS_CODE  			 								   INT,
-    CLASS_NUM                    						   INT,
-    MAKER_ID                     						   STRING,
-    CHECKER_ID                    						   STRING,
-    BUSINESS_DT                   						   INT 
+    CUST_ID                  	  			   INT,
+    DWH_ID              	 			   INT,
+    CIF                 				   INT,
+    SUB_CLASSIFICATION_ID          			   INT,
+    MIS_CODE  			 			   INT,
+    CLASS_NUM                    			   INT,
+    MAKER_ID                     			   STRING,
+    CHECKER_ID                    			   STRING,
+    BUSINESS_DT                   			   INT 
 )CLUSTERED BY (CIF , SUB_CLASSIFICATION_ID) INTO 16 BUCKETS
 STORED AS ORC
 TBLPROPERTIES	('TRANSACTIONAL'='TRUE', "ORC.COMPRESS"="SNAPPY")
@@ -77,11 +77,11 @@ TBLPROPERTIES	('TRANSACTIONAL'='TRUE', "ORC.COMPRESS"="SNAPPY")
 
 DROP TABLE DWH_PRD_DB.D_CORPORATE_DETAIL;
 CREATE TABLE DWH_PRD_DB.D_CORPORATE_DETAIL (
-    CORPORATE_DETAIL_ID                        INT,
+    CORPORATE_DETAIL_ID                      		   INT,
     CUST_ID                  				   INT,
-    DWH_ID         	    					   INT,
-    CIF            	  					       INT,
-    AMT_NET_WORTH_COMP    				       DOUBLE,
+    DWH_ID         	    				   INT,
+    CIF            	  				   INT,
+    AMT_NET_WORTH_COMP    				   DOUBLE,
     AMT_AUTH_CAPITAL         				   DOUBLE,
     AMT_PAIDUP_CAPITAL        				   DOUBLE,
     AMT_RESERV_LST_YR         				   DOUBLE,
@@ -121,18 +121,18 @@ CREATE TABLE DWH_PRD_DB.D_CORPORATE_DETAIL (
     MAKER_ID                  				   STRING,
     CHECKER_ID                				   STRING,
     LAST_MNT_DT               				   INT,
-    ROWHASH		     						   STRING,
-    BUSINESS_DT            					   INT 
+    ROWHASH		     				   STRING,
+    BUSINESS_DT            				   INT 
 )CLUSTERED BY (CIF,DWH_ID) INTO 2 BUCKETS
 STORED AS ORC
 TBLPROPERTIES	('TRANSACTIONAL'='TRUE', "ORC.COMPRESS"="SNAPPY");
 
 DROP TABLE DWH_PRD_DB.H_CORPORATE_DETAIL;
 CREATE TABLE DWH_PRD_DB.H_CORPORATE_DETAIL (
-    CORPORATE_DETAIL_ID                      INT,
+    CORPORATE_DETAIL_ID                    		 INT,
     CUST_ID                  				 INT,
-    DWH_ID		   						     INT,
-    CIF			   						     INT,
+    DWH_ID		   	  		         INT,
+    CIF			   			         INT,
     AMT_NET_WORTH_COMP        				 DOUBLE,
     AMT_AUTH_CAPITAL          				 DOUBLE,
     AMT_PAIDUP_CAPITAL        				 DOUBLE,
@@ -173,7 +173,7 @@ CREATE TABLE DWH_PRD_DB.H_CORPORATE_DETAIL (
     MAKER_ID                  				 STRING,
     CHECKER_ID                				 STRING,
     LAST_MNT_DT               				 INT,
-    ROWHASH			     					 STRING,
+    ROWHASH			     			 STRING,
     BUSINESS_DT              				 INT 
 )CLUSTERED BY (CIF,DWH_ID) INTO 2 BUCKETS
 STORED AS PARQUET
@@ -181,21 +181,21 @@ TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
 
 DROP TABLE DWH_PRD_DB.D_CUSTOMER;
 CREATE TABLE DWH_PRD_DB.D_CUSTOMER (
-    CUSTOMER_ID                             INT,
-    DWH_ID                       	 	    INT,
-    CIF                            			STRING,
-    T24_ID			  					    STRING,
-    CBE_REF_COD                   		    STRING,
-    CUST_BRN_ID			 				    INT,
-    LIAB_NO                       		    INT,
-    OPEN_DT                     		    INT,
-    BIRTH_DT                     		    INT,
-    CUSTOMER_TYPE_ID              		    INT,
-    CUST_STATUS_ID                		    INT,
-    NATIONAL_ID			   					STRING,
-    SECONDARY_IDENTITY_ID          			INT,
-    SECONDARY_IDENTITY_VALUE      		    STRING,
-    CUST_TIN			   					STRING,
+    CUSTOMER_ID                          	    	INT,
+    DWH_ID                       	 	    	INT,
+    CIF                            		    	STRING,
+    T24_ID			  		    	STRING,
+    CBE_REF_COD                   		    	STRING,
+    CUST_BRN_ID			 		    	INT,
+    LIAB_NO                       		    	INT,
+    OPEN_DT                     		    	INT,
+    BIRTH_DT                     		    	INT,
+    CUSTOMER_TYPE_ID              		    	INT,
+    CUST_STATUS_ID                		   	INT,
+    NATIONAL_ID			   		  	STRING,
+    SECONDARY_IDENTITY_ID          		   	INT,
+    SECONDARY_IDENTITY_VALUE      		   	STRING,
+    CUST_TIN			   			STRING,
     FULL_NAME_AR                   			STRING,
     FIRST_NAME_AR                  			STRING,
     MID_NAME_AR                    			STRING,
@@ -231,7 +231,7 @@ CREATE TABLE DWH_PRD_DB.D_CUSTOMER (
     PERMN_COUNTRY_ID               			INT,
     PHONE_NUM_1                    			STRING,
     PHONE_NUM_2                    			STRING,
-    PHONE_NUM_3 /*TELEX*/	   				STRING,
+    PHONE_NUM_3 /*TELEX*/	   			STRING,
     CC_MOB_NUM                     			STRING,
     WALLET_MOB_NUM                 			STRING,
     IB_MOB_NUM                     			STRING,
@@ -250,7 +250,7 @@ CREATE TABLE DWH_PRD_DB.D_CUSTOMER (
     INCORPORATED_DT                			INT,
     TOT_LIM_AMT                    			DOUBLE,
     LIM_CCY                        			INT,
-    INCOME_CAT_ID    		  			    INT,
+    INCOME_CAT_ID    		  			INT,
     INCOME_AMT                     			DOUBLE,
     FLG_GLOBAL                     			STRING,
     FLG_MINOR                      			INT,
@@ -277,7 +277,7 @@ CREATE TABLE DWH_PRD_DB.D_CUSTOMER (
     MAKER_ID                       			STRING,
     CHECKER_ID                     			STRING,
     LAST_MNT_DT                    			INT,
-    ROWHASH 			   					STRING,
+    ROWHASH 			   			STRING,
     BUSINESS_DT                   		 	INT 
 )CLUSTERED BY (DWH_ID) INTO 16 BUCKETS
 STORED AS ORC
@@ -285,21 +285,21 @@ TBLPROPERTIES	('TRANSACTIONAL'='TRUE', "ORC.COMPRESS"="SNAPPY");
 
 DROP TABLE DWH_PRD_DB.HLP_CUSTOMER;
 CREATE TABLE DWH_PRD_DB.HLP_CUSTOMER (
-    CUSTOMER_ID                             INT,
-    DWH_ID                     			    INT,
-    CIF                            			STRING,
-    T24_ID			   						STRING,
-    CBE_REF_COD                			    STRING,
-    CUST_BRN_ID			  					INT,
+    CUSTOMER_ID                            	       INT,
+    DWH_ID                     			       INT,
+    CIF                            		       STRING,
+    T24_ID			   		       STRING,
+    CBE_REF_COD                			    	STRING,
+    CUST_BRN_ID			  			INT,
     LIAB_NO                        			INT,
     OPEN_DT                        			INT,
     BIRTH_DT                       			INT,
     CUSTOMER_TYPE_ID               			INT,
     CUST_STATUS_ID                 			INT,
-    NATIONAL_ID			   					STRING,
+    NATIONAL_ID			   			STRING,
     SECONDARY_IDENTITY_ID          			INT,
     SECONDARY_IDENTITY_VALUE       			STRING,
-    CUST_TIN			   					STRING,
+    CUST_TIN			   			STRING,
     FULL_NAME_AR                   			STRING,
     FIRST_NAME_AR                  			STRING,
     MID_NAME_AR                    			STRING,
@@ -335,7 +335,7 @@ CREATE TABLE DWH_PRD_DB.HLP_CUSTOMER (
     PERMN_COUNTRY_ID               			INT,
     PHONE_NUM_1                    			STRING,
     PHONE_NUM_2                    			STRING,
-    PHONE_NUM_3 /*TELEX*/	   				STRING,
+    PHONE_NUM_3 /*TELEX*/	   			STRING,
     CC_MOB_NUM                     			STRING,
     WALLET_MOB_NUM                 			STRING,
     IB_MOB_NUM                     			STRING,
@@ -354,7 +354,7 @@ CREATE TABLE DWH_PRD_DB.HLP_CUSTOMER (
     INCORPORATED_DT                			INT,
     TOT_LIM_AMT                    			DOUBLE,
     LIM_CCY                        			INT,
-    INCOME_CAT_ID    		   				INT,
+    INCOME_CAT_ID    		   			INT,
     INCOME_AMT                     			DOUBLE,
     FLG_GLOBAL                     			STRING,
     FLG_MINOR                      			INT,
@@ -381,9 +381,9 @@ CREATE TABLE DWH_PRD_DB.HLP_CUSTOMER (
     MAKER_ID                       			STRING,
     CHECKER_ID                     			STRING,
     LAST_MNT_DT                    			INT,
-    FLG_UPDATE 			   					STRING,
-    CUSTKEY			   						STRING,
-    ROWHASH			   						STRING,
+    FLG_UPDATE 			   			STRING,
+    CUSTKEY			   			STRING,
+    ROWHASH			   			STRING,
     BUSINESS_DT                   			INT 
 )
 STORED AS ORC
@@ -391,7 +391,7 @@ TBLPROPERTIES	('TRANSACTIONAL'='TRUE', "ORC.COMPRESS"="SNAPPY");
 
 DROP TABLE DWH_PRD_DB.H_CUSTOMER;
 CREATE TABLE DWH_PRD_DB.H_CUSTOMER (
-    CUSTOMER_ID                             INT,
+    CUSTOMER_ID                    INT,
     DWH_ID                         INT,
     CIF                            STRING,
     T24_ID			   STRING,
@@ -487,7 +487,7 @@ CREATE TABLE DWH_PRD_DB.H_CUSTOMER (
     MAKER_ID                       STRING,
     CHECKER_ID                     STRING,
     LAST_MNT_DT                    INT,
-    ROWHASH			     STRING,
+    ROWHASH			   STRING,
     BUSINESS_DT                    INT 
 )CLUSTERED BY (DWH_ID,CIF,NATIONAL_ID) INTO 16 BUCKETS
 STORED AS PARQUET
@@ -495,10 +495,10 @@ TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
 
 DROP TABLE DWH_PRD_DB.F_CUST_MEMO;
 CREATE TABLE DWH_PRD_DB.F_CUST_MEMO (
-    CUST_MEMO_ID                    INT,
+    CUST_MEMO_ID                   		INT,
     CUST_ID         	 		 	INT,
-    DWH_ID     		  				INT,
-    CIF        		  				INT,
+    DWH_ID     		  			INT,
+    CIF        		  			INT,
     CUST_MEMO_DT          			INT,
     TXT_CUST_MEMO         			STRING,
     FLG_SEVERITY          			STRING,
@@ -513,7 +513,7 @@ TBLPROPERTIES	('TRANSACTIONAL'='TRUE', "ORC.COMPRESS"="SNAPPY");
 
 DROP TABLE DWH_PRD_DB.L_CUSTOMER_CLASS;
 CREATE TABLE DWH_PRD_DB.L_CUSTOMER_CLASS (
-    CUSTOMER_CLASS_ID             	  INT,
+    CUSTOMER_CLASS_ID             	 		  INT,
     CLASS_COD      	  				  STRING,
     CLASS_DESC_AR  	  				  STRING,
     CLASS_DESC_EN  	  				  STRING,
@@ -524,11 +524,11 @@ TBLPROPERTIES	('TRANSACTIONAL'='TRUE', "ORC.COMPRESS"="SNAPPY");
 
 DROP TABLE DWH_PRD_DB.L_CUSTOMER_TYPE;
 CREATE TABLE DWH_PRD_DB.L_CUSTOMER_TYPE (
-    CUSTOMER_TYPE_ID                   INT,
+    CUSTOMER_TYPE_ID                   		   INT,
     TYPE_COD             			   STRING,
     TYPE_DESC_AR         			   STRING,
     TYPE_DESC_EN         			   STRING,
-    CLASS_ID  		 				   INT,
+    CLASS_ID  		 			   INT,
     MAKER_ID             			   STRING,
     CHECKER_ID           			   STRING,
     LAST_MNT_DT          			   INT,
@@ -539,7 +539,7 @@ TBLPROPERTIES	('TRANSACTIONAL'='TRUE', "ORC.COMPRESS"="SNAPPY");
 
 DROP TABLE DWH_PRD_DB.L_IDENTITY_TYPE;
 CREATE TABLE DWH_PRD_DB.L_IDENTITY_TYPE (
-    IDENTITY_TYPE_ID                	 INT,
+    IDENTITY_TYPE_ID                	 		 INT,
     IDENTITY_TYPE     	 				 STRING,
     IDENTITY_DESC_AR  	 				 STRING,
     IDENTITY_DESC_EN  	 				 STRING,
@@ -553,7 +553,7 @@ TBLPROPERTIES	('TRANSACTIONAL'='TRUE', "ORC.COMPRESS"="SNAPPY");
 
 DROP TABLE DWH_PRD_DB.L_INCOME_SLABS;
 CREATE TABLE DWH_PRD_DB.L_INCOME_SLABS (
-    INCOME_SLABS_ID               	 INT,
+    INCOME_SLABS_ID               	 	 INT,
     INCOME_CAT_COD   	 			 STRING,
     AMT_UPPER_LIMIT  	 			 DOUBLE,
     AMT_LOWER_LIMIT  	 			 DOUBLE,
@@ -564,7 +564,7 @@ TBLPROPERTIES	('TRANSACTIONAL'='TRUE', "ORC.COMPRESS"="SNAPPY");
 
 DROP TABLE DWH_PRD_DB.L_LANGUAGE;
 CREATE TABLE DWH_PRD_DB.L_LANGUAGE (
-    LANGUAGE_ID           	 INT,
+    LANGUAGE_ID           	 	 INT,
     LANG_COD     			 STRING,
     DESC_AR      	 		 STRING,
     DESC_EN      	 		 STRING,
@@ -578,7 +578,7 @@ TBLPROPERTIES	('TRANSACTIONAL'='TRUE', "ORC.COMPRESS"="SNAPPY");
 
 DROP TABLE DWH_PRD_DB.L_MAIN_CLASSIFICATION;
 CREATE TABLE DWH_PRD_DB.L_MAIN_CLASSIFICATION (
-    MAIN_CLASSIFICATION_ID                   INT,
+    MAIN_CLASSIFICATION_ID                   			 INT,
     MIS_TYPE             					 STRING,
     MIS_CLASS	         					 STRING,
     CLASS_NUM        	 					 INT,
@@ -596,7 +596,7 @@ TBLPROPERTIES	('TRANSACTIONAL'='TRUE', "ORC.COMPRESS"="SNAPPY");
 
 DROP TABLE DWH_PRD_DB.L_PROFESSION;
 CREATE TABLE DWH_PRD_DB.L_PROFESSION (
-    PROFESSION_ID              INT,
+    PROFESSION_ID              	   INT,
     PROFESSION_COD  		   INT,
     DESC_AR         		   STRING,
     DESC_EN         		   STRING,
@@ -610,7 +610,7 @@ TBLPROPERTIES	('TRANSACTIONAL'='TRUE', "ORC.COMPRESS"="SNAPPY");
 
 DROP TABLE DWH_PRD_DB.L_SIGNATURE;
 CREATE TABLE DWH_PRD_DB.L_SIGNATURE (
-    SIGNATURE_ID            INT,
+    SIGNATURE_ID            		INT,
     SIGN_TYP_COD  			STRING,
     DESC_AR       			STRING,
     DESC_EN       			STRING,
@@ -624,11 +624,11 @@ TBLPROPERTIES	('TRANSACTIONAL'='TRUE', "ORC.COMPRESS"="SNAPPY");
 
 DROP TABLE DWH_PRD_DB.L_SUB_CLASSIFICATION;
 CREATE TABLE DWH_PRD_DB.L_SUB_CLASSIFICATION (
-    SUB_CLASSIFICATION_ID                           INT,
+    SUB_CLASSIFICATION_ID                         		INT,
     MIS_COD                          				STRING,
-    CLASS_NUM  			   						    INT,
-    MIS_CLASS_ID         	    					INT,
-    MIS_TYPE   			     						STRING, 
+    CLASS_NUM  			   				INT,
+    MIS_CLASS_ID         	    				INT,
+    MIS_TYPE   			     				STRING, 
     DESCRIPTION_AR                   				STRING,
     DESCRIPTION_EN                   				STRING,
     ACTIVE                           				STRING,
@@ -676,7 +676,7 @@ CREATE TABLE DWH_PRD_DB.D_WALLETS (
     REGISTRATION_VERIFICATION_METHOD STRING,
     REGISTRATION_DT                  INT,
     UNREGISTRATION_DT                INT,
-    ROWHASH			    			 STRING,
+    ROWHASH			     STRING,
     BUSINESS_DT                      INT
 )CLUSTERED BY (MOBILE_NUM,NATIONAL_ID) INTO 4 BUCKETS
 STORED AS ORC
@@ -803,7 +803,7 @@ TBLPROPERTIES	('TRANSACTIONAL'='TRUE', "ORC.COMPRESS"="SNAPPY");
 
 DROP TABLE DWH_PRD_DB.H_BRANCH;
 CREATE TABLE DWH_PRD_DB.H_BRANCH (
-    BRANCH_ID   		  	     INT,
+    BRANCH_ID   		     INT,
     BRN_COD            		     INT,
     CBE_BRN_COD        		     INT,
     BRN_CITY	       		     STRING,
@@ -827,7 +827,7 @@ CREATE TABLE DWH_PRD_DB.H_BRANCH (
     MAKER_ID           		     STRING,
     CHECKER_ID         		     STRING,
     LAST_MNT_DT        		     INT,
-    ROWHASH			    		 STRING,
+    ROWHASH			     STRING,
     BUSINESS_DT        		     INT
 )CLUSTERED BY (BRN_COD) INTO 2 BUCKETS
 STORED AS PARQUET
@@ -837,85 +837,85 @@ DROP TABLE DWH_PRD_DB.D_CARDS;
 CREATE TABLE DWH_PRD_DB.D_CARDS (
 CARD_ID				   		  INT,
 PAN				     		  STRING,
-MASK_PAN			     	  STRING,
-BIN			            	  STRING,
+MASK_PAN			     	  	  STRING,
+BIN			            	  	  STRING,
 MBR				    	 	  INT,
-DWH_ID				     	  INT,
-CATEGORY_ID			     	  INT,
-CARD_SCHEME_ID			      INT,
-CARD_TYPE_ID			      INT,
-BRN_ID				     	  INT,
+DWH_ID				     	  	  INT,
+CATEGORY_ID			     		  INT,
+CARD_SCHEME_ID			    		  INT,
+CARD_TYPE_ID			      		  INT,
+BRN_ID				     	  	  INT,
 BASE						  STRING	
 ,MISID						  STRING	
 ,ISSUEDATE					  INT	
 ,EXPIRYDATE					  INT	
-,CARD_STATUS_ID				  INT	
+,CARD_STATUS_ID				 	  INT	
 ,MOB						  STRING	
-,PRIMARY_ACCT_ID			  INT	
-,PRIMARY_ACCT_TYPE			  STRING	
-,SECONDARY_ACCT_ID			  INT	
-,SECONDARY_ACCT_TYPE		  STRING	
+,PRIMARY_ACCT_ID			 	  INT	
+,PRIMARY_ACCT_TYPE			  	  STRING	
+,SECONDARY_ACCT_ID			  	  INT	
+,SECONDARY_ACCT_TYPE		  		  STRING	
 ,TXNCODE					  STRING	
 ,PKVI						  STRING	
 ,PVV						  STRING	
-,ACCT_CURRENCY_ID			  STRING	
-,CARD_NUM	STRING	
-,CARD_PRODUCT_ID	INT	
-,CARD_LIM	STRING	
-,LAST_STATEMENT_DT	STRING	
-,NAME_ON_CARD	STRING	
-,CARD_ONLINE_STATUS	STRING	
-,CASH_LIM	STRING	
-,SALE_LIM	STRING	
-,PRIMARY_SUPPLEMENTARY_FLAG	STRING	
-,COMPASS_ACCT_NUM	STRING	
-,CUSTOMER_ADDR	STRING	
-,MAIL_ADDR2	STRING	
-,MAIL_ADDR3	STRING	
-,PASSPORT_NUM	STRING	
-,NAME_TRANSLITERATION	STRING	
-,HOME_PHONE	STRING	
-,WORK_PHONE	STRING	
-,FAX	STRING	
-,ACTIVATION_DT	INT	
-,SELLER_NAME	STRING	
-,GUARANTEE_ACC1	STRING	
-,GUARANTEE_COD	STRING	
-,GUARANTEE_ACC2	STRING	
-,GUARANTEE_ACC3	STRING	
-,GUARANTEE_ACC4	STRING	
-,CONTRACT_NUM	STRING	
-,CONTRACT_TYPE	STRING	
-,CONTRACT_STAT	STRING	
-,CONTRACT_STATUS	STRING	
-,PARENT_PAN	STRING	
-,FINANCIAL_PROFILE_NAME	STRING	
-,DAF_PROFILE_NAME	STRING	
-,INTEREST_PROFILE_NAME	STRING	
-,MIN_PAYMENT_PROFILE_NAME	STRING	
-,GENDER	STRING	
-,AGE	INT	
-,EDUCATION	STRING	
-,MARITAL_STATUS_ID	INT	
-,OCCUPATION	STRING	
-,ISSUANCE_REASON	STRING	
-,BLOCK_FOR_REISSUE	STRING	
-,COMPANY	STRING	
-,ORGANIZATION	STRING	
-,EXTERNAL_ACCT	INT	
-,LINKED_CONTRACT	STRING	
-,ACCT_CLIENT_NAME	STRING	
-,ACCT_STATE	STRING	
-,DOMESTIC_MP_PROFILE	STRING	
-,INTERNATIONAL_MP_PROFILE	STRING	
-,LINKED_CARDS	STRING	
-,LINKED_VALID_CARDS	STRING	
-,ACCT_DAF_PROFILE_NAME_DOM	STRING	
-,ACCT_DAF_PROFILE_NAME_INT	STRING
-,TABLENAME	STRING
-,CARDKEY	STRING
-,ROWHASH	STRING
-,BUSINESS_DT	INT
+,ACCT_CURRENCY_ID			  	  STRING	
+,CARD_NUM					  STRING	
+,CARD_PRODUCT_ID				  INT	
+,CARD_LIM					  STRING	
+,LAST_STATEMENT_DT				  STRING	
+,NAME_ON_CARD					  STRING	
+,CARD_ONLINE_STATUS				  STRING	
+,CASH_LIM					  STRING	
+,SALE_LIM					  STRING	
+,PRIMARY_SUPPLEMENTARY_FLAG			  STRING	
+,COMPASS_ACCT_NUM				  STRING	
+,CUSTOMER_ADDR					  STRING	
+,MAIL_ADDR2					  STRING	
+,MAIL_ADDR3					  STRING	
+,PASSPORT_NUM					  STRING	
+,NAME_TRANSLITERATION				  STRING	
+,HOME_PHONE					  STRING	
+,WORK_PHONE					  STRING	
+,FAX						  STRING	
+,ACTIVATION_DT					  INT	
+,SELLER_NAME					  STRING	
+,GUARANTEE_ACC1					  STRING	
+,GUARANTEE_COD					  STRING	
+,GUARANTEE_ACC2					  STRING	
+,GUARANTEE_ACC3					  STRING	
+,GUARANTEE_ACC4					  STRING	
+,CONTRACT_NUM	  				  STRING	
+,CONTRACT_TYPE					  STRING	
+,CONTRACT_STAT					  STRING	
+,CONTRACT_STATUS				  STRING	
+,PARENT_PAN					  STRING	
+,FINANCIAL_PROFILE_NAME				  STRING	
+,DAF_PROFILE_NAME				  STRING	
+,INTEREST_PROFILE_NAME				  STRING	
+,MIN_PAYMENT_PROFILE_NAME			  STRING	
+,GENDER						  STRING	
+,AGE						  INT	
+,EDUCATION					  STRING	
+,MARITAL_STATUS_ID				  INT	
+,OCCUPATION					  STRING	
+,ISSUANCE_REASON				  STRING	
+,BLOCK_FOR_REISSUE				  STRING	
+,COMPANY					  STRING	
+,ORGANIZATION					  STRING	
+,EXTERNAL_ACCT					  INT	
+,LINKED_CONTRACT				  STRING	
+,ACCT_CLIENT_NAME				  STRING	
+,ACCT_STATE					  STRING	
+,DOMESTIC_MP_PROFILE				  STRING	
+,INTERNATIONAL_MP_PROFILE		  	  STRING	
+,LINKED_CARDS					  STRING	
+,LINKED_VALID_CARDS				  STRING	
+,ACCT_DAF_PROFILE_NAME_DOM			  STRING	
+,ACCT_DAF_PROFILE_NAME_INT			  STRING
+,TABLENAME					  STRING
+,CARDKEY					  STRING
+,ROWHASH					  STRING
+,BUSINESS_DT					  INT
 )CLUSTERED BY (DWH_ID, CARD_NUM, PAN, CATEGORY_ID) INTO 16 BUCKETS
 STORED AS ORC
 TBLPROPERTIES	('TRANSACTIONAL'='TRUE', "ORC.COMPRESS"="SNAPPY");
