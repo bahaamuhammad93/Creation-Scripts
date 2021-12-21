@@ -4334,7 +4334,7 @@ TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
 
 CREATE TABLE STG_PRD_DB.PROVIDER 
    (ID int,
-   DistributorCode int,
+   DistributorCode STRING,
    DistributorName_AR string,
    DistributorName_EN string,
    ld_date int,
