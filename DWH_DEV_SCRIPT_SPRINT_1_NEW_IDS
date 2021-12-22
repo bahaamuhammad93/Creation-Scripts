@@ -265,7 +265,7 @@ CREATE TABLE DWH_PRD_DB.D_CUSTOMER (
     FLG_DC                         			INT,
     FLG_PPC                        			INT,
     FLG_CC                         			INT,
-    FLG_LOAN                       			INT,
+    FLG_LN                       			INT,
     FLG_OVD                        			INT,
     FLG_BANK_ASSURANCE             			INT,
     FLG_MEMO                       			INT,
