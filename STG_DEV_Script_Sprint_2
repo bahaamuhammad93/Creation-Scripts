@@ -299,3 +299,75 @@ STORED AS ORC
 TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
 
 
+/* DDL FOR FCT_ALL_FCR_TXNS_MMDD */
+DROP TABLE STG_DEV_DB.FCT_ALL_FCR_TXNS_MMDD;
+ CREATE TABLE STG_DEV_DB.FCT_ALL_FCR_TXNS_MMDD 
+ ( 
+V_CONTRACT_CODE				           STRING
+N_EVENT_SEQ_NO				            INT
+N_AC_ENTRY_SR_NO		   	        INT
+V_BRANCH_CODE				             STRING
+V_CUST_REF_CODE			   	        STRING
+V_RELATED_ACCOUNT		  	        STRING
+V_RELATED_REF_NO			           STRING
+V_TXN_CODE					               STRING
+V_TXN_DESC				       	        STRING
+N_TXN_AMT_FCY				             DOUBLE
+N_TXN_AMT_LCY				             DOUBLE
+V_TXN_CURR_CODE				           STRING
+D_TXN_BOOK_DATE				           DATE
+D_TXN_VALUE_DATE			           DATE
+V_FINANCIAL_CYCLE			          STRING
+V_PERIOD_CODE				             STRING
+V_ACCOUNT				        	        STRING
+F_DRCR_IND					               STRING
+V_MIS_TXN_CODE1				           STRING
+V_MIS_COMP_CODE1			           STRING
+V_MIS_CUST_CODE1			           STRING
+V_MIS_TXN_CODE2				           STRING
+V_MIS_COMP_CODE2			           STRING
+V_MIS_CUST_CODE2			           STRING
+V_MIS_TXN_CODE3				           STRING
+V_MIS_COMP_CODE3			           STRING
+V_MIS_CUST_CODE3			           STRING
+V_MIS_TXN_CODE4				           STRING
+V_MIS_COMP_CODE4			           STRING
+V_MIS_CUST_CODE4			           STRING
+V_MIS_TXN_CODE5				           STRING
+V_MIS_COMP_CODE5			           STRING
+V_MIS_CUST_CODE5			           STRING
+V_MIS_TXN_CODE6				           STRING
+V_MIS_COMP_CODE6			           STRING
+V_MIS_CUST_CODE6			           STRING
+V_MIS_TXN_CODE7				           STRING
+V_MIS_COMP_CODE7			           STRING
+V_MIS_CUST_CODE7			           STRING
+V_MIS_TXN_CODE8				           STRING
+V_MIS_COMP_CODE8			           STRING
+V_MIS_CUST_CODE8			           STRING
+V_MIS_TXN_CODE9				           STRING
+V_MIS_COMP_CODE9			           STRING
+V_MIS_CUST_CODE9			           STRING
+V_MIS_TXN_CODE10			           STRING
+V_MIS_COMP_CODE10			          STRING
+V_MIS_CUST_CODE10			          STRING
+V_MIS_HEAD					               STRING
+V_POOL_CODE					              STRING
+F_CUST_GL					                STRING
+F_MIS_FLAG					               STRING
+N_REF_RATE					               DOUBLE
+F_CALC_METHOD				             STRING
+D_GL_TXN_EXTRACTION_DATE	     DATE
+N_COD_PROD					               DOUBLE
+V_REF_VOUCHER_NO			           STRING
+V_COD_USER_ID				             STRING
+V_COD_AUTH_ID				             STRING
+BATCH_NO					                 INT
+SOURCE_CODE					              STRING
+V_REF_TXN_NO				              STRING
+V_REF_USR_NO				              STRING
+N_CTR_AC_ENTRY			            	INT
+ )
+CLUSTERED BY (V_CONTRACT_CODE,N_EVENT_SEQ_NO) INTO 32 BUCKETS
+STORED AS ORC
+TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
