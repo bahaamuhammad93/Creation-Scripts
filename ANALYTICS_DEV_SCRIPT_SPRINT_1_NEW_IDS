@@ -1,0 +1,1881 @@
+DROP TABLE ANALYTICS_TST_DB.D_DATE;
+CREATE TABLE ANALYTICS_TST_DB.D_DATE(
+	DATE_ID 						DOUBLE, 
+	DATE_ID_DT 						STRING, 
+	DAY 							DOUBLE, 
+	DAY_SUFFIX 						STRING, 
+	DAYOFWEEK 						DOUBLE, 
+	DAYOFWEEK_NAME_AR					STRING, 
+	DAYOFWEEK_NAME_EN					STRING, 
+	DAYOFWEEK_NAME_SHORT_AR 				STRING, 
+	DAYOFWEEK_NAME_SHORT_EN 				STRING, 
+	DAYOFMONTH						DOUBLE, 
+	DAYOFQUARTER						DOUBLE, 
+	DAYOFYEAR						DOUBLE, 
+	WEEKOFMONTH						DOUBLE, 
+	WEEKOFQUARTER						DOUBLE, 
+	WEEKOFYEAR						DOUBLE, 
+	MONTH							DOUBLE, 
+	MONTHOFQUARTER						DOUBLE, 
+	MONTHOFYEAR						DOUBLE, 
+	MONTH_NAME_AR						STRING, 
+	MONTH_NAME_EN						STRING, 
+	MONTH_NAME_SHORT_AR					STRING, 
+	MONTH_NAME_SHORT_EN					STRING, 
+	QUARTER							DOUBLE, 
+	QUARTER_NAME_AR						STRING, 
+	QUARTER_NAME_EN						STRING, 
+	YEAR							DOUBLE, 
+	FLG_FIRSTDATEOFWEEK					STRING, 
+	FLG_LASTDATEOFWEEK					STRING, 
+	FLG_FIRSTDATEOFMONTH					STRING, 
+	FLG_LASTDATEOFMONTH					STRING, 
+	FLG_FIRSTDATEOFQUATER					STRING, 
+	FLG_LASTDATEOFQUATER					STRING, 
+	FLG_FIRSTDATEOFYEAR					STRING, 
+	FLG_LASTDATEOFYEAR					STRING, 
+	IS_LEAP_YEAR						STRING, 
+	FISCAL_DAYOFYEAR					DOUBLE, 
+	FISCAL_WEEKOFYEAR					DOUBLE, 
+	FISCAL_MONTH						DOUBLE, 
+	FISCAL_QUARTER						DOUBLE, 
+	FISCAL_QUARTER_NAME_AR					STRING, 
+	FISCAL_QUARTER_NAME_EN					STRING, 
+	FISCAL_YEAR						STRING, 
+	FLG_FISCALFIRSTDAYOFMONTH				STRING, 
+	FLG_FISCALLASTDAYOFMONTH				STRING, 
+	FLG_FISCALFIRSTDAYOFQUARTER 				STRING, 
+	FLG_FISCALLASTDAYOFQUARTER				STRING, 
+	FLG_FISCALFIRSTDAYOFYEAR				STRING, 
+	FLG_FISCALLASTDAYOFYEAR					STRING, 
+	IS_WORKING_DAY						STRING,
+	IS_WEEK_END						STRING, 
+	IS_HOLIDAY						STRING, 
+	HOLIDAY_NAME_AR						STRING, 
+	HOLIDAY_NAME_EN						STRING)
+CLUSTERED BY (DATE_ID) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.B_CUSTOMER_CLASSIFICATION;
+CREATE TABLE ANALYTICS_TST_DB.B_CUSTOMER_CLASSIFICATION (
+    CUST_CLASSIFICATION_ID                 	           INT,
+    CUST_ID                  	  			   INT,
+    DWH_ID              	 			   INT,
+    CIF                 				   INT,
+    SUB_CLASSIFICATION_ID          			   INT,
+    MIS_CODE  			 			   INT,
+    CLASS_NUM                    			   INT,
+    MAKER_ID                     			   STRING,
+    CHECKER_ID                    			   STRING,
+    BUSINESS_DT                   			   INT 
+)CLUSTERED BY (CIF , SUB_CLASSIFICATION_ID) INTO 16 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.D_CORPORATE_DETAIL;
+CREATE TABLE ANALYTICS_TST_DB.D_CORPORATE_DETAIL (
+    CORPORATE_DETAIL_ID                      		   INT,
+    CUST_ID                  				   INT,
+    DWH_ID         	    				   INT,
+    CIF            	  				   INT,
+    AMT_NET_WORTH_COMP    				   DOUBLE,
+    AMT_AUTH_CAPITAL         				   DOUBLE,
+    AMT_PAIDUP_CAPITAL        				   DOUBLE,
+    AMT_RESERV_LST_YR         				   DOUBLE,
+    AMT_NET_PROF_LOSS_LST_YR  				   DOUBLE,
+    NAM_PLACE_INCORP          				   STRING,
+    TYP_COMPANY               				   STRING,
+    LAST_FIN_INFO_UPDAT_DT    				   INT,
+    CTR_PARTNERS_DIRECTORS    				   INT,
+    NAME_MAJ_SHAREHLDR1       				   STRING,
+    NAME_MAJ_SHAREHLDR2       				   STRING,
+    NAME_MAJ_SHAREHLDR3       				   STRING,
+    NAME_MAJ_SHAREHLDR4       				   STRING,
+    NAME_MAJ_SHAREHLDR5       				   STRING,
+    NAME_MAJ_SHAREHLDR6       				   STRING,
+    NAME_MAJ_SHAREHLDR7       				   STRING,
+    NAME_MAJ_SHAREHLDR8       				   STRING,
+    NAME_MAJ_SHAREHLDR9       				   STRING,
+    NAME_MAJ_SHAREHLDR10      				   STRING,
+    COD_MAJ_SHAREHLDR_REL1    				   STRING,
+    COD_MAJ_SHAREHLDR_REL2    				   STRING,
+    COD_MAJ_SHAREHLDR_REL3    				   STRING,
+    COD_MAJ_SHAREHLDR_REL4    				   STRING,
+    COD_MAJ_SHAREHLDR_REL5    				   STRING,
+    COD_MAJ_SHAREHLDR_REL6    				   STRING,
+    COD_MAJ_SHAREHLDR_REL7    				   STRING,
+    COD_MAJ_SHAREHLDR_REL8    				   STRING,
+    COD_MAJ_SHAREHLDR_REL9    				   STRING,
+    COD_MAJ_SHAREHLDR_REL10   				   STRING,
+    COD_BUSINESS_LICENSE      				   STRING,
+    DT_BUS_START              				   INT,
+    DT_BUS_LICENSE_EXP        				   INT,
+    NAM_CONTACT_PERSON        				   STRING,
+    TXT_DESGN_CONTACT_PERSN   				   STRING,
+    NAM_PARENT_COMPANY        				   STRING,
+    TXT_INT_CR_RATING         				   STRING,
+    TXT_BUSINESS_TYP          				   STRING,
+    MAKER_ID                  				   STRING,
+    CHECKER_ID                				   STRING,
+    LAST_MNT_DT               				   INT,
+    ROWHASH		     				   STRING,
+    BUSINESS_DT            				   INT 
+)CLUSTERED BY (CIF,DWH_ID) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.H_CORPORATE_DETAIL;
+CREATE TABLE ANALYTICS_TST_DB.H_CORPORATE_DETAIL (
+    CORPORATE_DETAIL_ID                    		 INT,
+    CUST_ID                  				 INT,
+    DWH_ID		   	  		         INT,
+    CIF			   			         INT,
+    AMT_NET_WORTH_COMP        				 DOUBLE,
+    AMT_AUTH_CAPITAL          				 DOUBLE,
+    AMT_PAIDUP_CAPITAL        				 DOUBLE,
+    AMT_RESERV_LST_YR         				 DOUBLE,
+    AMT_NET_PROF_LOSS_LST_YR  				 DOUBLE,
+    NAM_PLACE_INCORP          				 STRING,
+    TYP_COMPANY               				 STRING,
+    LAST_FIN_INFO_UPDAT_DT    				 INT,
+    CTR_PARTNERS_DIRECTORS    				 INT,
+    NAME_MAJ_SHAREHLDR1       				 STRING,
+    NAME_MAJ_SHAREHLDR2       				 STRING,
+    NAME_MAJ_SHAREHLDR3       				 STRING,
+    NAME_MAJ_SHAREHLDR4       				 STRING,
+    NAME_MAJ_SHAREHLDR5       				 STRING,
+    NAME_MAJ_SHAREHLDR6       				 STRING,
+    NAME_MAJ_SHAREHLDR7       				 STRING,
+    NAME_MAJ_SHAREHLDR8       				 STRING,
+    NAME_MAJ_SHAREHLDR9       				 STRING,
+    NAME_MAJ_SHAREHLDR10      				 STRING,
+    COD_MAJ_SHAREHLDR_REL1    				 STRING,
+    COD_MAJ_SHAREHLDR_REL2    				 STRING,
+    COD_MAJ_SHAREHLDR_REL3    				 STRING,
+    COD_MAJ_SHAREHLDR_REL4    				 STRING,
+    COD_MAJ_SHAREHLDR_REL5    				 STRING,
+    COD_MAJ_SHAREHLDR_REL6    				 STRING,
+    COD_MAJ_SHAREHLDR_REL7    				 STRING,
+    COD_MAJ_SHAREHLDR_REL8    				 STRING,
+    COD_MAJ_SHAREHLDR_REL9    				 STRING,
+    COD_MAJ_SHAREHLDR_REL10   				 STRING,
+    COD_BUSINESS_LICENSE      				 STRING,
+    DT_BUS_START              				 INT,
+    DT_BUS_LICENSE_EXP        				 INT,
+    NAM_CONTACT_PERSON        				 STRING,
+    TXT_DESGN_CONTACT_PERSN   				 STRING,
+    NAM_PARENT_COMPANY        				 STRING,
+    TXT_INT_CR_RATING         				 STRING,
+    TXT_BUSINESS_TYP          				 STRING,
+    MAKER_ID                  				 STRING,
+    CHECKER_ID                				 STRING,
+    LAST_MNT_DT               				 INT,
+    ROWHASH			     			 STRING,
+    BUSINESS_DT              				 INT 
+)CLUSTERED BY (CIF,DWH_ID) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.D_CUSTOMER;
+CREATE TABLE ANALYTICS_TST_DB.D_CUSTOMER (
+    CUST_ID        	                  	    	INT,
+    DWH_ID                       	 	    	INT,
+    CIF                            		    	STRING,
+    T24_ID			  		    	STRING,
+    CBE_REF_COD                   		    	STRING,
+    CUST_BRN_ID			 		    	INT,
+    LIAB_NO                       		    	INT,
+    OPEN_DT                     		    	INT,
+    BIRTH_DT                     		    	INT,
+    CUSTOMER_TYPE_ID              		    	INT,
+    CUST_STATUS_ID                		   	INT,
+    NATIONAL_ID			   		  	STRING,
+    SECONDARY_IDENTITY_ID          		   	INT,
+    SECONDARY_IDENTITY_VALUE      		   	STRING,
+    CUST_TIN			   			STRING,
+    FULL_NAME_AR                   			STRING,
+    FIRST_NAME_AR                  			STRING,
+    MID_NAME_AR                    			STRING,
+    LAST_NAME_AR                   			STRING,
+    FULL_NAME_EN                   			STRING,
+    FIRST_NAME_EN                  			STRING,
+    MID_NAME_EN                    			STRING,
+    LAST_NAME_EN                   			STRING,
+    NATIONALITY               	   			STRING,
+    EMAIL                          			STRING,
+    GENDER                         			STRING,
+    CUST_PREFIX                    			STRING,
+    LANGUAGE_ID                    			INT,
+    GUARDIAN_TYPE                  			INT,
+    SIGNATURE_ID                   			INT,
+    BUSINESS_TYPE_ID               			INT,
+    PROFESSION_ID                  			INT,
+    MARITAL_STATUS_ID              			INT,
+    CREDIT_RATING                  			STRING,
+    REVISION_DATE                  			INT,
+    ADDR1                          			STRING,
+    ADDR2                          			STRING,
+    ADDR3                          			STRING,
+    ZIP_COD                        			STRING,
+    CITY                           			STRING,
+    FAX                            			STRING,
+    PERMN_ADDR1                    			STRING,
+    PERMN_ADDR2                    			STRING,
+    PERMN_ADDR3                    			STRING,
+    PERMN_CITY                     			STRING,
+    PERMN_ZIP_COD                  			STRING,
+    PERMN_GOV_ID                   			INT,
+    PERMN_COUNTRY_ID               			INT,
+    PHONE_NUM_1                    			STRING,
+    PHONE_NUM_2                    			STRING,
+    PHONE_NUM_3 /*TELEX*/	   			STRING,
+    CC_MOB_NUM                     			STRING,
+    WALLET_MOB_NUM                 			STRING,
+    IB_MOB_NUM                     			STRING,
+    PPC_MOB_NUM                    			STRING,
+    DC_MOB_NUM                     			STRING,
+    IB_EMAIL                       			STRING,
+    CUST_OCCUPATION                			STRING,
+    CUST_DESIGNATION               			STRING,
+    CUST_SALARY                    			DOUBLE,
+    SPOUSE_NAME_AR                 			STRING,
+    SPOUSE_NAME_EN                 			STRING,
+    MARRIAGE_DT                    			INT,
+    SPOUSE_BIRTH_DT                			INT,
+    SPOUSE_EMPLOYER                			STRING,
+    SPOUSE_IDENTITY_VALUE          			STRING,
+    INCORPORATED_DT                			INT,
+    TOT_LIM_AMT                    			DOUBLE,
+    LIM_CCY                        			INT,
+    INCOME_CAT_ID    		  			INT,
+    INCOME_AMT                     			DOUBLE,
+    FLG_GLOBAL                     			STRING,
+    FLG_MINOR                      			INT,
+    FLG_STAFF                      			INT,
+    FLG_WALLET                     			INT,
+    FLG_INTERNETBANKING            			INT,
+    FLG_SAFEBOX                    			INT,
+    FLG_REPLICATE                  			INT,
+    FLG_CASA                       			INT,
+    FLG_CD                         			INT,
+    FLG_TD                         			INT,
+    FLG_DC                         			INT,
+    FLG_PPC                        			INT,
+    FLG_CC                         			INT,
+    FLG_LN                       			INT,
+    FLG_OVD                        			INT,
+    FLG_BANK_ASSURANCE             			INT,
+    FLG_MEMO                       			INT,
+    FLG_WATCH_LIST                 			INT,
+    WATCH_LIST_DT                  			INT,
+    FLG_BDC_CUST                   			INT,
+    SYSTEM_ID                      			STRING,
+    OFFICER_ID                     			INT,
+    MAKER_ID                       			STRING,
+    CHECKER_ID                     			STRING,
+    LAST_MNT_DT                    			INT,
+    ROWHASH 			   			STRING,
+    BUSINESS_DT                   		 	INT 
+)CLUSTERED BY (DWH_ID) INTO 16 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.HLP_CUSTOMER;
+CREATE TABLE ANALYTICS_TST_DB.HLP_CUSTOMER (
+    CUST_ID                  	          	        INT,
+    DWH_ID                     			        INT,
+    CIF                            		        STRING,
+    T24_ID			   		        STRING,
+    CBE_REF_COD                			    	STRING,
+    CUST_BRN_ID			  			INT,
+    LIAB_NO                        			INT,
+    OPEN_DT                        			INT,
+    BIRTH_DT                       			INT,
+    CUSTOMER_TYPE_ID               			INT,
+    CUST_STATUS_ID                 			INT,
+    NATIONAL_ID			   			STRING,
+    SECONDARY_IDENTITY_ID          			INT,
+    SECONDARY_IDENTITY_VALUE       			STRING,
+    CUST_TIN			   			STRING,
+    FULL_NAME_AR                   			STRING,
+    FIRST_NAME_AR                  			STRING,
+    MID_NAME_AR                    			STRING,
+    LAST_NAME_AR                   			STRING,
+    FULL_NAME_EN                   			STRING,
+    FIRST_NAME_EN                  			STRING,
+    MID_NAME_EN                    			STRING,
+    LAST_NAME_EN                   			STRING,
+    NATIONALITY               	   			STRING,
+    EMAIL                          			STRING,
+    GENDER                         			STRING,
+    CUST_PREFIX                    			STRING,
+    LANGUAGE_ID                    			INT,
+    GUARDIAN_TYPE                  			INT,
+    SIGNATURE_ID                   			INT,
+    BUSINESS_TYPE_ID               			INT,
+    PROFESSION_ID                  			INT,
+    MARITAL_STATUS_ID              			INT,
+    CREDIT_RATING                  			STRING,
+    REVISION_DATE                  			INT,
+    ADDR1                          			STRING,
+    ADDR2                          			STRING,
+    ADDR3                          			STRING,
+    ZIP_COD                        			STRING,
+    CITY                           			STRING,
+    FAX                            			STRING,
+    PERMN_ADDR1                    			STRING,
+    PERMN_ADDR2                    			STRING,
+    PERMN_ADDR3                    			STRING,
+    PERMN_CITY                     			STRING,
+    PERMN_ZIP_COD                  			STRING,
+    PERMN_GOV_ID                   			INT,
+    PERMN_COUNTRY_ID               			INT,
+    PHONE_NUM_1                    			STRING,
+    PHONE_NUM_2                    			STRING,
+    PHONE_NUM_3 /*TELEX*/	   			STRING,
+    CC_MOB_NUM                     			STRING,
+    WALLET_MOB_NUM                 			STRING,
+    IB_MOB_NUM                     			STRING,
+    PPC_MOB_NUM                    			STRING,
+    DC_MOB_NUM                     			STRING,
+    IB_EMAIL                       			STRING,
+    CUST_OCCUPATION                			STRING,
+    CUST_DESIGNATION               			STRING,
+    CUST_SALARY                    			DOUBLE,
+    SPOUSE_NAME_AR                 			STRING,
+    SPOUSE_NAME_EN                 			STRING,
+    MARRIAGE_DT                    			INT,
+    SPOUSE_BIRTH_DT                			INT,
+    SPOUSE_EMPLOYER                			STRING,
+    SPOUSE_IDENTITY_VALUE          			STRING,
+    INCORPORATED_DT                			INT,
+    TOT_LIM_AMT                    			DOUBLE,
+    LIM_CCY                        			INT,
+    INCOME_CAT_ID    		   			INT,
+    INCOME_AMT                     			DOUBLE,
+    FLG_GLOBAL                     			STRING,
+    FLG_MINOR                      			INT,
+    FLG_STAFF                      			INT,
+    FLG_WALLET                     			INT,
+    FLG_INTERNETBANKING            			INT,
+    FLG_SAFEBOX                    			INT,
+    FLG_REPLICATE                  			INT,
+    FLG_CASA                       			INT,
+    FLG_CD                         			INT,
+    FLG_TD                         			INT,
+    FLG_DC                         			INT,
+    FLG_PPC                        			INT,
+    FLG_CC                         			INT,
+    FLG_LN                       			INT,
+    FLG_OVD                        			INT,
+    FLG_BANK_ASSURANCE             			INT,
+    FLG_MEMO                       			INT,
+    FLG_WATCH_LIST                 			INT,
+    WATCH_LIST_DT                  			INT,
+    FLG_BDC_CUST                   			INT,
+    SYSTEM_ID                      			STRING,
+    OFFICER_ID                     			INT,
+    MAKER_ID                       			STRING,
+    CHECKER_ID                     			STRING,
+    LAST_MNT_DT                    			INT,
+    FLG_UPDATE 			   			STRING,
+    CUSTKEY			   			STRING,
+    ROWHASH			   			STRING,
+    BUSINESS_DT                   			INT 
+)
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.H_CUSTOMER;
+CREATE TABLE ANALYTICS_TST_DB.H_CUSTOMER (
+    CUST_ID                        INT,
+    DWH_ID                         INT,
+    CIF                            STRING,
+    T24_ID			   STRING,
+    CBE_REF_COD                    STRING,
+    CUST_BRN_ID			   INT,
+    LIAB_NO                        INT,
+    OPEN_DT                        INT,
+    BIRTH_DT                       INT,
+    CUSTOMER_TYPE_ID               INT,
+    CUST_STATUS_ID                 INT,
+    NATIONAL_ID			   STRING,
+    SECONDARY_IDENTITY_ID          INT,
+    SECONDARY_IDENTITY_VALUE       STRING,
+    CUST_TIN			   STRING,
+    FULL_NAME_AR                   STRING,
+    FIRST_NAME_AR                  STRING,
+    MID_NAME_AR                    STRING,
+    LAST_NAME_AR                   STRING,
+    FULL_NAME_EN                   STRING,
+    FIRST_NAME_EN                  STRING,
+    MID_NAME_EN                    STRING,
+    LAST_NAME_EN                   STRING,
+    NATIONALITY                    STRING,
+    EMAIL                          STRING,
+    GENDER                         STRING,
+    CUST_PREFIX                    STRING,
+    LANGUAGE_ID                    INT,
+    GUARDIAN_TYPE                  INT,
+    SIGNATURE_ID                   INT,
+    BUSINESS_TYPE_ID               INT,
+    PROFESSION_ID                  INT,
+    MARITAL_STATUS_ID              INT,
+    CREDIT_RATING                  STRING,
+    REVISION_DATE                  INT,
+    ADDR1                          STRING,
+    ADDR2                          STRING,
+    ADDR3                          STRING,
+    ZIP_COD                        STRING,
+    CITY                           STRING,
+    FAX                            STRING,
+    PERMN_ADDR1                    STRING,
+    PERMN_ADDR2                    STRING,
+    PERMN_ADDR3                    STRING,
+    PERMN_CITY                     STRING,
+    PERMN_ZIP_COD                  STRING,
+    PERMN_GOV_ID                   INT,
+    PERMN_COUNTRY_ID               INT,
+    PHONE_NUM_1                    STRING,
+    PHONE_NUM_2                    STRING,
+    PHONE_NUM_3 /*TELEX*/	   STRING,
+    CC_MOB_NUM                     STRING,
+    WALLET_MOB_NUM                 STRING,
+    IB_MOB_NUM                     STRING,
+    PPC_MOB_NUM                    STRING,
+    DC_MOB_NUM                     STRING,
+    IB_EMAIL                       STRING,
+    CUST_OCCUPATION                STRING,
+    CUST_DESIGNATION               STRING,
+    CUST_SALARY                    DOUBLE,
+    SPOUSE_NAME_AR                 STRING,
+    SPOUSE_NAME_EN                 STRING,
+    MARRIAGE_DT                    INT,
+    SPOUSE_BIRTH_DT                INT,
+    SPOUSE_EMPLOYER                STRING,
+    SPOUSE_IDENTITY_VALUE          STRING,
+    INCORPORATED_DT                INT,
+    TOT_LIM_AMT                    DOUBLE,
+    LIM_CCY                        INT,
+    INCOME_CAT_ID    		   INT,
+    INCOME_AMT                     DOUBLE,
+    FLG_GLOBAL                     STRING,
+    FLG_MINOR                      INT,
+    FLG_STAFF                      INT,
+    FLG_WALLET                     INT,
+    FLG_INTERNETBANKING            INT,
+    FLG_SAFEBOX                    INT,
+    FLG_REPLICATE                  INT,
+    FLG_CASA                       INT,
+    FLG_CD                         INT,
+    FLG_TD                         INT,
+    FLG_DC                         INT,
+    FLG_PPC                        INT,
+    FLG_CC                         INT,
+    FLG_LN                         INT,
+    FLG_OVD                        INT,
+    FLG_BANK_ASSURANCE             INT,
+    FLG_MEMO                       INT,
+    FLG_WATCH_LIST                 INT,
+    WATCH_LIST_DT                  INT,
+    FLG_BDC_CUST                   INT,
+    SYSTEM_ID                      STRING,
+    OFFICER_ID                     INT,
+    MAKER_ID                       STRING,
+    CHECKER_ID                     STRING,
+    LAST_MNT_DT                    INT,
+    ROWHASH			   STRING,
+    BUSINESS_DT                    INT 
+)CLUSTERED BY (DWH_ID,CIF,NATIONAL_ID) INTO 16 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.F_CUST_MEMO;
+CREATE TABLE ANALYTICS_TST_DB.F_CUST_MEMO (
+    CUST_MEMO_ID                   		INT,
+    CUST_ID         	 		 	INT,
+    DWH_ID     		  			INT,
+    CIF        		  			INT,
+    CUST_MEMO_DT          			INT,
+    TXT_CUST_MEMO         			STRING,
+    FLG_SEVERITY          			STRING,
+    MAKER_ID              			STRING,
+    CHECKER_ID            			STRING,
+    LAST_MNT_DT           			INT,
+    BUSINESS_DT           			INT 
+)CLUSTERED BY (CIF) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+
+DROP TABLE ANALYTICS_TST_DB.L_CUSTOMER_CLASS;
+CREATE TABLE ANALYTICS_TST_DB.L_CUSTOMER_CLASS (
+    CUST_CLASS_ID         	    	 		  INT,
+    CLASS_COD      	  				  STRING,
+    CLASS_DESC_AR  	  				  STRING,
+    CLASS_DESC_EN  	  				  STRING,
+    BUSINESS_DT    	  				  INT 
+)CLUSTERED BY (CLASS_COD) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.L_CUSTOMER_TYPE;
+CREATE TABLE ANALYTICS_TST_DB.L_CUSTOMER_TYPE (
+    CUST_TYPE_ID                   		   INT,
+    TYPE_COD             			   STRING,
+    TYPE_DESC_AR         			   STRING,
+    TYPE_DESC_EN         			   STRING,
+    CLASS_ID  		 			   INT,
+    MAKER_ID             			   STRING,
+    CHECKER_ID           			   STRING,
+    LAST_MNT_DT          			   INT,
+    BUSINESS_DT          			   INT 
+)CLUSTERED BY (TYPE_COD) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.L_IDENTITY_TYPE;
+CREATE TABLE ANALYTICS_TST_DB.L_IDENTITY_TYPE (
+    IDENTITY_TYPE_ID                	 		 INT,
+    IDENTITY_TYPE     	 				 STRING,
+    IDENTITY_DESC_AR  	 				 STRING,
+    IDENTITY_DESC_EN  	 				 STRING,
+    MAKER_ID          	 				 STRING,
+    CHECKER_ID        	 				 STRING,
+    LAST_MNT_DT       	 				 INT,
+    BUSINESS_DT       	 				 INT
+)CLUSTERED BY (IDENTITY_TYPE) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.L_INCOME_SLABS;
+CREATE TABLE ANALYTICS_TST_DB.L_INCOME_SLABS (
+    INCOME_SLABS_ID               	 	 INT,
+    INCOME_CAT_COD   	 			 STRING,
+    AMT_UPPER_LIMIT  	 			 DOUBLE,
+    AMT_LOWER_LIMIT  	 			 DOUBLE,
+    BUSINESS_DT      	 			 INT 
+)CLUSTERED BY (INCOME_CAT_COD) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.L_LANGUAGE;
+CREATE TABLE ANALYTICS_TST_DB.L_LANGUAGE (
+    LANGUAGE_ID           	 	 INT,
+    LANG_COD     			 STRING,
+    DESC_AR      	 		 STRING,
+    DESC_EN      	 		 STRING,
+    MAKER_ID     	 		 STRING,
+    CHECKER_ID   	 		 STRING,
+    LAST_MNT_DT  	 		 INT,
+    BUSINESS_DT  	 		 INT 
+)CLUSTERED BY (LANG_COD) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.L_MAIN_CLASSIFICATION;
+CREATE TABLE ANALYTICS_TST_DB.L_MAIN_CLASSIFICATION (
+    MAIN_CLASSIFICATION_ID                   			 INT,
+    MIS_TYPE             					 STRING,
+    MIS_CLASS	         					 STRING,
+    CLASS_NUM        	 					 INT,
+    DESCRIPTION_AR       					 STRING,
+    DESCRIPTION_EN       					 STRING,
+    BUDGET               					 STRING,
+    MOD_NO               					 INT,
+    MAKER_ID             					 STRING,
+    CHECKER_ID           					 STRING,
+    BUSINESS_DT          					 INT 
+)CLUSTERED BY (MIS_TYPE , MIS_CLASS) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+
+DROP TABLE ANALYTICS_TST_DB.L_PROFESSION;
+CREATE TABLE ANALYTICS_TST_DB.L_PROFESSION (
+    PROFESSION_ID              	   INT,
+    PROFESSION_COD  		   INT,
+    DESC_AR         		   STRING,
+    DESC_EN         		   STRING,
+    MAKER_ID        		   STRING,
+    CHECKER_ID      		   STRING,
+    LAST_MNT_DT     		   INT,
+    BUSINESS_DT     		   INT 
+)CLUSTERED BY (PROFESSION_COD) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.L_SIGNATURE;
+CREATE TABLE ANALYTICS_TST_DB.L_SIGNATURE (
+    SIGNATURE_ID            		INT,
+    SIGN_TYP_COD  			STRING,
+    DESC_AR       			STRING,
+    DESC_EN       			STRING,
+    MAKER_ID      			STRING,
+    CHECKER_ID    			STRING,
+    LAST_MNT_DT   			INT,
+    BUSINESS_DT   			INT 
+)CLUSTERED BY (SIGN_TYP_COD) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.L_SUB_CLASSIFICATION;
+CREATE TABLE ANALYTICS_TST_DB.L_SUB_CLASSIFICATION (
+    SUB_CLASSIFICATION_ID                         		INT,
+    MIS_COD                          				STRING,
+    CLASS_NUM  			   				INT,
+    MIS_CLASS_ID         	    				INT,
+    MIS_TYPE   			     				STRING, 
+    DESCRIPTION_AR                   				STRING,
+    DESCRIPTION_EN                   				STRING,
+    ACTIVE                           				STRING,
+    MAKER_ID                         				STRING,
+    CHECKER_ID                       				STRING,
+    BUSINESS_DT                      				INT 
+)CLUSTERED BY (MIS_COD) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.D_WALLETS;
+CREATE TABLE ANALYTICS_TST_DB.D_WALLETS (
+    WALLET_ID                        INT,
+    WALLET_CUST_ID                   STRING,
+    CUST_ID                          INT,
+    DWH_ID                           INT,
+    NATIONAL_ID                      STRING,
+    CUSTOMER_TYPE                    STRING,
+    FIRST_NAME_AR                    STRING,
+    MID_NAME_AR                      STRING,
+    LAST_NAME_AR                     STRING,
+    FULL_NAME_AR                     STRING,
+    FIRST_NAME_EN                    STRING,
+    MID_NAME_EN                      STRING,
+    LAST_NAME_EN                     STRING,
+    FULL_NAME_EN                     STRING,
+    PROVIDER_ID                      INT,
+    CITY                             STRING,
+    TITLE                            STRING,
+    BIRTH_DT                         INT,
+    GENDER                           STRING,
+    MARITAL_STATUS_ID                INT,
+    MOB_NUM                  	     STRING,
+    WALLET_STATUS_ID                 INT,
+    WALLET_BAL                       DOUBLE,
+    DISTRIBUTOR_COD                  INT,
+    DISTRIBUTOR_NAME                 STRING,
+    DISTRIBUTOR_BRANCH_ID            INT,
+    KYCSTATUS                        STRING,
+    PAN                              INT,
+    WALLET_LIMIT_PROFILE             STRING,
+    REGISTRATION_CHANNEL             STRING,
+    FLG_SELF_REGISTRATION            STRING,
+    SELF_REG_KYC_STATUS              STRING, 
+    REGISTRATION_VERIFICATION_METHOD STRING,
+    REGISTRATION_DT                  INT,
+    UNREGISTRATION_DT                INT,
+    ROWHASH			     STRING,
+    BUSINESS_DT                      INT
+)CLUSTERED BY (MOB_NUM,NATIONAL_ID) INTO 4 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.HLP_WALLETS;
+CREATE TABLE ANALYTICS_TST_DB.HLP_WALLETS (
+    WALLET_ID                        INT,
+    WALLET_CUST_ID                   STRING,
+    CUST_ID                          INT,
+    DWH_ID                           INT,
+    NATIONAL_ID                      STRING,
+    CUSTOMER_TYPE                    STRING,
+    FIRST_NAME_AR                    STRING,
+    MID_NAME_AR                      STRING,
+    LAST_NAME_AR                     STRING,
+    FULL_NAME_AR                     STRING,
+    FIRST_NAME_EN                    STRING,
+    MID_NAME_EN                      STRING,
+    LAST_NAME_EN                     STRING,
+    FULL_NAME_EN                     STRING,
+    PROVIDER_ID                      INT,
+    CITY                             STRING,
+    TITLE                            STRING,
+    BIRTH_DT                         INT,
+    GENDER                           STRING,
+    MARITAL_STATUS_ID                INT,
+    MOB_NUM    	                     STRING,
+    WALLET_STATUS_ID                 INT,
+    WALLET_BAL                       DOUBLE,
+    DISTRIBUTOR_COD                  INT,
+    DISTRIBUTOR_NAME                 STRING,
+    DISTRIBUTOR_BRANCH_ID            INT,
+    KYCSTATUS                        STRING,
+    PAN                              INT,
+    WALLET_LIMIT_PROFILE             STRING,
+    REGISTRATION_CHANNEL             STRING,
+    FLG_SELF_REGISTRATION            STRING,
+    SELF_REG_KYC_STATUS              STRING, 
+    REGISTRATION_VERIFICATION_METHOD STRING,
+    REGISTRATION_DT                  INT,
+    UNREGISTRATION_DT                INT,
+    FLG_UPDATE			     STRING,
+    ROWHASH			     STRING,
+    BUSINESS_DT                      INT
+)CLUSTERED BY (MOB_NUM,NATIONAL_ID) INTO 4 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.H_WALLETS;
+CREATE TABLE ANALYTICS_TST_DB.H_WALLETS (
+    WALLET_ID                        INT,
+    WALLET_CUST_ID                   STRING,
+    CUST_ID                          INT,
+    DWH_ID                           INT,
+    NATIONAL_ID                      STRING,
+    CUSTOMER_TYPE                    STRING,
+    FIRST_NAME_AR                    STRING,
+    MID_NAME_AR                      STRING,
+    LAST_NAME_AR                     STRING,
+    FULL_NAME_AR                     STRING,
+    FIRST_NAME_EN                    STRING,
+    MID_NAME_EN                      STRING,
+    LAST_NAME_EN                     STRING,
+    FULL_NAME_EN                     STRING,
+    PROVIDER_ID                      INT,
+    CITY                             STRING,
+    TITLE                            STRING,
+    BIRTH_DT                         INT,
+    GENDER                           STRING,
+    MARITAL_STATUS_ID                INT,
+    MOB_NUM                          STRING,
+    WALLET_STATUS_ID                 INT,
+    WALLET_BAL                       DOUBLE,
+    DISTRIBUTOR_COD                  INT,
+    DISTRIBUTOR_NAME                 STRING,
+    DISTRIBUTOR_BRANCH_ID            INT,
+    KYCSTATUS                        STRING,
+    PAN                              INT,
+    WALLET_LIMIT_PROFILE             STRING,
+    REGISTRATION_CHANNEL             STRING,
+    FLG_SELF_REGISTRATION            STRING,
+    SELF_REG_KYC_STATUS              STRING, 
+    REGISTRATION_VERIFICATION_METHOD STRING,
+    REGISTRATION_DT                  INT,
+    UNREGISTRATION_DT                INT,
+    ROWHASH			     STRING,
+    BUSINESS_DT                      INT
+)CLUSTERED BY (MOB_NUM,NATIONAL_ID) INTO 4 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.D_BRANCH;
+CREATE TABLE ANALYTICS_TST_DB.D_BRANCH (
+    BRN_ID            	    	     INT,
+    BRN_COD            		     INT,
+    CBE_BRN_COD        		     INT,
+    BRN_CITY	       		     STRING,
+    BRN_TYPE_ID        		     INT,
+    BRN_GOV_ID	       	     	     INT,
+    BRN_NAME_AR        		     STRING,
+    BRN_NAME_AR_SHORT  		     STRING,
+    BRN_NAME_EN        		     STRING,
+    BRN_NAME_EN_SHORT  		     STRING,
+    OPEN_DT            		     INT,
+    CLOSE_DT           		     INT,
+    ADDR1              		     STRING,
+    ADDR2              		     STRING,
+    ADDR3              		     STRING,
+    ZIPCODE            		     STRING,
+    CD_CC_BRN_XREF     		     INT,
+    FLG_CLOSED         		     STRING,
+    MIGRATED_TO        		     INT,
+    LONGITUDE          		     DOUBLE,
+    LATITUDE           		     DOUBLE,
+    MAKER_ID           		     STRING,
+    CHECKER_ID         		     STRING,
+    LAST_MNT_DT        		     INT,
+    ROWHASH			     STRING,
+    BUSINESS_DT        		     INT
+)CLUSTERED BY (BRN_COD) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.H_BRANCH;
+CREATE TABLE ANALYTICS_TST_DB.H_BRANCH (
+    BRN_ID   		  	     INT,
+    BRN_COD            		     INT,
+    CBE_BRN_COD        		     INT,
+    BRN_CITY	       		     STRING,
+    BRN_TYPE_ID        		     INT,
+    BRN_GOV_ID	       		     INT,
+    BRN_NAME_AR        		     STRING,
+    BRN_NAME_AR_SHORT  		     STRING,
+    BRN_NAME_EN        		     STRING,
+    BRN_NAME_EN_SHORT  		     STRING,
+    OPEN_DT            		     INT,
+    CLOSE_DT           		     INT,
+    ADDR1              		     STRING,
+    ADDR2              		     STRING,
+    ADDR3              		     STRING,
+    ZIPCODE            		     STRING,
+    CD_CC_BRN_XREF     		     INT,
+    FLG_CLOSED         		     STRING,
+    MIGRATED_TO        		     INT,
+    LONGITUDE          		     DOUBLE,
+    LATITUDE           		     DOUBLE,
+    MAKER_ID           		     STRING,
+    CHECKER_ID         		     STRING,
+    LAST_MNT_DT        		     INT,
+    ROWHASH			     STRING,
+    BUSINESS_DT        		     INT
+)CLUSTERED BY (BRN_COD) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.D_CARDS;
+CREATE TABLE ANALYTICS_TST_DB.D_CARDS (
+CARD_ID				   		  INT,
+PAN				     		  STRING,
+MASK_PAN			     	  	  STRING,
+BIN			            	  	  STRING,
+MBR				    	 	  INT,
+DWH_ID				     	  	  INT,
+CATEGORY_ID			     		  INT,
+CARD_SCHEME_ID			    		  INT,
+CARD_TYPE_ID			      		  INT,
+BRN_ID				     	  	  INT,
+BASE						  STRING	
+,MISID						  STRING	
+,ISSUEDATE					  INT	
+,EXPIRYDATE					  INT	
+,CARD_STATUS_ID				 	  INT	
+,MOB						  STRING	
+,PRIMARY_ACCT_ID			 	  INT	
+,PRIMARY_ACCT_TYPE			  	  STRING	
+,SECONDARY_ACCT_ID			  	  INT	
+,SECONDARY_ACCT_TYPE		  		  STRING	
+,TXNCODE					  STRING	
+,PKVI						  STRING	
+,PVV						  STRING	
+,ACCT_CURRENCY_ID			  	  STRING	
+,CARD_NUM					  STRING	
+,CARD_PRODUCT_ID				  INT	
+,CARD_LIM					  STRING	
+,LAST_STATEMENT_DT				  STRING	
+,NAME_ON_CARD					  STRING	
+,CARD_ONLINE_STATUS				  STRING	
+,CASH_LIM					  STRING	
+,SALE_LIM					  STRING	
+,PRIMARY_SUPPLEMENTARY_FLAG			  STRING	
+,COMPASS_ACCT_NUM				  STRING	
+,CUSTOMER_ADDR					  STRING	
+,MAIL_ADDR2					  STRING	
+,MAIL_ADDR3					  STRING	
+,PASSPORT_NUM					  STRING	
+,NAME_TRANSLITERATION				  STRING	
+,HOME_PHONE					  STRING	
+,WORK_PHONE					  STRING	
+,FAX						  STRING	
+,ACTIVATION_DT					  INT	
+,SELLER_NAME					  STRING	
+,GUARANTEE_ACC1					  STRING	
+,GUARANTEE_COD					  STRING	
+,GUARANTEE_ACC2					  STRING	
+,GUARANTEE_ACC3					  STRING	
+,GUARANTEE_ACC4					  STRING	
+,CONTRACT_NUM	  				  STRING	
+,CONTRACT_TYPE					  STRING	
+,CONTRACT_STAT					  STRING	
+,CONTRACT_STATUS				  STRING	
+,PARENT_PAN					  STRING	
+,FINANCIAL_PROFILE_NAME				  STRING	
+,DAF_PROFILE_NAME				  STRING	
+,INTEREST_PROFILE_NAME				  STRING	
+,MIN_PAYMENT_PROFILE_NAME			  STRING	
+,GENDER						  STRING	
+,AGE						  INT	
+,EDUCATION					  STRING	
+,MARITAL_STATUS_ID				  INT	
+,OCCUPATION					  STRING	
+,ISSUANCE_REASON				  STRING	
+,BLOCK_FOR_REISSUE				  STRING	
+,COMPANY					  STRING	
+,ORGANIZATION					  STRING	
+,EXTERNAL_ACCT					  INT	
+,LINKED_CONTRACT				  STRING	
+,ACCT_CLIENT_NAME				  STRING	
+,ACCT_STATE					  STRING	
+,DOMESTIC_MP_PROFILE				  STRING	
+,INTERNATIONAL_MP_PROFILE		  	  STRING	
+,LINKED_CARDS					  STRING	
+,LINKED_VALID_CARDS				  STRING	
+,ACCT_DAF_PROFILE_NAME_DOM			  STRING	
+,ACCT_DAF_PROFILE_NAME_INT			  STRING
+,TABLENAME					  STRING
+,CARDKEY					  STRING
+,ROWHASH					  STRING
+,BUSINESS_DT					  INT
+)CLUSTERED BY (DWH_ID, CARD_NUM, PAN, CATEGORY_ID) INTO 16 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.H_CARDS;
+CREATE TABLE ANALYTICS_TST_DB.H_CARDS (
+CARD_ID				     INT,
+PAN				     STRING,
+MASK_PAN			     STRING,
+BIN			             STRING,
+MBR				     INT,
+DWH_ID				     INT,
+CATEGORY_ID			     INT,
+CARD_SCHEME_ID			     INT,
+CARD_TYPE_ID			     INT,
+BRN_ID				     INT,
+BASE				     STRING	
+,MISID				     STRING	
+,ISSUEDATE			     INT	
+,EXPIRYDATE			     INT	
+,CARD_STATUS_ID			     INT	
+,MOB				     STRING	
+,PRIMARY_ACCT_ID		     INT	
+,PRIMARY_ACCT_TYPE		     STRING	
+,SECONDARY_ACCT_ID		     INT	
+,SECONDARY_ACCT_TYPE		     STRING	
+,TXNCODE			     STRING	
+,PKVI				     STRING	
+,PVV				     STRING	
+,ACCT_CURRENCY_ID		     STRING	
+,CARD_NUM			     STRING	
+,CARD_PRODUCT_ID		     INT	
+,CARD_LIM			     STRING	
+,LAST_STATEMENT_DT		     STRING	
+,NAME_ON_CARD			     STRING	
+,CARD_ONLINE_STATUS		     STRING	
+,CASH_LIM			     STRING	
+,SALE_LIM			     STRING	
+,PRIMARY_SUPPLEMENTARY_FLAG	     STRING	
+,COMPASS_ACCT_NUM		     STRING	
+,CUSTOMER_ADDR			     STRING	
+,MAIL_ADDR2			     STRING	
+,MAIL_ADDR3			     STRING	
+,PASSPORT_NUM			     STRING	
+,NAME_TRANSLITERATION		     STRING	
+,HOME_PHONE			     STRING	
+,WORK_PHONE			     STRING	
+,FAX				     STRING	
+,ACTIVATION_DT			     INT	
+,SELLER_NAME			     STRING	
+,GUARANTEE_ACC1			     STRING	
+,GUARANTEE_COD			     STRING	
+,GUARANTEE_ACC2			     STRING	
+,GUARANTEE_ACC3			     STRING	
+,GUARANTEE_ACC4			     STRING	
+,CONTRACT_NUM			     STRING	
+,CONTRACT_TYPE			     STRING	
+,CONTRACT_STAT			     STRING	
+,CONTRACT_STATUS		     STRING	
+,PARENT_PAN			     STRING	
+,FINANCIAL_PROFILE_NAME		     STRING	
+,DAF_PROFILE_NAME		     STRING	
+,INTEREST_PROFILE_NAME		     STRING	
+,MIN_PAYMENT_PROFILE_NAME	     STRING	
+,GENDER				     STRING	
+,AGE				     INT	
+,EDUCATION			     STRING	
+,MARITAL_STATUS_ID		     INT	
+,OCCUPATION			     STRING	
+,ISSUANCE_REASON		     STRING	
+,BLOCK_FOR_REISSUE		     STRING	
+,COMPANY			     STRING	
+,ORGANIZATION			     STRING	
+,EXTERNAL_ACCT			     INT	
+,LINKED_CONTRACT		     STRING	
+,ACCT_CLIENT_NAME		     STRING	
+,ACCT_STATE			     STRING	
+,DOMESTIC_MP_PROFILE		     STRING	
+,INTERNATIONAL_MP_PROFILE	     STRING	
+,LINKED_CARDS			     STRING	
+,LINKED_VALID_CARDS		     STRING	
+,ACCT_DAF_PROFILE_NAME_DOM	     STRING	
+,ACCT_DAF_PROFILE_NAME_INT	     STRING
+,TABLENAME			     STRING
+,CARDKEY			     STRING
+,ROWHASH			     STRING
+,BUSINESS_DT			     INT
+)CLUSTERED BY (DWH_ID, CARD_NUM, PAN, CATEGORY_ID) INTO 16 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.L_BRANCH_TYPE;
+CREATE TABLE ANALYTICS_TST_DB.L_BRANCH_TYPE (
+    BRN_TYPE_ID         		INT,
+    COD_BRN_TYPE 			INT,
+    DESC_AR      			STRING,
+    DESC_EN      			STRING,
+    BUSINESS_DT  			INT
+)CLUSTERED BY (COD_BRN_TYPE) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.L_CARD_CATEGORY;
+CREATE TABLE ANALYTICS_TST_DB.L_CARD_CATEGORY (
+    CARD_CATEGORY_ID                		  INT,
+    --BIN                			  INT,
+    CARD_CATEGORY       			  STRING,
+    BUSINESS_DT         			  INT
+)CLUSTERED BY (CARD_CATEGORY) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.L_CARD_SCHEME;
+CREATE TABLE ANALYTICS_TST_DB.L_CARD_SCHEME (
+    CARD_SCHEME_ID                        INT,
+    --CS_INST_ID                          STRING,
+    CARD_SCHEME                           STRING,
+    --DESC_AR                             STRING,
+    --DESC_EN                             STRING,
+    BUSINESS_DT                           INT
+)CLUSTERED BY (CARD_SCHEME) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.L_CARD_TYPE;
+CREATE TABLE ANALYTICS_TST_DB.L_CARD_TYPE (
+    CARD_TYPE_ID                  	   INT,
+    BIN                  		   STRING,
+    CARD_TYPE_LIMIT_ID             	   STRING,
+    CARD_TYPE		 		   STRING,
+    CARD_PRODUCT	 		   STRING,
+    CARD_SCHEME_ID	 		   INT,
+    CARD_CATEGORY_ID	 		   INT,
+    BUSINESS_DT          		   INT
+)CLUSTERED BY (CARD_TYPE) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.B_CUSTOMER_RELATIONS;
+CREATE TABLE ANALYTICS_TST_DB.B_CUSTOMER_RELATIONS (
+    CUST_RELATIONS_ID        	         			INT,
+    P_CUST_ID        	 					INT,
+    P_DWH_ID    	 					INT,
+    P_CIF       	 					INT,
+    S_CUST_ID       	 					INT,
+    S_DWH_ID   		 					INT,
+    S_CIF      		 					INT,
+    REL_ID  		 					INT,
+    INVERSE_REL_ID   					        INT,
+    MAKER_ID		 					STRING,
+    CHECKER_ID		 					STRING,
+    ROWHASH							STRING,
+    BUSINESS_DT          					INT
+)CLUSTERED BY (P_CIF , S_CIF) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.L_RELATION_TYPE;
+CREATE TABLE ANALYTICS_TST_DB.L_RELATION_TYPE (
+    RELATION_TYPE_ID           			INT,
+    REL_COD					INT,
+    DESC_AR      				STRING,
+    DESC_EN      				STRING,
+    BUSINESS_DT  				INT
+)CLUSTERED BY (REL_COD) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.L_BUSINESS_TYPES;
+CREATE TABLE ANALYTICS_TST_DB.L_BUSINESS_TYPES (
+    BUSINESS_TYPE_ID                		 INT,
+    BUSINESS_CAT_COD  				 INT,
+    DESC_AR           				 STRING,
+    DESC_EN           				 STRING,
+    MAKER_ID          				 STRING,
+    CHECKER_ID        				 STRING,
+    LAST_MNT_DT       				 INT,
+    BUSINESS_DT       				 INT
+)CLUSTERED BY (BUSINESS_CAT_COD) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.L_STATUS;
+CREATE TABLE ANALYTICS_TST_DB.L_STATUS(
+STATUS_ID    						INT,
+MODULE    						STRING,
+STATUS_COD    						STRING,
+DESC_EN    						STRING,
+DESC_AR 						STRING,
+BUSINESS_DT    						INT
+)
+CLUSTERED BY (MODULE) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.D_BDC_USERS;
+CREATE TABLE ANALYTICS_TST_DB.D_BDC_USERS (
+    BDC_USER_ID                  			INT,
+    USER_ID             				STRING,
+    USER_NO             				INT,
+    USER_NAME           				STRING,
+    BRN_ID						INT,    
+    SYSTEM_COD		    				STRING,
+    FLG_STATUS          				STRING,
+    FLG_MNT_STATUS      				STRING,
+    COD_MNT_ACTION      				STRING,
+    LAST_MNT_DT         				INT,
+    ROWHASH						STRING,
+    BUSINESS_DT     					INT
+)CLUSTERED BY (USER_ID) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.H_BDC_USERS;
+CREATE TABLE ANALYTICS_TST_DB.H_BDC_USERS (
+    BDC_USER_ID           		INT,
+    USER_ID             		STRING,
+    USER_NO             		INT,
+    USER_NAME           		STRING,
+    BRN_ID				INT,    
+    SYSTEM_COD		    		STRING,
+    FLG_STATUS          		STRING,
+    FLG_MNT_STATUS      		STRING,
+    COD_MNT_ACTION      		STRING,
+    LAST_MNT_DT         		INT,
+    ROWHASH			     	STRING,
+    BUSINESS_DT     			INT
+)CLUSTERED BY (USER_ID) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.D_CURRENCY;
+CREATE TABLE ANALYTICS_TST_DB.D_CURRENCY (
+    CCY_ID      	      		INT,
+    CCY_COD          			INT,
+    CCY_ISO_COD      			STRING,
+    CBE_CCY_COD      			STRING,
+    IST_CCY_COD      			INT,
+    SHORT_NAME       			STRING,
+    CCY_NAME_AR      			STRING,
+    CCY_NAME_EN      			STRING,
+    CCY_SYMBOL       			STRING,
+    SWIFT_COD        			INT,
+    CCY_DECIMAL_NAME 			STRING,
+    DECIMAL_COD      			STRING,
+    COUNTRY_ID       			INT,
+    MAKER_ID		 		STRING,
+    CHECKER_ID		 		STRING,
+    LAST_MNT_DT	     			INT,
+    ROWHASH				STRING,
+    BUSINESS_DT	     			INT
+)CLUSTERED BY (CCY_COD) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.H_CURRENCY;
+CREATE TABLE ANALYTICS_TST_DB.H_CURRENCY (
+    CCY_ID        			INT,
+    CCY_COD          			INT,
+    CCY_ISO_COD      			STRING,
+    CBE_CCY_COD      			STRING,
+    IST_CCY_COD      			INT,
+    SHORT_NAME       			STRING,
+    CCY_NAME_AR      			STRING,
+    CCY_NAME_EN      			STRING,
+    CCY_SYMBOL       			STRING,
+    SWIFT_COD        			INT,
+    CCY_DECIMAL_NAME 			STRING,
+    DECIMAL_COD      			STRING,
+    COUNTRY_ID       			INT,
+    MAKER_ID		 		STRING,
+    CHECKER_ID		 		STRING,
+    LAST_MNT_DT	     			INT,
+    ROWHASH			     STRING,
+    BUSINESS_DT	     			INT
+)CLUSTERED BY (CCY_COD) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.L_GOVERNORATE;
+CREATE TABLE ANALYTICS_TST_DB.L_GOVERNORATE(
+	GOVERNORATE_ID		INT,
+	GOV_COD				STRING,
+	REGION				STRING,
+	GOV_NAME_AR			STRING,
+	GOV_NAME_EN			STRING,
+	LONGITUDE 			STRING,
+	LATITUDE 			STRING,
+	BUSINESS_DT			INT
+)CLUSTERED BY (GOV_COD) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.L_COUNTRY;
+CREATE TABLE ANALYTICS_TST_DB.L_COUNTRY (
+    COUNTRY_ID         		INT,
+    COUNTRY_COD     		STRING,
+    ISO2			STRING,
+    ISO3			STRING,
+    NAME_AR         		STRING,
+    NAME_EN         		STRING,
+    ALT_CD          		INT,
+    BUSINESS_DT	    		INT
+)CLUSTERED BY (COUNTRY_COD) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.L_SYSTEM;
+CREATE TABLE ANALYTICS_TST_DB.L_SYSTEM (
+    SYSTEM_ID              	INT,
+    SYSTEM_COD       		STRING,
+    SYSTEM_DESC_AR  		STRING,
+    SYSTEM_DESC_EN  		STRING,
+    BUSINESS_DT		  	INT
+)CLUSTERED BY (SYSTEM_COD) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.L_WALLET_PROVIDER;
+CREATE TABLE ANALYTICS_TST_DB.L_WALLET_PROVIDER (
+    WALLET_PROVIDER_ID         		INT,
+    PROVIDER_COD			STRING,
+    DESCRIPTION_AR          		STRING,
+    DESCRIPTION_EN          		STRING,
+    BUSINESS_DT  			INT
+)CLUSTERED BY (PROVIDER_COD) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.L_MODULE;
+CREATE TABLE ANALYTICS_TST_DB.L_MODULE (
+MODULE_ID			INT,
+MODULE_COD			STRING,
+MODULE_DESC_AR			STRING,
+MODULE_DESC_EN			STRING,
+BUSINESS_DT			INT
+)CLUSTERED BY (MODULE_COD) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.L_PROD_TYPE;
+CREATE TABLE ANALYTICS_TST_DB.L_PROD_TYPE (
+PROD_TYPE_ID			INT,
+TYPE_COD			STRING,
+TYPE_DESC_AR			STRING,
+TYPE_DESC_EN			STRING,
+BUSINESS_DT			INT
+)CLUSTERED BY (TYPE_COD) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.D_PRODUCT;
+CREATE TABLE ANALYTICS_TST_DB.D_PRODUCT (
+PROD_ID				INT,
+PROD_COD			STRING,
+PROD_DESC_AR			STRING,
+PROD_DESC_EN			STRING,
+IS_ISLAMIC			INT,
+START_DT			INT,
+EXPIRY_DT			INT,
+FLG_BOOK_COLL_BAL		STRING,
+IS_IBAN				STRING,
+MODULE_ID			INT,
+PROD_TYPE_ID			INT,
+CCY_ID				INT,
+INT_IDX_ID			INT,
+MAKER_ID			STRING,
+CHECKER_ID			STRING,
+LAST_MNT_DT			INT,
+ROWHASH				STRING,
+BUSINESS_DT			INT
+)CLUSTERED BY (PROD_COD,MODULE_ID) INTO 4 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.H_PRODUCT;
+CREATE TABLE ANALYTICS_TST_DB.H_PRODUCT (
+PROD_ID					INT,
+PROD_COD				STRING,
+PROD_DESC_AR				STRING,
+PROD_DESC_EN				STRING,
+IS_ISLAMIC				INT,
+START_DT				INT,
+EXPIRY_DT				INT,
+FLG_BOOK_COLL_BAL			STRING,
+IS_IBAN					STRING,
+MODULE_ID				INT,
+PROD_TYPE_ID				INT,
+CCY_ID					INT,
+INT_IDX_ID				INT,
+MAKER_ID				STRING,
+CHECKER_ID				STRING,
+LAST_MNT_DT				INT,
+ROWHASH			     		STRING,
+BUSINESS_DT				INT
+)CLUSTERED BY (PROD_COD,MODULE_ID) INTO 4 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.D_ACCOUNTS;
+CREATE TABLE ANALYTICS_TST_DB.D_ACCOUNTS (
+ACCT_ID				INT,
+CIF				STRING,
+DWH_ID				INT,
+ACCT_NO				STRING,
+IBAN				STRING,
+PROD_ID				INT,
+CCY_ID				INT,
+BRN_ID				INT,
+REMITTER_ACCT_COD	 	STRING,
+DEP_NO_COD			INT,
+ACCT_CLOSE_DT			INT,
+MATURITY_DT			INT,
+VALUE_DT			INT,
+BOOK_DT				INT,
+LIQUIDATION_DT			INT,
+EVENT_COD			STRING,
+OPERATION			STRING,
+ACCT_LIMIT_COD			STRING,
+STATUS_ID			INT,
+LANGUAGE_ID			INT,
+ROWHASH				STRING,
+BUSINESS_DT			INT)
+PARTITIONED BY (MODULE_ID	INT
+)CLUSTERED BY (ACCT_NO,DWH_ID,PROD_ID,BRN_ID) INTO 16 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+
+DROP TABLE ANALYTICS_TST_DB.H_ACCOUNTS;
+CREATE TABLE ANALYTICS_TST_DB.H_ACCOUNTS (
+ACCT_ID					INT,
+CIF					STRING,
+DWH_ID					INT,
+ACCT_NO					STRING,
+IBAN					STRING,
+PROD_ID					INT,
+CCY_ID					INT,
+BRN_ID					INT,
+REMITTER_ACCT_COD			STRING,
+DEP_NO_COD				INT,
+ACCT_CLOSE_DT				INT,
+MATURITY_DT				INT,
+VALUE_DT				INT,
+BOOK_DT					INT,
+LIQUIDATION_DT				INT,
+EVENT_COD				STRING,
+OPERATION				STRING,
+ACCT_LIMIT_COD				STRING,
+STATUS_ID				INT,
+LANGUAGE_ID				INT,
+ROWHASH			     		STRING,
+BUSINESS_DT				INT)
+PARTITIONED BY (MODULE_ID	INT
+)CLUSTERED BY (ACCT_NO,DWH_ID,PROD_ID) INTO 16 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.F_ACCOUNTS;
+CREATE TABLE ANALYTICS_TST_DB.F_ACCOUNTS (
+F_ACCT_ID					INT,
+ACCT_NO						STRING,
+MODULE_ID					INT,
+DWH_ID						INT,
+PROD_ID						INT,
+CCY_ID						INT,
+DEP_NO_COD					INT,
+OUTSTANDING_BAL					DOUBLE,
+PRINCIPAL_OVERDUE_AMT				DOUBLE,
+AMT_ARREARS_NONACC				DOUBLE,
+INT_OVERDUE_AMT					DOUBLE,
+AMT_ARREARS_PMI_NACC				DOUBLE,
+BAL_BOOK					DOUBLE,
+DISBURSED_AMT					DOUBLE,
+AMT_ARREARS_CHARGES				DOUBLE,
+AMT_ARREARS_SUSP_FEES				DOUBLE,
+AMT_INTONARR					DOUBLE,
+AMT_IOAC					DOUBLE,
+AMT_ARREARS_PREMIUM				DOUBLE,
+AMT_ARREARS_SUSP_PREMIUM			DOUBLE,
+AMT_ARREARS_LEGAL				DOUBLE,
+AMT_ARREARS_LEGAL_SUSP				DOUBLE,
+AMT_ARREARS_OUTGOING				DOUBLE,
+AMT_ARREARS_OUTGOING_SUSP			DOUBLE,
+PRINC_UNEARNED_AMT				DOUBLE,
+INT_UNEARNED_AMT				DOUBLE,
+BAL_FOR_RATE_UNEARNED				DOUBLE,
+RAT_EFFECTIVE_DT				DOUBLE,
+BAL_FOR_RATE_EARNED				DOUBLE,
+RAT_DEP_INT					DOUBLE,
+RAT_DEP_INT_VAR					DOUBLE,
+BAL_PENALTY_PAID				DOUBLE,
+BAL_SERVICE_CHARGE				DOUBLE,
+BAL_INT_ACCR					DOUBLE,
+BAL_LAST_INT_ACCR				DOUBLE,
+BAL_INT_COMP					DOUBLE,
+BAL_LAST_INT_COMP				DOUBLE,
+BAL_INT_PAID					DOUBLE,
+BAL_LAST_INT_PAID				DOUBLE,
+BAL_INT_PAID_CURR				DOUBLE,
+BAL_LAST_INT_CAP				DOUBLE,
+BAL_INT_CAP					DOUBLE,
+BAL_UNCOLLEC_INT				DOUBLE,
+BAL_UNCOLLEC_PRINC				DOUBLE,
+BAL_UNCLAIM_PRINC				DOUBLE,
+BAL_UNCLAIM_INT					DOUBLE,
+AMT_TAX_ACCR					DOUBLE,
+AMT_DISCOUNTED_INT				DOUBLE,
+BAL_TAX_ON_DISC_INT				DOUBLE,
+BAL_INT_DUE					DOUBLE,
+BAL_PRINC_DUE					DOUBLE,
+BAL_INT_WITHELD					DOUBLE,
+BAL_INT_WITHELD_TOT				DOUBLE,
+BAL_INT_COMP_PRETAX				DOUBLE,
+BAL_TAX_WITHELD_TOT				DOUBLE)
+PARTITIONED BY (BUSINESS_DT	INT
+)CLUSTERED BY (ACCT_NO) INTO 32 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.F_EXCHANGE_RATE;
+CREATE TABLE ANALYTICS_TST_DB.F_EXCHANGE_RATE (
+EXCHANGE_RAT_ID				INT,
+RAT_CCY_BOOK				DOUBLE,
+RAT_CCY_MID				DOUBLE,
+RAT_NOTE_BUY_SPRD			DOUBLE,
+RAT_CHQ_BUY_SPRD			DOUBLE,
+RAT_NOTE_SELL_SPRD			DOUBLE,
+RAT_CHQ_SELL_SPRD			DOUBLE,
+RAT_XFER_BUY_SPRD			DOUBLE,
+RAT_XFER_SELL_SPRD			DOUBLE,
+RAT_CCY_CB				DOUBLE,
+RAT_CCY_SPECIAL_1			DOUBLE,
+RAT_CCY_SPECIAL_2			DOUBLE,
+CCY_ID					INT,
+MAKER_ID				STRING,
+CHECKER_ID				STRING,
+EFFECTIVE_DT				INT,
+LAST_MNT_DT				INT)
+PARTITIONED BY (BUSINESS_DT	INT
+)CLUSTERED BY (CCY_ID) INTO 16 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.L_SUB_PRODUCT;
+CREATE TABLE ANALYTICS_TST_DB.L_SUB_PRODUCT (
+SUB_PROD_ID				INT,
+SUB_PROD_COD				STRING,
+PROD_ID					INT,
+PROD_COD				STRING,
+DESC_AR					STRING,
+DESC_EN					STRING,
+BUSINESS_DT				INT
+)CLUSTERED BY (SUB_PROD_COD,PROD_ID) INTO 4 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.D_BANK_ASSURANCE;
+CREATE TABLE ANALYTICS_TST_DB.D_BANK_ASSURANCE (
+BANK_ASSURANCE_ID					INT,
+CUST_ID							INT,
+DWH_ID							INT,
+NATIONAL_ID						STRING,
+ACCT_NO							STRING,
+CUST_NAME_EN						STRING,
+CUST_NAME_AR						STRING,
+BRN_COD							STRING,
+ROWHASH							STRING,
+BUSINESS_DT						INT
+)CLUSTERED BY (NATIONAL_ID,ACCT_NO) INTO 4 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.H_BANK_ASSURANCE;
+CREATE TABLE ANALYTICS_TST_DB.H_BANK_ASSURANCE (
+BANK_ASSURANCE_ID					INT,
+CUST_ID							INT,
+DWH_ID							INT,
+NATIONAL_ID						STRING,
+ACCT_NO							STRING,
+CUST_NAME_EN						STRING,
+CUST_NAME_AR						STRING,
+BRN_COD							STRING,
+ROWHASH			 			    	STRING,
+BUSINESS_DT						INT
+)CLUSTERED BY (NATIONAL_ID,ACCT_NO) INTO 4 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.D_INTERNET_BANKING;
+CREATE TABLE ANALYTICS_TST_DB.D_INTERNET_BANKING(
+INTERNET_BANKING_ID			INT,
+CIF					INT,
+DWH_ID					INT,
+CUST_NAME_EN				STRING,
+CUST_NAME_AR				STRING ,
+USER_ID	  				STRING,
+USER_STATUS_ID				INT ,
+MOB_NO	  				STRING,
+CREATED_BY				INT,
+CREATED_DT				INT,
+UPDATED_BY				INT,
+UPDATED_DT				INT,
+COMMERCIAL_REGISTER			STRING ,
+EMAIL_ID				STRING ,
+CUST_BRN				STRING,
+BASE_ROLE_ID				INT,
+USER_LEVEL_ID				INT,
+PRODUCT_ROLE_ID				INT,
+TOKEN_TYPE				STRING,
+SERIAL_NUM				STRING,
+IS_FIRST_TIME_USER			STRING,
+IS_ACTIVE_PASSWORD			STRING,
+IS_ACTIVE_TOKEN				STRING,
+CUST_SEGMENT				STRING,
+RISK_RATING				STRING,
+ONLINE_REGISTRATION			STRING,
+DOC_SUBMITTED				STRING,
+ROWHASH					STRING,
+BUSINESS_DT				INT
+)
+CLUSTERED BY (CIF,DWH_ID) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+
+DROP TABLE ANALYTICS_TST_DB.D_ATM;
+CREATE TABLE ANALYTICS_TST_DB.D_ATM(
+	ATM_ID				INT,
+	TERMID				STRING,
+	UNIT				INT,
+	INSTITUTIONID			STRING,
+	GROUP_NAME			STRING,
+	GOSERVICE			STRING,
+	MODEL				INT,
+	MAKE				STRING,
+	LOCAL_PIN			STRING,
+	ADD_TOTAL			STRING,
+	TXN_ALLOW			STRING,
+	CURRENCY			INT,
+	LOCATION			STRING,
+	LOGGING				STRING,
+	GEO_LOC				STRING,
+	ACCEPTORNAME			STRING,
+	O_ROWID				INT,
+	H_LOCATION			STRING,
+	WD_NO_RPT			INT,
+	TIME_OFFSET			INT,
+	MAC_REQUIRED			STRING,
+	MAC_NCR_TXNREQ			STRING,
+	MAC_NCR_TXNREPLY		STRING,
+	MAC_NCR_SOLITSTAT		STRING,
+	MAC_NCR_OTHER			STRING,
+	MAC_NCR_TRACK1			STRING,
+	MAC_NCR_TRACK2			STRING,
+	MAC_NCR_TRACK3			STRING,
+	FUNC_FLAGS			STRING,
+	MAXDISPENSE			INT,
+	TERM_COMP			STRING,
+	HDL_ACK				STRING,
+	MAC_NCR_EMV			STRING,
+	PRIORITY_ROUTING		STRING,
+	INTERNAL_UNIT			INT,
+	FIT_LIST_ID			INT,
+	CASSETTE_CFG_ID			INT,
+	DISPENSE_TABLE_ID		INT,
+	MANUFACTURER			STRING,
+	EMULATION			STRING,
+	MAX_COIN_DISPENSE		INT,
+	ROWHASH				STRING,
+	BUSINESS_DT			INT
+)
+CLUSTERED BY (TERMID) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+
+DROP TABLE ANALYTICS_TST_DB.L_PCODES;
+CREATE TABLE ANALYTICS_TST_DB.L_PCODES(
+	PCODES_ID		INT,
+	PCODE			INT,
+	DESCRIPTION_AR		STRING,
+	DESCRIPTION_EN		STRING,
+	BUSINESS_DT		INT
+)
+CLUSTERED BY (PCODE) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+
+DROP TABLE ANALYTICS_TST_DB.F_ATM_TRX;
+CREATE TABLE ANALYTICS_TST_DB.F_ATM_TRX(
+ATM_TRX_ID			INT,
+MSGTYPE				INT,
+FLIPPED_MSGTYPE			INT,
+PAN				STRING,
+PAN_ID				INT,
+MASK_PAN			STRING,
+PCODE				INT,
+PCODE_ID			INT,
+TXNTYPE				INT,
+AMOUNT				DOUBLE,
+AVAL_BALANCE			DOUBLE,
+AMOUNT_EQUIV			DOUBLE,
+CASH_BACK			DOUBLE,
+ISS_CONV_RATE			DOUBLE,
+ISS_CURRENCY_CODE		INT,
+ISS_CONV_DATE			INT,
+ACQ_CONV_RATE			DOUBLE,
+ACQ_CURRENCY_CODE		INT,
+ACQ_CONV_DATE			INT,
+TRA_AMOUNT			DOUBLE,
+TRA_CONV_RATE			DOUBLE,
+TRA_CURRENCY_CODE		INT,
+TRA_CONV_DATE			INT,
+FEE				DOUBLE,
+NEW_FEE				DOUBLE,
+NEW_AMOUNT			DOUBLE,
+NEW_SETL_AMOUNT			DOUBLE,
+SETTLEMENT_FEE			DOUBLE,
+SETTLEMENT_RATE			DOUBLE,
+SETTLEMENT_CODE			INT,
+SETTLEMENT_AMOUNT		DOUBLE,
+TRANDATE			INT,
+TRANTIME			INT,
+TRACE				INT,
+LOCAL_TIME			INT,
+LOCAL_DATE			INT,
+SETTLEMENT_DATE			INT,
+CAP_DATE			INT,
+POS_ENTRY_CODE			INT,
+POS_CONDITION_CODE		INT,
+POS_PIN_CAP_CODE		STRING,
+POS_CAP_CODE			INT,
+LIFE_CYCLE			INT,
+ACQUIRER			STRING,
+ISSUER				STRING,
+TRANSFEREE			STRING,
+ORIGINATOR			STRING,
+MEMBER_ID			STRING,
+F_ID				STRING,
+TXNSRC				STRING,
+TXNDEST				STRING,
+ALTERNATEACQUIRER		STRING,
+ENTITYID			STRING,
+ISS_ENTITYID			STRING,
+CARDPRODUCT			STRING,
+MVV				STRING,
+INVOICE_NUMBER			STRING,
+TRANS_ID			STRING,
+FPI				STRING,
+TXN_START_TIME 			INT,
+TXN_END_TIME 			INT,
+DEVICE_CAP			INT,
+RESPCODE			INT,
+REASON_CODE			INT,
+REVCODE				INT,
+SHCERROR			INT,
+SAF				INT,
+ORIGMSG				INT,
+ORIGFLIPPEDMSG			INT,
+ORIGTRACE			INT,
+ORIGDATE			INT,
+ORIGTIME			INT,
+MERCHANT_TYPE			INT,
+ACQ_COUNTRY			INT,
+REFNUM				STRING,
+AUTHNUM				STRING,
+TERMID_ID			INT,
+TERMID				STRING,
+ACCEPTORNAME			STRING,
+TERMLOC				STRING,
+ADDRESPONSE			STRING,
+ACCTNUM				STRING,
+BRANCH				INT,
+SERIAL_1			INT,
+SERIAL_2			INT,
+STOREID				INT,
+LANE				INT,
+TERMINAL_TRACE			INT,
+CHECKER_ID			INT,
+SUPERVISOR			INT,
+SHIFT_NUMBER			INT,
+BATCH_ID			INT,
+DEVICE_DEVCAP			INT,
+SHC_DEVCAP			INT,
+FORMATTER_DEVCAP		INT,
+AUTH_DEVCAP			INT,
+FILLER1				STRING,
+FILLER2				STRING,
+FILLER3				STRING,
+FILLER4				STRING,
+ISSUER_DATA			STRING,
+ACQUIRER_DATA			STRING,
+NEW_AMOUNT_EQUIV		DOUBLE,
+ACQ_AVAL_BALANCE		DOUBLE,
+ACQ_LEDGER_BALANCE		DOUBLE,
+SETL_AVAL_BALANCE		DOUBLE,
+SETL_LEDGER_BALANCE		DOUBLE,
+AVAL_BALANCE_TYPE		INT,
+LEDGER_BALANCE_TYPE		INT,
+NEW_SETL_FEE			DOUBLE,
+TXN_AMOUNT			DOUBLE,
+TXN_NEW_AMOUNT			DOUBLE,
+TXN_CURRENCY_CODE		INT,
+TXN_CONV_RATE			DOUBLE,
+TXN_CONV_DATE			INT,
+CH_AMOUNT			DOUBLE,
+CH_NEW_AMOUNT			DOUBLE,
+CH_CURRENCY_CODE		INT,
+CH_CONV_RATE			DOUBLE,
+CH_CONV_DATE			INT,
+LEDGER_BALANCE			DOUBLE,
+SLOT_NUM			INT ,
+DEVICE_FEE			DOUBLE ,
+CARD_SEQNO			INT ,
+ALPHARESPONSECODE		STRING,
+CHIP_TYPE			STRING,
+CHIP_INDEX			STRING,
+PROCESSOR_BUSDAY		INT,
+SEQ_TRACE_NO			INT ,
+SEG_REQ				STRING,
+SEG_RESP			STRING,
+SITE_ID				INT,
+VERSION				INT,
+SRC_NODE			INT,
+DEST_NODE			INT,
+SHC_DATA_BUFFER			STRING
+)
+PARTITIONED BY (BUSINESS_DT	INT)
+CLUSTERED BY (PCODE,TERMID) INTO 32 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES    ("PARQUET.COMPRESSION"="SNAPPY");
+
+
+DROP TABLE ANALYTICS_TST_DB.F_CARDS;
+CREATE TABLE ANALYTICS_TST_DB.F_CARDS(
+	F_CARDS_ID			INT,
+	CARD_ID				INT,
+	DWH_ID				INT,
+	BAL				DOUBLE,
+	DUE_AMT				DOUBLE,
+	OVER_DUE_AMT			DOUBLE,
+	OVER_DUE_DAYS			DOUBLE,
+	OVER_LIM_AMT			DOUBLE,
+	AMT_ON_HOLD			DOUBLE,
+	ARRESTED_AMT			DOUBLE,
+	RETAIL_BAL			DOUBLE,
+	CASH_BAL			DOUBLE,
+	FEES_BAL			DOUBLE,
+	INTEREST_BAL			DOUBLE,
+	PAYMENTS_BAL			DOUBLE,
+	OTHERS_BAL			DOUBLE,
+	MIN_PAYMENT			DOUBLE,
+	PAYMENT_DUE_DT			DOUBLE,
+	SUSPENDED_ACCT_BAL		DOUBLE,
+	REMAINING_CASH_LIM		DOUBLE,
+	REMAINING_SALE_LIM		DOUBLE,
+	INSTALLMENT_BAL			DOUBLE,
+	FEES_BAL_MARGIN			DOUBLE,
+	INTEREST_BAL_MARGIN		DOUBLE,
+	CASH_WD_AMT_USED		DOUBLE,
+	CASH_WD_COUNT			INT,
+	CASH_WD_DT			INT,
+	CASH_WD_TIME			INT,
+	TC_WD_AMT_USED			DOUBLE,
+	TC_WD_COUNT			INT,
+	TC_WD_DT			INT,
+	TC_WD_TIME			INT,
+	PURCH_AMT_USED			DOUBLE,
+	PURCH_COUNT			INT,
+	PURCH_DT			INT,
+	TABLENAME			STRING)
+	PARTITIONED BY (BUSINESS_DT	INT
+)
+CLUSTERED BY (CARD_ID,DWH_ID) INTO 32 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES    ("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.H_ATM;
+CREATE TABLE ANALYTICS_TST_DB.H_ATM(
+	ATM_ID			INT,
+	TERMID			STRING,
+	UNIT			INT,
+	INSTITUTIONID		STRING,
+	GROUP_NAME		STRING,
+	GOSERVICE		STRING,
+	MODEL			INT,
+	MAKE			STRING,
+	LOCAL_PIN		STRING,
+	ADD_TOTAL		STRING,
+	TXN_ALLOW		STRING,
+	CURRENCY		INT,
+	LOCATION		STRING,
+	LOGGING			STRING,
+	GEO_LOC			STRING,
+	ACCEPTORNAME		STRING,
+	O_ROWID			INT,
+	H_LOCATION		STRING,
+	WD_NO_RPT		INT,
+	TIME_OFFSET		INT,
+	MAC_REQUIRED		STRING,
+	MAC_NCR_TXNREQ		STRING,
+	MAC_NCR_TXNREPLY	STRING,
+	MAC_NCR_SOLITSTAT	STRING,
+	MAC_NCR_OTHER		STRING,
+	MAC_NCR_TRACK1		STRING,
+	MAC_NCR_TRACK2		STRING,
+	MAC_NCR_TRACK3		STRING,
+	FUNC_FLAGS		STRING,
+	MAXDISPENSE		INT,
+	TERM_COMP		STRING,
+	HDL_ACK			STRING,
+	MAC_NCR_EMV		STRING,
+	PRIORITY_ROUTING	STRING,
+	INTERNAL_UNIT		INT,
+	FIT_LIST_ID		INT,
+	CASSETTE_CFG_ID		INT,
+	DISPENSE_TABLE_ID	INT,
+	MANUFACTURER		STRING,
+	EMULATION		STRING,
+	MAX_COIN_DISPENSE	INT,
+	ROWHASH			STRING,
+	BUSINESS_DT		INT
+)
+CLUSTERED BY (TERMID) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE ANALYTICS_TST_DB.H_INTERNET_BANKING;
+CREATE TABLE ANALYTICS_TST_DB.H_INTERNET_BANKING(
+INTERNET_BANKING_ID	INT,
+CIF			INT,
+DWH_ID			INT,
+CUST_NAME_EN		STRING,
+CUST_NAME_AR		STRING ,
+USER_ID	  		STRING,
+USER_STATUS_ID		INT ,
+MOB_NO	  		STRING,
+CREATED_BY		INT,
+CREATED_DT		INT,
+UPDATED_BY		INT,
+UPDATED_DT		INT,
+COMMERCIAL_REGISTER	STRING ,
+EMAIL_ID		STRING ,
+CUST_BRN		STRING,
+BASE_ROLE_ID		INT,
+USER_LEVEL_ID		INT,
+PRODUCT_ROLE_ID		INT,
+TOKEN_TYPE		STRING ,
+SERIAL_NUM		STRING ,
+IS_FIRST_TIME_USER	STRING ,
+IS_ACTIVE_PASSWORD	STRING ,
+IS_ACTIVE_TOKEN		STRING ,
+CUST_SEGMENT		STRING,
+RISK_RATING		STRING,
+ONLINE_REGISTRATION	STRING,
+DOC_SUBMITTED		STRING,
+ROWHASH			STRING,
+BUSINESS_DT		INT
+)
+CLUSTERED BY (CIF,DWH_ID) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
