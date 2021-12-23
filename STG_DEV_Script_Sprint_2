@@ -304,23 +304,23 @@ DROP TABLE STG_DEV_DB.FCT_ALL_FCR_TXNS_MMDD;
  CREATE TABLE STG_DEV_DB.FCT_ALL_FCR_TXNS_MMDD 
  ( 
 V_CONTRACT_CODE				           STRING
-N_EVENT_SEQ_NO				            INT
-N_AC_ENTRY_SR_NO		   	        INT
-V_BRANCH_CODE				             STRING
-V_CUST_REF_CODE			   	        STRING
-V_RELATED_ACCOUNT		  	        STRING
+N_EVENT_SEQ_NO				           INT
+N_AC_ENTRY_SR_NO		   	           INT
+V_BRANCH_CODE				           STRING
+V_CUST_REF_CODE			   	           STRING
+V_RELATED_ACCOUNT		  	      	   STRING
 V_RELATED_REF_NO			           STRING
-V_TXN_CODE					               STRING
-V_TXN_DESC				       	        STRING
-N_TXN_AMT_FCY				             DOUBLE
-N_TXN_AMT_LCY				             DOUBLE
+V_TXN_CODE					           STRING
+V_TXN_DESC				       	       STRING
+N_TXN_AMT_FCY				           DOUBLE
+N_TXN_AMT_LCY				           DOUBLE
 V_TXN_CURR_CODE				           STRING
 D_TXN_BOOK_DATE				           DATE
 D_TXN_VALUE_DATE			           DATE
-V_FINANCIAL_CYCLE			          STRING
-V_PERIOD_CODE				             STRING
-V_ACCOUNT				        	        STRING
-F_DRCR_IND					               STRING
+V_FINANCIAL_CYCLE			           STRING
+V_PERIOD_CODE				           STRING
+V_ACCOUNT				        	   STRING
+F_DRCR_IND					           STRING
 V_MIS_TXN_CODE1				           STRING
 V_MIS_COMP_CODE1			           STRING
 V_MIS_CUST_CODE1			           STRING
@@ -349,24 +349,24 @@ V_MIS_TXN_CODE9				           STRING
 V_MIS_COMP_CODE9			           STRING
 V_MIS_CUST_CODE9			           STRING
 V_MIS_TXN_CODE10			           STRING
-V_MIS_COMP_CODE10			          STRING
-V_MIS_CUST_CODE10			          STRING
-V_MIS_HEAD					               STRING
-V_POOL_CODE					              STRING
-F_CUST_GL					                STRING
-F_MIS_FLAG					               STRING
-N_REF_RATE					               DOUBLE
-F_CALC_METHOD				             STRING
-D_GL_TXN_EXTRACTION_DATE	     DATE
-N_COD_PROD					               DOUBLE
+V_MIS_COMP_CODE10			           STRING
+V_MIS_CUST_CODE10			           STRING
+V_MIS_HEAD					           STRING
+V_POOL_CODE					           STRING
+F_CUST_GL					           STRING
+F_MIS_FLAG					           STRING
+N_REF_RATE					           DOUBLE
+F_CALC_METHOD				           STRING
+D_GL_TXN_EXTRACTION_DATE	     	   DATE
+N_COD_PROD					           DOUBLE
 V_REF_VOUCHER_NO			           STRING
-V_COD_USER_ID				             STRING
-V_COD_AUTH_ID				             STRING
-BATCH_NO					                 INT
-SOURCE_CODE					              STRING
-V_REF_TXN_NO				              STRING
-V_REF_USR_NO				              STRING
-N_CTR_AC_ENTRY			            	INT
+V_COD_USER_ID				           STRING
+V_COD_AUTH_ID				           STRING
+BATCH_NO					           INT
+SOURCE_CODE					           STRING
+V_REF_TXN_NO				           STRING
+V_REF_USR_NO				           STRING
+N_CTR_AC_ENTRY			               INT
  )
 CLUSTERED BY (V_CONTRACT_CODE,N_EVENT_SEQ_NO) INTO 32 BUCKETS
 STORED AS ORC
@@ -377,18 +377,18 @@ TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
 
 CREATE TABLE STG_DEV_DB.BA_REASON_CODES 
 (
- COD_REASON  								  INT, 
- TXT_DESC 				STRING, 
- FLG_MNT_STATUS STRING, 
- COD_MNT_ACTION STRING, 
- COD_LAST_MNT_MAKERID STRING, 
- COD_LAST_MNT_CHKRID STRING, 
- DAT_LAST_MNT DATE, 
- CTR_UPDAT_SRLNO INT, 
- COD_TASK STRING, 
- ROWHASH STRING, 
- LD_DATE INT, 
- LAST_UPD_DATE INT
+ COD_REASON  				  INT, 
+ TXT_DESC 				      STRING, 
+ FLG_MNT_STATUS 			  STRING, 
+ COD_MNT_ACTION 			  STRING, 
+ COD_LAST_MNT_MAKERID 		  STRING, 
+ COD_LAST_MNT_CHKRID 		  STRING, 
+ DAT_LAST_MNT 				  DATE, 
+ CTR_UPDAT_SRLNO 			  INT, 
+ COD_TASK 					  STRING, 
+ ROWHASH 				   	  STRING, 
+ LD_DATE					  INT, 
+ LAST_UPD_DATE 				  INT
 )
 CLUSTERED BY (COD_REASON) INTO 2 BUCKETS
 STORED AS ORC
