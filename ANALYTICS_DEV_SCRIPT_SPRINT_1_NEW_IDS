@@ -188,7 +188,7 @@ CREATE TABLE ANALYTICS_TST_DB.D_CUSTOMER (
     LIAB_NO                       		    	INT,
     OPEN_DT                     		    	INT,
     BIRTH_DT                     		    	INT,
-    CUSTOMER_TYPE_ID              		    	INT,
+    CUST_TYPE_ID              		    		INT,
     CUST_STATUS_ID                		   	INT,
     NATIONAL_ID			   		  	STRING,
     SECONDARY_IDENTITY_ID          		   	INT,
