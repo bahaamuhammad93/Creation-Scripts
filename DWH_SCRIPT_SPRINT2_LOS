@@ -436,7 +436,7 @@ CREATE TABLE DWH_DEV_DB.D_LOS_APPLICANT(
 	BUILDING_NUM					String,
 	APPARTMENT					String,
 	AREA						String,
-	FLOOR						String,
+	`FLOOR`						String,
 	EMAIL						String,
 	PASSPORT_NUM					String,
 	NATIONALITY					String,
