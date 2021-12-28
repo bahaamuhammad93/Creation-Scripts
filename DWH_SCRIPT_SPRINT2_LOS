@@ -103,7 +103,7 @@ CREATE TABLE DWH_DEV_DB.F_LOS_Activity_Process_Instance(
 	Activity_Process_instance_Id	INT,
 	PROCESS_DEF_ID					String ,
 	INSTANCE_TYPE					String ,
-	INSTANCE STATUS					String ,
+	INSTANCE_STATUS					String ,
 	START_TIME					Timestamp,
 	END_TIME					Timestamp,
 	ACTUAL_DURATION					DOUBLE,
