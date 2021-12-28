@@ -46,7 +46,7 @@ CREATE TABLE DWH_DEV_DB.F_LOS_App_Activity(
 	PROCESS_INST_NUM				String ,
 	TASK_ID						String ,
 	App_Activity_DT					Timestamp,
-	SLA _STATUS					String   ,
+	SLA_STATUS					String   ,
 	DUE_TIME					Timestamp,
 	ACTUAL_DURATION					String   ,
 	USER_MANAGER					String   ,
