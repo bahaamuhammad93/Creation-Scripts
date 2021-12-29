@@ -187,6 +187,7 @@ TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 DROP TABLE DWH_DEV_DB.D_LOS_Application;
 CREATE TABLE DWH_DEV_DB.D_LOS_Application(
 	Ln_App_ID					INT,
+	SERIAL						String,
 	APPLICANT_ID					INT,
 	Approved_LN_Amt					String ,
 	PROFIT_RAT					String ,
