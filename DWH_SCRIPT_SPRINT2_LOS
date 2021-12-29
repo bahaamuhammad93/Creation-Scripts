@@ -24,6 +24,7 @@ CREATE TABLE DWH_DEV_DB.D_LOS_Product_Attributes(
 	Max_Ln_Tenor						DOUBLE ,
 	Interst_Rat						DOUBLE ,
 	Admin_Fees						DOUBLE ,
+	ROWHASH							String,
 	Business_DT						INT
 )CLUSTERED BY (Prod_Attribute_Type_Id) INTO 2 BUCKETS
 STORED AS ORC
@@ -227,6 +228,7 @@ CREATE TABLE DWH_DEV_DB.D_LOS_Application(
 	MOB_NUM						String,
 	Cust_Segment_Id					INT,
 	App_Case_Type_Id				INT,
+	ROWHASH						String,
 	Business_DT					INT
 )CLUSTERED BY (APPLICANT_ID) INTO 12 BUCKETS
 STORED AS ORC
@@ -365,6 +367,7 @@ CREATE TABLE DWH_DEV_DB.D_LOS_COMPANIES(
 	ID						INT,
 	BUSINESS_SECTOR_ID				INT,
 	LAST_MNT_DT					Timestamp,
+	ROWHASH						String,
 	Business_DT					INT
 )CLUSTERED BY (Comp_ID) INTO 2 BUCKETS
 STORED AS ORC
@@ -460,6 +463,7 @@ CREATE TABLE DWH_DEV_DB.D_LOS_APPLICANT(
 	REF_NAME					String,
 	REF_NUM						String,
 	REF_RELATION					String,
+	ROWHASH						String,
 	BUSINESS_DT					INT
 )CLUSTERED BY (CIF) INTO 16 BUCKETS
 STORED AS ORC
