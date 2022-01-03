@@ -1360,7 +1360,6 @@ ROWHASH 	STRING,
 LAST_UPD_DATE 	INT,
 LD_DATE 	INT
 )
-CLUSTERED BY (PROD_COD) INTO 1 BUCKETS
 STORED AS ORC
 TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
 
@@ -1376,7 +1375,6 @@ ROWHASH 		 STRING,
 LAST_UPD_DATE 		 INT,
 LD_DATE 		 INT
 )
-CLUSTERED BY (Credit_cards_guarantee_code) INTO 1 BUCKETS
 STORED AS ORC
 TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
 
