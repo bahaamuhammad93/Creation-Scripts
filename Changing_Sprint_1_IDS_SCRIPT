@@ -1,7 +1,3 @@
-
---alter table dwh_tst_db.see7o change id see7o_id int;
-
-
 /* DDL for Table B_CUSTOMER_CLASSIFICATION */
 
 ALTER TABLE DWH_DEV_DB.B_CUSTOMER_CLASSIFICATION CHANGE ID CUST_CLASSIFICATION_ID INT;
