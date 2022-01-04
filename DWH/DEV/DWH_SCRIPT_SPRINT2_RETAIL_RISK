@@ -1073,3 +1073,69 @@ CREATE TABLE DWH_DEV_DB.F_INT_INDEX_RATE(
 STORED AS PARQUET
 TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
 
+
+DROP TABLE DWH_DEV_DB.D_BRANCH;
+CREATE TABLE DWH_DEV_DB.D_BRANCH (
+    BRN_ID            	    	     INT,
+    BRN_COD            		     INT,
+    CBE_BRN_COD        		     INT,
+    BRN_CITY	       		     STRING,
+    BRN_TYPE_ID        		     INT,
+    BRN_GOV_ID	       	     	     INT,
+    BRN_NAME_AR        		     STRING,
+    BRN_NAME_AR_SHORT  		     STRING,
+    BRN_NAME_EN        		     STRING,
+    BRN_LCY			     STRING,
+    BRN_NAME_EN_SHORT  		     STRING,
+    OPEN_DT            		     INT,
+    CLOSE_DT           		     INT,
+    ADDR1              		     STRING,
+    ADDR2              		     STRING,
+    ADDR3              		     STRING,
+    ZIPCODE            		     STRING,
+    CD_CC_BRN_XREF     		     INT,
+    FLG_CLOSED         		     STRING,
+    MIGRATED_TO        		     INT,
+    LONGITUDE          		     DOUBLE,
+    LATITUDE           		     DOUBLE,
+    MAKER_ID           		     STRING,
+    CHECKER_ID         		     STRING,
+    LAST_MNT_DT        		     INT,
+    ROWHASH			     STRING,
+    BUSINESS_DT        		     INT
+)CLUSTERED BY (BRN_COD) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+DROP TABLE DWH_DEV_DB.H_BRANCH;
+CREATE TABLE DWH_DEV_DB.H_BRANCH (
+    BRN_ID   		  	     INT,
+    BRN_COD            		     INT,
+    CBE_BRN_COD        		     INT,
+    BRN_CITY	       		     STRING,
+    BRN_TYPE_ID        		     INT,
+    BRN_GOV_ID	       		     INT,
+    BRN_NAME_AR        		     STRING,
+    BRN_NAME_AR_SHORT  		     STRING,
+    BRN_NAME_EN        		     STRING,
+    BRN_NAME_EN_SHORT  		     STRING,
+    BRN_LCY			     STRING,
+    OPEN_DT            		     INT,
+    CLOSE_DT           		     INT,
+    ADDR1              		     STRING,
+    ADDR2              		     STRING,
+    ADDR3              		     STRING,
+    ZIPCODE            		     STRING,
+    CD_CC_BRN_XREF     		     INT,
+    FLG_CLOSED         		     STRING,
+    MIGRATED_TO        		     INT,
+    LONGITUDE          		     DOUBLE,
+    LATITUDE           		     DOUBLE,
+    MAKER_ID           		     STRING,
+    CHECKER_ID         		     STRING,
+    LAST_MNT_DT        		     INT,
+    ROWHASH			     STRING,
+    BUSINESS_DT        		     INT
+)CLUSTERED BY (BRN_COD) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
