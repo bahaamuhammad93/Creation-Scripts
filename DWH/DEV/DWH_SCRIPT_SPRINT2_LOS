@@ -284,6 +284,7 @@ CREATE TABLE DWH_DEV_DB.B_LOS_Product(
 	Channel_ID					String ,
 	BRN_COD						NUMERIC,
 	ID						NUMERIC,
+	ROWHASH						String,
 	LAST_MNT_DT					Timestamp,
 	Business_DT					NUMERIC
 )CLUSTERED BY (Ln_App_ID) INTO 2 BUCKETS
