@@ -294,7 +294,7 @@ TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 
 DROP TABLE DWH_DEV_DB.D_LOS_Channels;
 CREATE TABLE DWH_DEV_DB.D_LOS_Channels(
-	Channel_ID		String,
+	Channel_ID		INT,
 	Channel_Name		String,
 	Business_DT		INT
 )CLUSTERED BY (Channel_Name) INTO 2 BUCKETS
