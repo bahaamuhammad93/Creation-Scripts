@@ -1118,7 +1118,7 @@ CREATE TABLE DWH_DEV_DB.H_BRANCH (
     BRN_NAME_AR_SHORT  		     STRING,
     BRN_NAME_EN        		     STRING,
     BRN_NAME_EN_SHORT  		     STRING,
-    BRN_LCY			     STRING,
+    BRN_LCY_ID			     INT,
     OPEN_DT            		     INT,
     CLOSE_DT           		     INT,
     ADDR1              		     STRING,
