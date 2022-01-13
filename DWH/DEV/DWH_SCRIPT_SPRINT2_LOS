@@ -175,6 +175,7 @@ CREATE TABLE DWH_DEV_DB.F_LOS_App_Summary(
 	Step_user					String,
 	Pool_name					String,
 	Ln_App_ID					INT,
+	Card_App_ID					INT,
 	App_Case_Type_Id				INT,
 	Business_DT					INT
 )CLUSTERED BY (Initiator,Analyst) INTO 4 BUCKETS
@@ -354,10 +355,11 @@ DROP TABLE DWH_DEV_DB.B_LOS_Product;
 CREATE TABLE DWH_DEV_DB.B_LOS_Product(
 	PRODUCT_ID					INT,
 	Ln_App_ID					INT,
+	Card_App_ID					INT,
 	DATA_ENTRY_NAME					String ,
 	Channel_ID					String ,
-	BRN_COD						NUMERIC,
-	ID						NUMERIC,
+	BRN_ID						INT,
+	PROD_ID						INT,
 	ROWHASH						String,
 	LAST_MNT_DT					Timestamp,
 	Business_DT					NUMERIC
@@ -383,6 +385,7 @@ CREATE TABLE DWH_DEV_DB.B_LOS_App_Company_detail(
 	LAST_MNT_DT		Timestamp,
 	OCCUPATION		String,
 	Ln_App_ID		INT,
+	Card_App_ID		INT,
 	Companies_ID		INT,
 	Business_DT		INT
 )CLUSTERED BY (TITLE) INTO 2 BUCKETS
