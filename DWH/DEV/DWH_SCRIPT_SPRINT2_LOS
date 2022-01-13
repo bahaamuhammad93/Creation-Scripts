@@ -96,6 +96,7 @@ DROP TABLE DWH_DEV_DB.F_LOS_App_Comments;
 CREATE TABLE DWH_DEV_DB.F_LOS_App_Comments(
 	App_Comments_ID						INT,
 	Ln_App_ID						INT,
+	Card_App_ID						INT,
 	App_Activity_Id						INT,
 	Role_Id							INT,
 	Comment_Type_Id						INT,
@@ -197,6 +198,7 @@ DROP TABLE DWH_DEV_DB.F_LOS_App_Scoring;
 CREATE TABLE DWH_DEV_DB.F_LOS_App_Scoring(
 	IScore_Id						INT,
 	Ln_App_ID						INT,
+	Card_App_ID						INT,
 	BANK_NAME						String ,
 	ISCORE_DT						INT,
 	SCORING							String,
@@ -331,6 +333,7 @@ DROP TABLE DWH_DEV_DB.F_LOS_App_Income;
 CREATE TABLE DWH_DEV_DB.F_LOS_App_Income(
 	Ln_App_Income_Id				INT,
 	Ln_App_ID					INT,
+	Card_App_ID					INT,
 	INCOME_TYPE					String ,
 	BASIC_INCOME					String ,
 	ADDITIONAL_INCOME				String ,
@@ -346,7 +349,7 @@ CREATE TABLE DWH_DEV_DB.F_LOS_App_Income(
 	MIN_FINANCIAL_AMT				String ,
 	LAST_MNT_DT					Timestamp,
 	Business_DT					INT
-)CLUSTERED BY (INCOME_TYPE,Ln_App_ID) INTO 2 BUCKETS
+)CLUSTERED BY (Ln_App_ID,Card_App_ID) INTO 2 BUCKETS
 STORED AS PARQUET
 TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
 
@@ -407,6 +410,7 @@ DROP TABLE DWH_DEV_DB.F_LOS_App_Deviation;
 CREATE TABLE DWH_DEV_DB.F_LOS_App_Deviation(
 	App_Deviation_Id			INT,
 	Ln_App_ID				INT,
+	Card_App_ID				INT,
 	AUTHORIZED_NAME1			String ,
 	AUTHORIZED_NAME2			String ,
 	AUTHORIZED_NAME3			String ,
@@ -421,7 +425,7 @@ CREATE TABLE DWH_DEV_DB.F_LOS_App_Deviation(
 	Deviation_Id2				INT,
 	LAST_MNT_DT				Timestamp,
 	Business_DT				INT
-)CLUSTERED BY (Ln_App_ID) INTO 2 BUCKETS
+)CLUSTERED BY (Ln_App_ID,Card_App_ID) INTO 2 BUCKETS
 STORED AS PARQUET
 TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
 
