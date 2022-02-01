@@ -1422,3 +1422,45 @@ CLUSTERED BY (ID,INSTANCEID,BANKACCOUNTNUMBER) INTO 4 BUCKETS
 STORED AS ORC
 TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
 
+DROP TABLE STG_DEV_DB.CBE_PRODUCTS;
+CREATE TABLE STG_DEV_DB.CBE_PRODUCTS
+(
+PROD_COD 					string,
+ROWHASH 					string,
+LD_DATE 					int,
+LAST_UPD_DATE 					int
+) 
+CLUSTERED BY (PROD_COD) INTO 1 BUCKET
+STORED AS ORC
+TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE STG_DEV_DB.ARREAR_TYPE;
+CREATE TABLE stg_dev_db.arrear_type
+(
+arrear_type_id 					int, 
+arrear_type_cod 				string, 
+arrear_type_desc 				string, 
+ld_date 					int, 
+last_upd_date 					int, 
+rowhash 					string
+)
+CLUSTERED BY (arrear_type_cod) INTO 1 BUCKET
+STORED AS ORC
+TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE STG_DEV_DB.L_GL_CATEGORY;
+CREATE TABLE `stg_dev_db.l_gl_category`(
+category_id 					int, 
+category_cod 					int, 
+category_desc_en 				string, 
+category_desc_ar 				string, 
+ld_date 					int, 
+last_upd_date 					int, 
+rowhash 					string
+)
+CLUSTERED BY (category_cod) INTO 1 BUCKET
+STORED AS ORC
+TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
+
+
+
