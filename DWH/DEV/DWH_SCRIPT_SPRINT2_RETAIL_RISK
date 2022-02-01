@@ -1002,6 +1002,7 @@ DROP TABLE DWH_DEV_DB.D_PRODUCT;
 CREATE TABLE DWH_DEV_DB.D_PRODUCT (
 	PROD_ID					INT,
 	SUB_PROD_ID				INT,
+	CLUBBING_ID				INT,
 	Prod_COD				String ,
 	Prod_Desc_AR				String ,
 	Prod_Desc_EN				String ,
