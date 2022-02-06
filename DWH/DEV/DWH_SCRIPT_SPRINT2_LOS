@@ -526,7 +526,7 @@ CREATE TABLE DWH_DEV_DB.D_LOS_APPLICANT(
 	MOB_NUM						String ,
 	TELEPHONE					String ,
 	COUNTRY						String ,
-	GOVERNORATE					String ,
+	GOVERNORATE_ID					String ,
 	ADDR						String ,
 	MARITAL_STATUS_ID				INT,
 	NUM_OF_DEPENDANTS				String ,
