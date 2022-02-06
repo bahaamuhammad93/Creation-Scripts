@@ -53,6 +53,7 @@ CREATE TABLE DWH_DEV_DB.F_ACCOUNTS_LIMITS(
 	MOD_NUM							INT,
 	ONCE_AUTH						String,
 	LIAB_BR							String,
+	TABLE_NAME						String,
 	MAKER_ID						String,
 	CHECKER_ID						String,
 	LAST_MNT_DT						INT,
