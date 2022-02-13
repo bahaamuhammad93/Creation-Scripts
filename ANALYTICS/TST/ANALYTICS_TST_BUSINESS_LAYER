@@ -75,9 +75,9 @@ STORED AS PARQUET
 TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
 
 
-/* DDL for Table L_BUCKETS */
-DROP TABLE analytics_tst_db.L_BUCKETS;
-CREATE TABLE analytics_tst_db.L_BUCKETS
+/* DDL for Table L_BUCKET */
+DROP TABLE analytics_tst_db.L_BUCKET;
+CREATE TABLE analytics_tst_db.L_BUCKET
 (
 	  Bucket_ID			INT,
 	  Bucket			String,
