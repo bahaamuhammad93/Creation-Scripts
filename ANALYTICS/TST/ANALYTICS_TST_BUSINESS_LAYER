@@ -1,28 +1,23 @@
-DROP TABLE ANALYTICS_TST_DB.f_arrears_daily;
-CREATE TABLE  ANALYTICS_TST_DB.f_arrears_daily
+DROP TABLE ANALYTICS_TST_DB.F_ARREARS_DAILY;
+CREATE TABLE  ANALYTICS_TST_DB.F_ARREARS_DAILY
 (
-arrears_id INT,   
-acct_id INT,
+ARREARS_ID INT,
+ACCT_ID INT,
 DWH_ID INT,
-ccy_id INT,   
-module_id INT,    
-Principal_Arrears DOUBLE,
-Interest_Arrears DOUBLE,  
-Suspended_Penalty_Arrears DOUBLE,  
-Suspended_Interest_Arrears DOUBLE,  
-Legal_Type_arrear DOUBLE,
-Penalty_Arrears DOUBLE,
-Fees_Commissions_Arrears DOUBLE,
-ref_bill_num_srl INT,
-arrears_charge_cod INT,   
-instal_num_ctr INT,   
-seq_num_ctr INT,   
-arrears_due_dt INT,  
-last_payment_dt INT,   
-ref_billno_dt INT,  
-days_past_due INT,
-business_dt INT
-)CLUSTERED BY (acct_id , ccy_id , module_id) INTO 4 BUCKETS
+CCY_ID INT,
+MODULE_ID INT,
+ARREARS_DUE_AMT DOUBLE,
+ARREARS_TYPE_ID INT,
+REF_BILL_NUM_SRL INT,
+ARREARS_CHARGE_COD INT,
+INSTAL_NUM_CTR INT,
+SEQ_NUM_CTR INT,
+ARREARS_DUE_DT INT,
+LAST_PAYMENT_DT INT,
+REF_BILLNO_DT INT,
+DAYS_PAST_DUE INT,
+BUSINESS_DT INT
+)CLUSTERED BY (ACCT_ID , CCY_ID , MODULE_ID) INTO 4 BUCKETS
 STORED AS PARQUET
 TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
 
