@@ -464,6 +464,7 @@ CREATE TABLE ANALYTICS_TST_DB.F_GL_TRX(
 	LCY_AMT				DOUBLE ,
 	AMT_TAG				String ,
 	PERIOD_COD			String ,
+	TXN_MNEMONIC_COD		INT,
 	USER_ID				String ,
 	AUTH_ID				String ,
 	TYPE				String ,
