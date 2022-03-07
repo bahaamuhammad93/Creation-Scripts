@@ -17,6 +17,7 @@ TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
 DROP TABLE DWH_DEV_DB.F_ACCOUNTS_LIMITS;
 CREATE TABLE DWH_DEV_DB.F_ACCOUNTS_LIMITS(
 	ACCT_LIM_ID						INT,
+	DWH_ID							INT,
 	CCY_ID							INT,
 	LIM_NUM							String,
 	PARENT_LIM_NUM						String,
