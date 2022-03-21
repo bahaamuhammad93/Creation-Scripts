@@ -2128,3 +2128,33 @@ ROWHASH 					string
 )
 STORED AS ORC
 TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE STG_DEV_DB.FOLLOW_UP;
+CREATE TABLE STG_DEV_DB.FOLLOW_UP 
+(
+Business_Date           STRING,
+Type                    STRING,
+Main_Card_Number        STRING,
+brn                     STRING,
+cyc                     STRING,
+Create_Date             STRING,
+Limit                   STRING,
+Card_State             STRING,
+Customer_Name           STRING,
+Staff                   STRING,
+Guarantee               STRING,
+Bank_Account            STRING,
+Balance                 STRING,
+Retail_Balance          STRING,
+Cash_Balance            STRING,
+Payments_Balance        STRING,
+Others_Balance          STRING,
+Installment_Balance     STRING,
+Interest_Balance        STRING,
+Fees_Balance            STRING,
+ROWHASH					STRING,
+LD_DATE 				INT,
+LAST_UPD_DATE 			INT
+)CLUSTERED BY (Main_Card_Number,Bank_Account) INTO 1 BUCKETS
+STORED AS ORC
+TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
