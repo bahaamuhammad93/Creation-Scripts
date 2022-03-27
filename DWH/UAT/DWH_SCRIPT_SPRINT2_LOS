@@ -1,0 +1,697 @@
+DROP TABLE DWH_TST_DB.L_LOS_Product_Types;
+CREATE TABLE DWH_TST_DB.L_LOS_Product_Types(
+	Prod_Attribute_Type_Id			INT,
+	Prod_Attribute_Type			String,
+	Business_Dt				INT
+)CLUSTERED BY (Prod_Attribute_Type) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+
+DROP TABLE DWH_TST_DB.D_LOS_Product_Attributes;
+CREATE TABLE DWH_TST_DB.D_LOS_Product_Attributes(
+	Product_Attributes_ID					INT,
+	Prod_COD						STRING,
+	ID							INT,
+	Prod_Attribute_Type_Id					INT,
+	Min_Age							INT,
+	Max_Age							INT,
+	Internal_dbr						DOUBLE ,
+	Tot_dbr							DOUBLE ,
+	Min_income						DOUBLE ,
+	Min_ln_Amt						DOUBLE ,
+	Min_Ln_Tenor						DOUBLE ,
+	Max_Ln_Tenor						DOUBLE ,
+	Interst_Rat						DOUBLE ,
+	Admin_Fees						DOUBLE ,
+	ROWHASH							String,
+	Business_DT						INT
+)CLUSTERED BY (Prod_Attribute_Type_Id) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_TST_DB.H_LOS_Product_Attributes;
+CREATE TABLE DWH_TST_DB.H_LOS_Product_Attributes(
+	Product_Attributes_ID					INT,
+	Prod_COD						STRING,
+	ID							INT,
+	Prod_Attribute_Type_Id					INT,
+	Min_Age							INT,
+	Max_Age							INT,
+	Internal_dbr						DOUBLE ,
+	Tot_dbr							DOUBLE ,
+	Min_income						DOUBLE ,
+	Min_ln_Amt						DOUBLE ,
+	Min_Ln_Tenor						DOUBLE ,
+	Max_Ln_Tenor						DOUBLE ,
+	Interst_Rat						DOUBLE ,
+	Admin_Fees						DOUBLE ,
+	ROWHASH							String,
+	Business_DT						INT
+)CLUSTERED BY (Prod_Attribute_Type_Id) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+
+DROP TABLE DWH_TST_DB.L_LOS_User_Groups;
+CREATE TABLE DWH_TST_DB.L_LOS_User_Groups(
+	User_Group_Id					INT,
+	User_Group_Name					String ,
+	Business_DT					INT
+)CLUSTERED BY (User_Group_Name) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+
+DROP TABLE DWH_TST_DB.F_LOS_App_Activity;
+CREATE TABLE DWH_TST_DB.F_LOS_App_Activity(
+	App_Activity_Id					INT,
+	PROCESS_INST_NUM				String ,
+	TASK_ID						String ,
+	App_Activity_DT					Timestamp,
+	STATUS						String   ,
+	DUE_TIME					Timestamp,
+	ACTUAL_DURATION					String   ,
+	USER_MANAGER					String   ,
+	ID						INT      ,
+	User_Group_Id					INT,
+	Activity_Step_Id				INT,
+	Business_DT					INT
+)CLUSTERED BY (PROCESS_INST_NUM) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+
+DROP TABLE DWH_TST_DB.L_LOS_Activity_Step;
+CREATE TABLE DWH_TST_DB.L_LOS_Activity_Step(
+	Activity_Step_Id			INT,
+	Activity_Step				String ,
+	Business_DT				INT
+)CLUSTERED BY (Activity_Step) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+
+DROP TABLE DWH_TST_DB.F_LOS_App_Comments;
+CREATE TABLE DWH_TST_DB.F_LOS_App_Comments(
+	App_Comments_ID						INT,
+	Ln_App_ID						INT,
+	Card_App_ID						INT,
+	App_Activity_Id						INT,
+	Role_Id							INT,
+	Comment_Type_Id						INT,
+	Activity_Step_Id					INT,
+	Activity_Process_instance_Id				INT,
+	USER_NAME						String ,
+	REASON							String ,
+	COMMENTS						String ,
+	LAST_MNT_DT						Timestamp,
+	Business_DT						INT
+)CLUSTERED BY (App_Activity_Id) INTO 16 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+
+DROP TABLE DWH_TST_DB.L_LOS_Roles;
+CREATE TABLE DWH_TST_DB.L_LOS_Roles(
+	Role_Id				INT,
+	Role_Name			String,
+	Business_DT			INT
+)CLUSTERED BY (Role_Name) INTO 4 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+
+DROP TABLE DWH_TST_DB.F_LOS_Activity_Process_Instance;
+CREATE TABLE DWH_TST_DB.F_LOS_Activity_Process_Instance(
+	Activity_Process_instance_Id	INT,
+	PROCESS_DEF_ID					String ,
+	INSTANCE_TYPE					String ,
+	INSTANCE_STATUS					String ,
+	START_TIME					Timestamp,
+	END_TIME					Timestamp,
+	ACTUAL_DURATION					DOUBLE,
+	Activity_Process_Id				INT,
+	Business_DT					INT
+)CLUSTERED BY (INSTANCE_TYPE) INTO 4 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+
+DROP TABLE DWH_TST_DB.L_LOS_Activity_Process;
+CREATE TABLE DWH_TST_DB.L_LOS_Activity_Process(
+	Activity_Process_Id				INT,
+	Activity_Process_Name				String,
+	LAST_MNT_DT					Timestamp,
+	Business_DT					INT
+)CLUSTERED BY (Activity_Process_Name) INTO 4 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+
+DROP TABLE DWH_TST_DB.L_LOS_App_Comment_Type;
+CREATE TABLE DWH_TST_DB.L_LOS_App_Comment_Type(
+	Comment_Type_Id					INT,
+	Comment_Type					String,
+	Business_DT					INT
+)CLUSTERED BY (Comment_Type) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+
+DROP TABLE DWH_TST_DB.F_LOS_App_Summary;
+CREATE TABLE DWH_TST_DB.F_LOS_App_Summary(
+	Ln_App_Summary_Id				INT,
+	Initiator					String,
+	Reviewer					String,
+	Reviewer_Decision				String,
+	Rejection_Reason				String,
+	Returned_Reason					String,
+	Analyst						String,
+	Analyst_Decision				String,
+	Analyst_Decision_DT				INT,
+	Analyst_Comment					String,
+	Operation_Pool_Sub_DT				Timestamp,
+	Branch_Pool_Sub_DT				Timestamp,
+	Step_user					String,
+	Pool_name					String,
+	Ln_App_ID					INT,
+	Card_App_ID					INT,
+	App_Case_Type_Id				INT,
+	Business_DT					INT
+)CLUSTERED BY (Initiator,Analyst) INTO 4 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+
+DROP TABLE DWH_TST_DB.L_LOS_App_Case_Type;
+CREATE TABLE DWH_TST_DB.L_LOS_App_Case_Type(
+	App_Case_Type_Id				INT,
+	App_Case_Type					String,
+	Business_DT					INT
+)CLUSTERED BY (App_Case_Type) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+
+DROP TABLE DWH_TST_DB.F_LOS_App_Scoring;
+CREATE TABLE DWH_TST_DB.F_LOS_App_Scoring(
+	IScore_Id						INT,
+	Ln_App_ID						INT,
+	Card_App_ID						INT,
+	BANK_NAME						String ,
+	ISCORE_DT						INT,
+	SCORING							String,
+	LAST_MNT_DT						Timestamp,
+	Business_DT						INT
+)CLUSTERED BY (Ln_App_ID) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+
+DROP TABLE DWH_TST_DB.D_LOS_Application;
+CREATE TABLE DWH_TST_DB.D_LOS_Application(
+	Ln_App_ID					INT,
+	SERIAL						String,
+	APPLICANT_ID					INT,
+	Approved_LN_Amt					String ,
+	PROFIT_RAT					String ,
+	Tenor						String ,
+	INSTALLMENT					String ,
+	Internal_DBR_Pct				String ,
+	External_DBR_Pct				String ,
+	LN_DBR_PCT					String ,
+	CUST_AGE_AT_MATURITY				String ,
+	REQUESTED_FINANCE_AMT				String ,
+	REQUESTED_TENOR					String ,
+	CPV						String ,
+	EXTERNAL_VERIFICATION				String ,
+	VERIFICATION_TYPE				String ,
+	HOME_VERIFICATION				String ,
+	BUSINESS_VERIFICATION				String ,
+	HOME_INVESTIGATION_DT				INT,
+	GUA_NAME					String ,
+	GUA_NATIONAL_ID					String ,
+	NATIONAL_ID_ISSUANCE_DT				INT,
+	GUA_BIRTH_DT					INT,
+	GUA_ID						String ,
+	APPLICATION_DT					INT,
+	Credit_Analyst_Decision_DT			INT,
+	Credit_Analyst_Decision				String ,
+	Credit_Analyst_ID				String ,
+	ANALYST_REJECTION_REASONS			String ,
+	NOTES						String ,
+	Reviewer_ID					String ,
+	Reviewer_Decision				String ,
+	ANALYST_RETURNED_REASONS			String ,
+	REVIEWER_REJECTION_REASONS			String ,
+	REVIEWER_RETURNED_REASONS			String ,
+	SUPERVISOR_NAME					String ,
+	 LAST_MNT_DT					Timestamp,
+	BUSINESS_INVESTIGATION_DT			INT,
+	HOME						String,
+	BUSINESS					String,
+	MOB_NUM						String,
+	Cust_Segment_Id					INT,
+	App_Case_Type_Id				INT,
+	ROWHASH						String,
+	Business_DT					INT
+)CLUSTERED BY (APPLICANT_ID) INTO 12 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+
+DROP TABLE DWH_TST_DB.H_LOS_Application;
+CREATE TABLE DWH_TST_DB.H_LOS_Application(
+	Ln_App_ID					INT,
+	SERIAL						String,
+	APPLICANT_ID					INT,
+	Approved_LN_Amt					String ,
+	PROFIT_RAT					String ,
+	Tenor						String ,
+	INSTALLMENT					String ,
+	Internal_DBR_Pct				String ,
+	External_DBR_Pct				String ,
+	LN_DBR_PCT					String ,
+	CUST_AGE_AT_MATURITY				String ,
+	REQUESTED_FINANCE_AMT				String ,
+	REQUESTED_TENOR					String ,
+	CPV						String ,
+	EXTERNAL_VERIFICATION				String ,
+	VERIFICATION_TYPE				String ,
+	HOME_VERIFICATION				String ,
+	BUSINESS_VERIFICATION				String ,
+	HOME_INVESTIGATION_DT				INT,
+	GUA_NAME					String ,
+	GUA_NATIONAL_ID					String ,
+	NATIONAL_ID_ISSUANCE_DT				INT,
+	GUA_BIRTH_DT					INT,
+	GUA_ID						String ,
+	APPLICATION_DT					INT,
+	Credit_Analyst_Decision_DT			INT,
+	Credit_Analyst_Decision				String ,
+	Credit_Analyst_ID				String ,
+	ANALYST_REJECTION_REASONS			String ,
+	NOTES						String ,
+	Reviewer_ID					String ,
+	Reviewer_Decision				String ,
+	ANALYST_RETURNED_REASONS			String ,
+	REVIEWER_REJECTION_REASONS			String ,
+	REVIEWER_RETURNED_REASONS			String ,
+	SUPERVISOR_NAME					String ,
+	 LAST_MNT_DT					Timestamp,
+	BUSINESS_INVESTIGATION_DT			INT,
+	HOME						String,
+	BUSINESS					String,
+	MOB_NUM						String,
+	Cust_Segment_Id					INT,
+	App_Case_Type_Id				INT,
+	ROWHASH						String,
+	Business_DT					INT
+)CLUSTERED BY (APPLICANT_ID) INTO 12 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+
+DROP TABLE DWH_TST_DB.F_LOS_App_Bank_Statement;
+CREATE TABLE DWH_TST_DB.F_LOS_App_Bank_Statement(
+	Bank_Stat_Id				INT,
+	Ln_App_ID				INT,
+	Month1					DOUBLE ,
+	Month2					DOUBLE ,
+	Month3					DOUBLE ,
+	Month4					DOUBLE ,
+	Month5					DOUBLE ,
+	Month6					DOUBLE ,
+	Business_DT				INT
+)CLUSTERED BY (Ln_App_ID) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+
+DROP TABLE DWH_TST_DB.F_LOS_App_Income;
+CREATE TABLE DWH_TST_DB.F_LOS_App_Income(
+	Ln_App_Income_Id				INT,
+	Ln_App_ID					INT,
+	Card_App_ID					INT,
+	INCOME_TYPE					String ,
+	BASIC_INCOME					String ,
+	ADDITIONAL_INCOME				String ,
+	INCOME_THROUGH_ISCORE				String ,
+	CUST_SHARE					String ,
+	TOT_CREDITS					String ,
+	INCOME_PCT					String ,
+	FOREIGN_RAT					String ,
+	TOT_INCOME					String ,
+	MONTHLY_INCOME					String ,
+	PAYSLIP_TOT_MONTHS				String ,
+	MAX_INSTALLMENT					String ,
+	MIN_FINANCIAL_AMT				String ,
+	LAST_MNT_DT					Timestamp,
+	Business_DT					INT
+)CLUSTERED BY (Ln_App_ID,Card_App_ID) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+
+DROP TABLE DWH_TST_DB.B_LOS_Product;
+CREATE TABLE DWH_TST_DB.B_LOS_Product(
+	PRODUCT_ID					INT,
+	Ln_App_ID					INT,
+	Card_App_ID					INT,
+	DATA_ENTRY_NAME					String ,
+	Channel_ID					String ,
+	BRN_ID						INT,
+	PROD_ID						INT,
+	ROWHASH						String,
+	LAST_MNT_DT					Timestamp,
+	Business_DT					NUMERIC
+)CLUSTERED BY (Ln_App_ID) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+
+DROP TABLE DWH_TST_DB.D_LOS_Channels;
+CREATE TABLE DWH_TST_DB.D_LOS_Channels(
+	Channel_ID		INT,
+	Channel_Name		String,
+	Business_DT		INT
+)CLUSTERED BY (Channel_Name) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+
+DROP TABLE DWH_TST_DB.B_LOS_App_Company_detail;
+CREATE TABLE DWH_TST_DB.B_LOS_App_Company_detail(
+	TITLE			String,
+	HIRING_DT		INT,
+	LAST_MNT_DT		Timestamp,
+	OCCUPATION		String,
+	Ln_App_ID		INT,
+	Card_App_ID		INT,
+	Companies_ID		INT,
+	Business_DT		INT
+)CLUSTERED BY (TITLE) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+
+DROP TABLE DWH_TST_DB.L_LOS_Customer_Segment;
+CREATE TABLE DWH_TST_DB.L_LOS_Customer_Segment(
+	Cust_Segment_Id			INT,
+	Cust_Segment			String ,
+	Business_DT			INT
+)CLUSTERED BY (Cust_Segment) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+
+DROP TABLE DWH_TST_DB.F_LOS_App_Deviation;
+CREATE TABLE DWH_TST_DB.F_LOS_App_Deviation(
+	App_Deviation_Id			INT,
+	Ln_App_ID				INT,
+	Card_App_ID				INT,
+	AUTHORIZED_NAME1			String ,
+	AUTHORIZED_NAME2			String ,
+	AUTHORIZED_NAME3			String ,
+	AUTHORIZED_NAME1_POSTION		String ,
+	AUTHORIZED_NAME2_POSTION		String ,
+	AUTHORIZED_NAME3_POSTION		String ,
+	AUTHORITY_LEVEL1			String ,
+	AUTHORITY_LEVEL2			String ,
+	AUTHORITY_LEVEL3			String ,
+	Deviation_Id				INT,
+	Deviation_Id1				INT,
+	Deviation_Id2				INT,
+	LAST_MNT_DT				Timestamp,
+	Business_DT				INT
+)CLUSTERED BY (Ln_App_ID,Card_App_ID) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+
+DROP TABLE DWH_TST_DB.L_LOS_Deviations;
+CREATE TABLE DWH_TST_DB.L_LOS_Deviations(
+	Deviation_Id				INT,
+	Deviations				String,
+	Business_DT				INT
+)CLUSTERED BY (Deviations) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+
+DROP TABLE DWH_TST_DB.D_LOS_COMPANIES;
+CREATE TABLE DWH_TST_DB.D_LOS_COMPANIES(
+	Companies_ID					INT,
+	Comp_ID						INT,
+	COMP_NAME					String ,
+	BUSINESS_ADDR					String ,
+	BUSINESS_PHONE_NUM				String ,
+	ID						INT,
+	BUSINESS_SECTOR_ID				INT,
+	LAST_MNT_DT					Timestamp,
+	ROWHASH						String,
+	Business_DT					INT
+)CLUSTERED BY (Comp_ID) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+DROP TABLE DWH_TST_DB.H_LOS_COMPANIES;
+CREATE TABLE DWH_TST_DB.H_LOS_COMPANIES(
+	Companies_ID					INT,
+	Comp_ID						INT,
+	COMP_NAME					String ,
+	BUSINESS_ADDR					String ,
+	BUSINESS_PHONE_NUM				String ,
+	ID						INT,
+	BUSINESS_SECTOR_ID				INT,
+	LAST_MNT_DT					Timestamp,
+	ROWHASH						String,
+	Business_DT					INT
+)CLUSTERED BY (Comp_ID) INTO 2 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+
+DROP TABLE DWH_TST_DB.L_LOS_Company;
+CREATE TABLE DWH_TST_DB.L_LOS_Company(
+	Comp_ID					INT,
+	Comp_Name_AR				String ,
+	Comp_Name_EN				String ,
+	Comp_Comment				String ,
+	Comp_Addr				String ,
+	Comp_Category_Id			INT,
+	Comp_Income_Type_Id			INT,
+	Business_DT				INT
+)CLUSTERED BY (Comp_Name_EN) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+
+
+DROP TABLE DWH_TST_DB.L_LOS_Company_Income_Types;
+CREATE TABLE DWH_TST_DB.L_LOS_Company_Income_Types(
+	Comp_Income_Type_Id		INT,
+	Comp_Income_Type		String,
+	Business_DT			INT
+)CLUSTERED BY (Comp_Income_Type) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+
+DROP TABLE DWH_TST_DB.L_LOS_Company_Category;
+CREATE TABLE DWH_TST_DB.L_LOS_Company_Category(
+	Comp_Category_Id			INT,
+	Comp_Category				String ,
+	Business_DT				INT
+)CLUSTERED BY (Comp_Category) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+
+DROP TABLE DWH_TST_DB.D_LOS_APPLICANT;
+CREATE TABLE DWH_TST_DB.D_LOS_APPLICANT(
+	APPLICANT_ID					INT,
+	PID						INT,
+	CIF						String ,
+	TASK_ID						String ,
+	CUST_TYPE					String ,
+	CUST_ID						String ,
+	CUST_NAME_EN					String ,
+	CUST_NAME_AR					String ,
+	BIRTH_DT					String ,
+	NATIONAL_ID					String ,
+	NATIONAL_ID_ISSUANCE_DT				String ,
+	PASSPORT_ID					String ,
+	MOB_NUM						String ,
+	TELEPHONE					String ,
+	COUNTRY						String ,
+	GOVERNORATE_ID					String ,
+	ADDR						String ,
+	MARITAL_STATUS_ID				INT,
+	NUM_OF_DEPENDANTS				String ,
+	EDUCTIONAL_LEVEL				String ,
+	PROD_ID						String ,
+	LAST_MNT_DT					Timestamp,
+	GOVERNORATE					String,
+	BUILDING_NUM					String,
+	APPARTMENT					String,
+	AREA						String,
+	`FLOOR`						String,
+	EMAIL						String,
+	PASSPORT_NUM					String,
+	NATIONALITY					String,
+	RESIDENCY_INDICATION				String,
+	ZIP_CODE_OF_RESIDENCE				String,
+	COUNTRY_OF_RESIDENCE				String,
+	REGION_OF_RESIDENCE				String,
+	CITY_OF_RESIDENCE				String,
+	COUNTRY_OF_CONTACT				String,
+	REGION_OF_CONTACT				String,
+	CITY_OF_CONTACT					String,
+	CUSTOMER_CONTACT_ADDR				String,
+	HOME_PHONE					String,
+	CUSTOMER_RESIDENCE_ADDR				String,
+	TITLE						String,
+	BANK_DT						INT,
+	BANK_ACCT_NUM					String,
+	IS_WEALTH					String,
+	PASSPORT_EXPIRY_DT				String,
+	EX_STAFF					String,
+	REF_NAME					String,
+	REF_NUM						String,
+	REF_RELATION					String,
+	ROWHASH						String,
+	BUSINESS_DT					INT
+)CLUSTERED BY (CIF) INTO 16 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+
+
+DROP TABLE DWH_TST_DB.H_LOS_APPLICANT;
+CREATE TABLE DWH_TST_DB.H_LOS_APPLICANT(
+	APPLICANT_ID					INT,
+	PID						INT,
+	CIF						String ,
+	TASK_ID						String ,
+	CUST_TYPE					String ,
+	CUST_ID						String ,
+	CUST_NAME_EN					String ,
+	CUST_NAME_AR					String ,
+	BIRTH_DT					String ,
+	NATIONAL_ID					String ,
+	NATIONAL_ID_ISSUANCE_DT				String ,
+	PASSPORT_ID					String ,
+	MOB_NUM						String ,
+	TELEPHONE					String ,
+	COUNTRY_ID					String ,
+	GOVERNORATE_ID					String ,
+	ADDR						String ,
+	MARITAL_STATUS_ID				INT,
+	NUM_OF_DEPENDANTS				String ,
+	EDUCTIONAL_LEVEL				String ,
+	PROD_ID						String ,
+	LAST_MNT_DT					Timestamp,
+	GOVERNORATE					String,
+	BUILDING_NUM					String,
+	APPARTMENT					String,
+	AREA						String,
+	`FLOOR`						String,
+	EMAIL						String,
+	PASSPORT_NUM					String,
+	NATIONALITY					String,
+	RESIDENCY_INDICATION				String,
+	ZIP_CODE_OF_RESIDENCE				String,
+	COUNTRY_OF_RESIDENCE				String,
+	REGION_OF_RESIDENCE				String,
+	CITY_OF_RESIDENCE				String,
+	COUNTRY_OF_CONTACT				String,
+	REGION_OF_CONTACT				String,
+	CITY_OF_CONTACT					String,
+	CUSTOMER_CONTACT_ADDR				String,
+	HOME_PHONE					String,
+	CUSTOMER_RESIDENCE_ADDR				String,
+	TITLE						String,
+	BANK_DT						INT,
+	BANK_ACCT_NUM					String,
+	IS_WEALTH					String,
+	PASSPORT_EXPIRY_DT				String,
+	EX_STAFF					String,
+	REF_NAME					String,
+	REF_NUM						String,
+	REF_RELATION					String,
+	ROWHASH						String,
+	BUSINESS_DT					INT
+)CLUSTERED BY (CIF) INTO 16 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+
+DROP TABLE DWH_TST_DB.D_LOS_CARD_APPLICATION;
+CREATE TABLE DWH_TST_DB.D_LOS_CARD_APPLICATION(
+	CARD_APP_ID				INT,
+	CARD_TYPE_ID				INT,
+	APPLICANT_ID				INT,
+	BANK_BRN_ID				INT,
+	Cust_Segment_Id				INT,
+	App_Case_Type_Id			INT,
+	INSTANCE_ID				String,
+	TASK_ID					String,
+	CARD_LIMIT				INT,
+	CARD_CATEGORY				String,
+	MIN_PAYMENT_AMT				DOUBLE,
+	NAME_ON_CARD				String,
+	MIN_PAYMENT				String,
+	LIM_IN_NATIONAL_CCY			INT,
+	LIM_IN_INTERNATIONAL_CCY		INT,
+	BANK_ACCT_NUM				String,
+	CONTRACT_TYPE				String,
+	CARD_PROD_PREFIX			String,
+	DIRECT_DEBIT_CALCULATION_PROFILE	String,
+	CCY					String,
+	START_BANK				INT,
+	CONTRACT_ZIP_CODE			String,
+	LAST_MNT_DT				Timestamp,
+	ISSUANCE_PRIORITY			String,
+	MOTHER_NAME				String,
+	ROWHASH					String,
+	BUSINESS_DT				INT
+)CLUSTERED BY (INSTANCE_ID,APPLICANT_ID) INTO 4 BUCKETS
+STORED AS ORC
+TBLPROPERTIES	('transactional'='true', "orc.compress"="SNAPPY");
+
+
+
+DROP TABLE DWH_TST_DB.H_LOS_CARD_APPLICATION;
+CREATE TABLE DWH_TST_DB.H_LOS_CARD_APPLICATION(
+	CARD_APP_ID				INT,
+	CARD_TYPE_ID				INT,
+	APPLICANT_ID				INT,
+	BANK_BRN_ID				INT,
+	Cust_Segment_Id				INT,
+	App_Case_Type_Id			INT,
+	INSTANCE_ID				String,
+	TASK_ID					String,
+	CARD_LIMIT				INT,
+	CARD_CATEGORY				String,
+	MIN_PAYMENT_AMT				DOUBLE,
+	NAME_ON_CARD				String,
+	MIN_PAYMENT				String,
+	LIM_IN_NATIONAL_CCY			INT,
+	LIM_IN_INTERNATIONAL_CCY		INT,
+	BANK_ACCT_NUM				String,
+	CONTRACT_TYPE				String,
+	CARD_PROD_PREFIX			String,
+	DIRECT_DEBIT_CALCULATION_PROFILE	String,
+	CCY					String,
+	START_BANK				INT,
+	CONTRACT_ZIP_CODE			String,
+	LAST_MNT_DT				Timestamp,
+	ISSUANCE_PRIORITY			String,
+	MOTHER_NAME				String,
+	ROWHASH					String,
+	BUSINESS_DT				INT
+)CLUSTERED BY (INSTANCE_ID,APPLICANT_ID) INTO 4 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
