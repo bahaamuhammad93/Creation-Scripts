@@ -2122,6 +2122,8 @@ MIS_CODE					string,
 ACTIVITY					String,
 ACTIVITY_AMEND					string,
 INDUSTRIES_SECTOR				string,
+SECTOR						string,
+COD_9						string,
 LD_DATE 					int, 
 LAST_UPD_DATE 					int, 
 ROWHASH 					string
