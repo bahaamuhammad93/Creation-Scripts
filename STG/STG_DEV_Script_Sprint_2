@@ -2175,3 +2175,27 @@ LD_DATE 					INT
 CLUSTERED BY (CIF,MIS_CODE) INTO 2 BUCKETS
 STORED AS ORC
 TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
+
+
+
+DROP TABLE STG_DEV_DB.MARKET_SHARE;
+CREATE TABLE DWH_DEV_DB.MARKET_SHARE(
+	MANUAL						String,
+	TOTAL_MARKET_DT					INT,
+	TOTAL_CREDIT_FACILITIES_PCT			String ,
+	TOTAL_OUTSTANDING_BAL_PCT			String ,
+	TOTAL_CREDIT_LIMIT_PCT				String ,
+	30_ACC						String ,
+	90_ACC						String ,
+	120_ACC						String ,
+	90_AMT						String ,
+	30_AMT						String ,
+	120_AMT						String ,
+	AVG_CREDIT_LIM					String ,
+	ROWHASH 					STRING,
+	LAST_UPD_DATE 					INT,
+	LD_DATE 					INT
+)CLUSTERED BY (TOTAL_MARKET_DT) INTO 2 BUCKETS
+STORED AS ORC
+TBLPROPERTIES ('transactional'='true', "orc.compress"="SNAPPY");
+
