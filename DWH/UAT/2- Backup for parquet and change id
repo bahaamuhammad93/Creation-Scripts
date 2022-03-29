@@ -1783,4 +1783,47 @@ SELECT
 	BUSINESS_DT						
 FROM DWH_TST_DB.H_ATM_SP1;
 
+/* DDL for Table H_CUSTOMER_CLASSIFICATION */
 
+ALTER TABLE DWH_TST_DB.H_CUSTOMER_CLASSIFICATION RENAME TO DWH_TST_DB.H_CUSTOMER_CLASSIFICATION_SP1;
+
+CREATE TABLE DWH_TST_DB.H_CUSTOMER_CLASSIFICATION (
+    CUST_CLASS_ID                   	INT,
+    CUST_ID                  	   	INT,
+    DWH_ID              	   	INT,
+    CIF                 	   	STRING,
+    SUB_CLASSIFICATION_ID          	INT,
+    MIS_CODE  			   	INT,
+    CLASS_NUM                      	INT,
+    MAKER_ID                       	STRING,
+    CHECKER_ID                     	STRING,
+    BUSINESS_DT                    	INT 
+)CLUSTERED BY (CIF , SUB_CLASSIFICATION_ID) INTO 16 BUCKETS
+STORED AS PARQUET
+TBLPROPERTIES	("PARQUET.COMPRESSION"="SNAPPY");
+
+INSERT INTO DWH_TST_DB.H_CUSTOMER_CLASSIFICATION (
+    CUST_CLASS_ID               ,
+    CUST_ID                     ,
+    DWH_ID              	,
+    CIF                 	,
+    SUB_CLASSIFICATION_ID       ,
+    MIS_CODE  		 	,
+    CLASS_NUM                  	,
+    MAKER_ID                   	,
+    CHECKER_ID                 	,
+    BUSINESS_DT                
+					
+)
+SELECT 
+    ID              	       ,	
+    CUST_ID                    ,
+    DWH_ID                     ,
+    CIF                        ,
+    SUB_CLASSIFICATION_ID      ,
+    MIS_CODE  		       ,
+    CLASS_NUM                  ,
+    MAKER_ID                   ,
+    CHECKER_ID                 ,
+    BUSINESS_DT                
+FROM DWH_TST_DB.H_CUSTOMER_CLASSIFICATION_SP1;
